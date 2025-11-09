@@ -9,7 +9,11 @@ interface IconProps extends Omit<LucideProps, 'ref'> {
 }
 
 const Icon = ({ name, ...props }: IconProps) => {
-  const LucideIcon = lazy(dynamicIconImports[name]);
+  const importer = dynamicIconImports[name];
+  if (!importer) {
+    return <div className="w-8 h-8" aria-hidden />;
+  }
+  const LucideIcon = lazy(importer);
   return (
     <Suspense fallback={<div className="w-8 h-8" />}>
       <LucideIcon {...props} />
@@ -38,7 +42,7 @@ export const Sectors = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             {sectors.map((sector) => {
-              const iconName = sector.icon.replace(/([A-Z])/g, '-$1').toLowerCase().replace(/^-/, '') as keyof typeof dynamicIconImports;
+              const iconName = sector.icon.replace(/([a-z0-9])([A-Z])/g, '$1-$2').replace(/([a-zA-Z])([0-9])/g, '$1-$2').toLowerCase() as keyof typeof dynamicIconImports;
               
               return (
                 <div 
