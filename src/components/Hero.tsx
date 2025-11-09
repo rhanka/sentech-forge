@@ -1,6 +1,5 @@
 import { useTranslation } from "react-i18next";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import heroImage from "@/assets/hero-tech.jpg";
 import { Lightbulb, Factory, Heart, Handshake } from "lucide-react";
 
@@ -70,13 +69,6 @@ export const Hero = () => {
         }}
       >
         <div className="absolute inset-0 bg-gradient-hero opacity-90"></div>
-      </div>
-
-      {/* Language Switcher */}
-      <div className="absolute top-24 right-4 sm:right-8 z-20">
-        <div className="bg-card/95 backdrop-blur rounded-lg p-2 border border-border/50">
-          <LanguageSwitcher />
-        </div>
       </div>
 
       {/* Content */}
