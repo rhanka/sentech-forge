@@ -48,8 +48,8 @@ export const About = () => {
               <div className="w-14 h-14 rounded-full bg-gradient-accent flex items-center justify-center mx-auto mb-4">
                 <GraduationCap className="w-7 h-7 text-accent-foreground" />
               </div>
-              <h3 className="text-3xl font-bold text-primary mb-2">ENSTA</h3>
-              <p className="text-muted-foreground">Polytechnique</p>
+              <h3 className="text-3xl font-bold text-primary mb-2">Polytechnique</h3>
+              <p className="text-muted-foreground">ENSTA, Master IA</p>
             </div>
           </div>
 
