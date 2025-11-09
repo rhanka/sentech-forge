@@ -10,25 +10,44 @@ export const Hero = () => {
     {
       icon: Lightbulb,
       title: t("services.title"),
-      subtitle: t("quicknav.servicesSubtitle"),
+      items: [
+        t("services.strategy.title"),
+        t("services.governance.title"),
+        t("services.development.title"),
+        t("services.optimization.title"),
+      ],
       targetId: "services",
     },
     {
       icon: Factory,
       title: t("sectors.title"),
-      subtitle: t("quicknav.sectorsSubtitle"),
+      items: [
+        t("sectors.manufacturing.title"),
+        t("sectors.public.title"),
+        t("sectors.finance.title"),
+        t("sectors.startups.title"),
+      ],
       targetId: "sectors",
     },
     {
       icon: Heart,
       title: t("values.title"),
-      subtitle: t("quicknav.valuesSubtitle"),
+      items: [
+        t("values.fullstack.title"),
+        t("values.innovation.title"),
+        t("values.roi.title"),
+        t("values.flexibility.title"),
+      ],
       targetId: "values",
     },
     {
       icon: Handshake,
       title: t("engagement.title"),
-      subtitle: t("quicknav.engagementSubtitle"),
+      items: [
+        t("engagement.fulltime.title"),
+        t("engagement.parttime.title"),
+        t("engagement.fixed.title"),
+      ],
       targetId: "engagement",
     },
   ];
@@ -77,10 +96,17 @@ export const Hero = () => {
                   <div className="w-10 h-10 rounded-lg bg-gradient-accent flex items-center justify-center mb-3">
                     <Icon className="w-5 h-5 text-accent-foreground" />
                   </div>
-                  <CardTitle className="text-xl">{link.title}</CardTitle>
+                  <CardTitle className="text-lg">{link.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground">{link.subtitle}</p>
+                  <ul className="space-y-1.5">
+                    {link.items.map((item, itemIndex) => (
+                      <li key={itemIndex} className="text-xs text-muted-foreground flex items-start">
+                        <span className="mr-1.5 mt-0.5">•</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </CardContent>
               </Card>
             );
