@@ -5,7 +5,7 @@ import { ArrowLeft } from "lucide-react";
 import dynamicIconImports from 'lucide-react/dynamicIconImports';
 import { lazy, Suspense } from 'react';
 import { LucideProps } from 'lucide-react';
-import { useStrategyContent } from "@/hooks/useStrategyContent";
+import { useStrategyContent } from "@/hooks/useContent";
 
 interface IconProps extends Omit<LucideProps, 'ref'> {
   name: keyof typeof dynamicIconImports;
