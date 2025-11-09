@@ -12,6 +12,51 @@
     "cta1": "Discover my services",
     "cta2": "Contact me"
   },
+  "strategy": {
+    "title": "IT, Data & AI Strategy",
+    "subtitle": "Examples of completed projects in strategy, architecture, and governance",
+    "backToServices": "Back to services",
+    "justice": {
+      "title": "Data & AI Roadmap - Ministry of Justice",
+      "subtitle": "Budget €19M • 4 business lines",
+      "description": "Definition and execution of the strategic roadmap for data and AI. Implementation of ministerial governance with strategic committees and governance framework."
+    },
+    "airbus": {
+      "title": "A220 Scale-Up Strategy - Airbus",
+      "subtitle": "Portfolio $15M • Top 50 projects",
+      "description": "Analysis and prioritization of top 50 IT projects (Engineering, Operations, Program, Customer Service). Development of AI architecture framework for North America."
+    },
+    "separation": {
+      "title": "IT Separation Strategy Bombardier/Airbus",
+      "subtitle": "CEO-level agreement • 15 FTE",
+      "description": "Strategic architecture for IT systems separation following acquisition. CEO-level agreement and execution management with a team of 15 people."
+    },
+    "interior": {
+      "title": "Data & AI Strategy - Ministry of Interior",
+      "subtitle": "Multi-entity governance",
+      "description": "Implementation of ministerial governance for data and AI covering Border Police, Road Safety, Immigration, Elections. Creation of data metamodel and catalog."
+    },
+    "riotinto": {
+      "title": "Digital Twin Roadmap - Rio Tinto",
+      "subtitle": "Mining industry • Digital twin",
+      "description": "Strategy and architecture definition for industrial digital twin. AI roadmap for mining operations optimization and industrial data."
+    },
+    "maritime": {
+      "title": "Maritime Data Hub - SODES",
+      "subtitle": "Centralized architecture",
+      "description": "Design of centralized maritime data hub architecture. Multi-source integration strategy and sectoral governance implementation."
+    },
+    "nethris": {
+      "title": "AI Strategy - Nethris/Desjardins",
+      "subtitle": "Payroll solution • AI agents",
+      "description": "AI roadmap for HR payroll management software. Architecture of conversational AI agents and RAG for business process automation."
+    },
+    "curateur": {
+      "title": "AI Fraud Strategy - Public Curator",
+      "subtitle": "Fraud detection • MVP",
+      "description": "Strategic AI roadmap for fraud detection use case. MVP architecture and AI coaching for internal team."
+    }
+  },
   "services": {
     "title": "Services",
     "subtitle": "A complete range of services to accelerate your digital transformation",
