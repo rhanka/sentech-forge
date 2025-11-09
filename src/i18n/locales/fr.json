@@ -20,6 +20,11 @@
     "title": "Stratégie IT, Data & IA",
     "subtitle": "Exemples de projets réalisés en stratégie, architecture et gouvernance",
     "backToServices": "Retour aux services",
+    "mandateFormat": {
+      "title": "Format des Mandats Stratégiques",
+      "description": "Les mandats stratégiques sont généralement des mandats de 6 à 12 semaines réalisés seuls, avec un pair ou une équipe pluridisciplinaire, pour une charge de 0,5 à 2 FTE. Ils sont généralement articulés en trois phases : découvrir, évaluer et proposer, et sont adaptés à tout niveau de maturité d'entreprise. Ils incluent généralement un benchmark et tirent profit selon le choix du client des meilleures technologies d'IA.",
+      "cta": "Demandez un devis"
+    },
     "justice": {
       "title": "Feuille de route Data & IA - Ministère de la Justice",
       "subtitle": "Budget 19M€ • 4 lignes d'affaires",

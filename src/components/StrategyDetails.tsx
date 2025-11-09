@@ -114,6 +114,29 @@ export const StrategyDetails = () => {
             );
           })}
         </div>
+
+        <Card className="mt-12 bg-gradient-subtle border-border/50">
+          <CardContent className="p-8 md:p-12">
+            <h3 className="text-2xl font-bold mb-6 text-center">
+              {t("strategy.mandateFormat.title")}
+            </h3>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-4xl mx-auto">
+              {t("strategy.mandateFormat.description")}
+            </p>
+            <div className="flex justify-center">
+              <Button
+                size="lg"
+                onClick={() => {
+                  const contactSection = document.getElementById("contact");
+                  contactSection?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="bg-primary hover:bg-primary/90 text-primary-foreground"
+              >
+                {t("strategy.mandateFormat.cta")}
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </section>
   );
