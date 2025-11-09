@@ -1,41 +1,25 @@
 import { useTranslation } from "react-i18next";
-import { Wrench, Rocket, Unlock, DollarSign, Users, Eye } from "lucide-react";
+import dynamicIconImports from 'lucide-react/dynamicIconImports';
+import { lazy, Suspense } from 'react';
+import { LucideProps } from 'lucide-react';
+import { useValueContent } from "@/hooks/useContent";
+
+interface IconProps extends Omit<LucideProps, 'ref'> {
+  name: keyof typeof dynamicIconImports;
+}
+
+const Icon = ({ name, ...props }: IconProps) => {
+  const LucideIcon = lazy(dynamicIconImports[name]);
+  return (
+    <Suspense fallback={<div className="w-6 h-6" />}>
+      <LucideIcon {...props} />
+    </Suspense>
+  );
+};
 
 export const Values = () => {
   const { t } = useTranslation();
-
-  const values = [
-    {
-      icon: Wrench,
-      title: t("values.fullstack.title"),
-      description: t("values.fullstack.description"),
-    },
-    {
-      icon: Rocket,
-      title: t("values.innovation.title"),
-      description: t("values.innovation.description"),
-    },
-    {
-      icon: Unlock,
-      title: t("values.openness.title"),
-      description: t("values.openness.description"),
-    },
-    {
-      icon: DollarSign,
-      title: t("values.roi.title"),
-      description: t("values.roi.description"),
-    },
-    {
-      icon: Users,
-      title: t("values.flexibility.title"),
-      description: t("values.flexibility.description"),
-    },
-    {
-      icon: Eye,
-      title: t("values.pragmatic.title"),
-      description: t("values.pragmatic.description"),
-    },
-  ];
+  const { values, loading } = useValueContent();
 
   return (
     <section className="py-24 bg-gradient-to-br from-primary/5 to-accent/5">
@@ -47,25 +31,32 @@ export const Values = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {values.map((value, index) => {
-            const Icon = value.icon;
-            return (
-              <div 
-                key={index}
-                className="p-6 rounded-lg bg-card border border-border hover:border-accent transition-all duration-300 group"
-              >
-                <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
-                  <Icon className="w-6 h-6 text-accent" />
+        {loading ? (
+          <div className="text-center py-12">
+            <p className="text-muted-foreground">{t("common.loading", "Chargement...")}</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {values.map((value) => {
+              const iconName = value.metadata.icon.toLowerCase().replace(/([A-Z])/g, '-$1').replace(/^-/, '') as keyof typeof dynamicIconImports;
+              
+              return (
+                <div 
+                  key={value.metadata.id}
+                  className="p-6 rounded-lg bg-card border border-border hover:border-accent transition-all duration-300 group"
+                >
+                  <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
+                    <Icon name={iconName} className="w-6 h-6 text-accent" />
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2">{value.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {value.description}
+                  </p>
                 </div>
-                <h3 className="text-lg font-semibold mb-2">{value.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {value.description}
-                </p>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        )}
       </div>
     </section>
   );

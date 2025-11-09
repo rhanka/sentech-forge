@@ -1,31 +1,25 @@
 import { useTranslation } from "react-i18next";
-import { Factory, Building2, Landmark, Sparkles } from "lucide-react";
+import dynamicIconImports from 'lucide-react/dynamicIconImports';
+import { lazy, Suspense } from 'react';
+import { LucideProps } from 'lucide-react';
+import { useSectorContent } from "@/hooks/useContent";
+
+interface IconProps extends Omit<LucideProps, 'ref'> {
+  name: keyof typeof dynamicIconImports;
+}
+
+const Icon = ({ name, ...props }: IconProps) => {
+  const LucideIcon = lazy(dynamicIconImports[name]);
+  return (
+    <Suspense fallback={<div className="w-8 h-8" />}>
+      <LucideIcon {...props} />
+    </Suspense>
+  );
+};
 
 export const Sectors = () => {
   const { t } = useTranslation();
-
-  const sectors = [
-    {
-      icon: Factory,
-      name: t("sectors.manufacturing.title"),
-      subtitle: t("sectors.manufacturing.description"),
-    },
-    {
-      icon: Landmark,
-      name: t("sectors.public.title"),
-      subtitle: t("sectors.public.description"),
-    },
-    {
-      icon: Building2,
-      name: t("sectors.finance.title"),
-      subtitle: t("sectors.finance.description"),
-    },
-    {
-      icon: Sparkles,
-      name: t("sectors.startups.title"),
-      subtitle: t("sectors.startups.description"),
-    },
-  ];
+  const { sectors, loading } = useSectorContent();
 
   return (
     <section className="py-24">
@@ -37,23 +31,30 @@ export const Sectors = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          {sectors.map((sector, index) => {
-            const Icon = sector.icon;
-            return (
-              <div 
-                key={index}
-                className="text-center p-6 rounded-lg bg-card border border-border hover:shadow-medium transition-all duration-300"
-              >
-                <div className="w-16 h-16 rounded-full bg-gradient-primary flex items-center justify-center mx-auto mb-4">
-                  <Icon className="w-8 h-8 text-primary-foreground" />
+        {loading ? (
+          <div className="text-center py-12">
+            <p className="text-muted-foreground">{t("common.loading", "Chargement...")}</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            {sectors.map((sector) => {
+              const iconName = sector.metadata.icon.toLowerCase().replace(/([A-Z])/g, '-$1').replace(/^-/, '') as keyof typeof dynamicIconImports;
+              
+              return (
+                <div 
+                  key={sector.metadata.id}
+                  className="text-center p-6 rounded-lg bg-card border border-border hover:shadow-medium transition-all duration-300"
+                >
+                  <div className="w-16 h-16 rounded-full bg-gradient-primary flex items-center justify-center mx-auto mb-4">
+                    <Icon name={iconName} className="w-8 h-8 text-primary-foreground" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">{sector.title}</h3>
+                  <p className="text-muted-foreground">{sector.description}</p>
                 </div>
-                <h3 className="text-xl font-semibold mb-2">{sector.name}</h3>
-                <p className="text-muted-foreground">{sector.subtitle}</p>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        )}
       </div>
     </section>
   );
