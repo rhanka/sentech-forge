@@ -55,10 +55,10 @@ export const Hero = () => {
       {/* Content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto text-center text-primary-foreground mb-12">
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 animate-fade-in">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in">
             {t("hero.title")}
           </h1>
-          <p className="text-xl sm:text-2xl mb-8 text-primary-foreground/90 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+          <p className="text-lg sm:text-xl mb-8 text-primary-foreground/90 animate-fade-in" style={{ animationDelay: "0.2s" }}>
             {t("hero.subtitle")}
           </p>
         </div>
