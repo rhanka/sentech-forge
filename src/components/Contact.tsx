@@ -1,17 +1,20 @@
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Mail, Phone, MapPin, Linkedin } from "lucide-react";
 
 export const Contact = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="py-24 bg-gradient-primary text-primary-foreground">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-            Transformons vos défis en opportunités
+            {t("contact.title")}
           </h2>
           <p className="text-xl mb-12 text-primary-foreground/90">
-            Discutons de votre projet et voyons comment je peux vous accompagner
+            {t("contact.subtitle")}
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
@@ -22,7 +25,7 @@ export const Contact = () => {
                     <Mail className="w-6 h-6 text-accent-foreground" />
                   </div>
                   <div className="text-left">
-                    <p className="text-sm text-primary-foreground/70 mb-1">Email</p>
+                    <p className="text-sm text-primary-foreground/70 mb-1">{t("contact.email")}</p>
                     <a 
                       href="mailto:fabien.antoine@gmail.com" 
                       className="text-lg font-semibold hover:text-accent transition-colors"
@@ -41,7 +44,7 @@ export const Contact = () => {
                     <Phone className="w-6 h-6 text-accent-foreground" />
                   </div>
                   <div className="text-left">
-                    <p className="text-sm text-primary-foreground/70 mb-1">Téléphone</p>
+                    <p className="text-sm text-primary-foreground/70 mb-1">{t("contact.name")}</p>
                     <div className="text-lg font-semibold">
                       <div>+1 438 334 96 24</div>
                       <div className="text-base">+33 6 60 73 43 15</div>
@@ -55,12 +58,7 @@ export const Contact = () => {
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
             <div className="flex items-center gap-2">
               <MapPin className="w-5 h-5" />
-              <span>Montréal, Québec</span>
-            </div>
-            <div className="hidden sm:block text-primary-foreground/40">|</div>
-            <div className="flex items-center gap-2">
-              <MapPin className="w-5 h-5" />
-              <span>Paris, France</span>
+              <span>{t("contact.location")}</span>
             </div>
           </div>
 
@@ -73,7 +71,7 @@ export const Contact = () => {
             >
               <a href="mailto:fabien.antoine@gmail.com">
                 <Mail className="mr-2" />
-                Envoyer un email
+                {t("contact.send")}
               </a>
             </Button>
             <Button 

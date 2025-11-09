@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "services": "Services",
+    "sectors": "Sectors",
+    "values": "Values",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Transform your tech challenges into strategic advantages",
+    "subtitle": "Independent Expert in IT Strategy, Data & AI - 23 years of experience driving your digital transformation",
+    "cta1": "Discover my services",
+    "cta2": "Contact me"
+  },
+  "services": {
+    "title": "Services",
+    "subtitle": "A complete range of services to accelerate your digital transformation",
+    "strategy": {
+      "title": "IT, Data & AI Strategy",
+      "description": "Digital strategy definition, make or buy assessment, RFI/RFP support, technology roadmap and innovation"
+    },
+    "governance": {
+      "title": "Governance & Architecture",
+      "description": "Enterprise architecture, solution architecture, infrastructure architecture, data governance and management frameworks"
+    },
+    "development": {
+      "title": "Innovative Development",
+      "description": "Full-stack applications, generative AI, Machine Learning, IoT, prototypes and POCs to validate your innovations"
+    },
+    "optimization": {
+      "title": "Operations Optimization",
+      "description": "Process improvement, automation, crisis management, complex problem solving and change management"
+    }
+  },
+  "sectors": {
+    "title": "Expertise Sectors",
+    "subtitle": "Proven experience across diverse and demanding industries",
+    "manufacturing": {
+      "title": "Manufacturing",
+      "description": "Industry 4.0, industrial IoT, production optimization, intelligent supply chain"
+    },
+    "public": {
+      "title": "Public Sector",
+      "description": "Digital transformation of public services, security, IT modernization, large-scale projects"
+    },
+    "finance": {
+      "title": "Financial Services",
+      "description": "Fintech, regulatory compliance, data analytics, financial process automation"
+    },
+    "startups": {
+      "title": "Startups",
+      "description": "Scalable architecture, MVP, technical validation, rapid growth support"
+    }
+  },
+  "values": {
+    "title": "Values & Differentiators",
+    "subtitle": "What guides my approach and makes the difference in my interventions",
+    "fullstack": {
+      "title": "Full Stack Swiss Army Knife",
+      "description": "From paper strategy to operations, a complete vision and pragmatic execution"
+    },
+    "innovation": {
+      "title": "Innovation & Disruption",
+      "description": "Supporting innovation and disruption in large enterprises with pragmatism"
+    },
+    "openness": {
+      "title": "Reversibility & Openness",
+      "description": "No lock-in, Open Source, open architectures for your technological independence"
+    },
+    "roi": {
+      "title": "Business Value Driven",
+      "description": "Focus on ROI and concrete business value of each service"
+    },
+    "flexibility": {
+      "title": "Flexibility",
+      "description": "Complementary positioning to your existing teams, adaptation to your needs"
+    },
+    "pragmatic": {
+      "title": "Curious & Pragmatic",
+      "description": "State-of-the-art and innovation adapted to field constraints and costs"
+    }
+  },
+  "engagement": {
+    "title": "Engagement Models",
+    "subtitle": "Flexible formulas adapted to your needs and organization",
+    "fulltime": {
+      "title": "Full Time Mandate",
+      "description": "Complete commitment to your project, full immersion in your teams",
+      "ideal": "Ideal for",
+      "use1": "Major transformation",
+      "use2": "Program management",
+      "use3": "Strategic leadership"
+    },
+    "parttime": {
+      "title": "Part Time",
+      "description": "Regular and planned intervention, scheduled presence according to your needs",
+      "ideal": "Ideal for",
+      "use1": "Ongoing support",
+      "use2": "Recurring strategic advice",
+      "use3": "Specific expertise support"
+    },
+    "fixed": {
+      "title": "Fixed Packages",
+      "description": "Projects with defined scope, fixed budget and timeline",
+      "ideal": "Ideal for",
+      "use1": "Specific studies",
+      "use2": "POCs / Prototypes",
+      "use3": "Audits and diagnostics"
+    }
+  },
+  "about": {
+    "title": "About",
+    "name": "Fabien ANTOINE - Independent Expert",
+    "bio1": "Trained as an engineer in artificial intelligence research, I have acquired over 23 years solid expertise in Information Technology strategy and management, as well as data and artificial intelligence innovation and strategy.",
+    "bio2": "I enjoy solving business problems and building business value, adapting a vision based on state-of-the-art and innovation to practical field cases, taking into account constraints and costs.",
+    "bio3": "Since 2025, I offer consulting services in strategy, architecture and innovative development in IT, data and AI for clients in Montreal and Paris.",
+    "experience": "23 years",
+    "experienceLabel": "of experience",
+    "role": "Ex-VP CGI",
+    "roleLabel": "AI Strategy",
+    "education": "Polytechnique",
+    "educationLabel": "ENSTA, Master AI",
+    "background": "Notable background:",
+    "backgroundText": "Former Colonel, Deputy CDO at Justice and Interior Ministries (FR), AI Lead, Complex program management (budgets €20-100M/year, teams of 50-100 people)",
+    "cta": "Let's discuss your project"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Let's discuss your project and how I can support you",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send",
+    "location": "Montreal • Paris",
+    "availability": "Available for new projects"
+  },
+  "footer": {
+    "tagline": "Independent Expert in IT Strategy, Data & AI",
+    "rights": "© 2025 SENT-tech. All rights reserved.",
+    "location": "Montreal • Paris"
+  }
+}

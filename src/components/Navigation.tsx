@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export const Navigation = () => {
+  const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -23,11 +26,11 @@ export const Navigation = () => {
   };
 
   const navLinks = [
-    { label: "Services", id: "services" },
-    { label: "Secteurs", id: "sectors" },
-    { label: "Approche", id: "values" },
-    { label: "À propos", id: "about" },
-    { label: "Contact", id: "contact" },
+    { label: t("nav.services"), id: "services" },
+    { label: t("nav.sectors"), id: "sectors" },
+    { label: t("nav.values"), id: "values" },
+    { label: t("nav.about"), id: "about" },
+    { label: t("nav.contact"), id: "contact" },
   ];
 
   return (
@@ -66,12 +69,13 @@ export const Navigation = () => {
                 {link.label}
               </button>
             ))}
+            <LanguageSwitcher />
             <Button 
               variant="hero" 
               size="sm"
               onClick={() => scrollToSection("contact")}
             >
-              Me contacter
+              {t("nav.contact")}
             </Button>
           </div>
 
@@ -100,13 +104,14 @@ export const Navigation = () => {
                 {link.label}
               </button>
             ))}
-            <div className="px-4 pt-3">
+            <div className="px-4 pt-3 flex flex-col gap-3">
+              <LanguageSwitcher />
               <Button 
                 variant="hero" 
                 className="w-full"
                 onClick={() => scrollToSection("contact")}
               >
-                Me contacter
+                {t("nav.contact")}
               </Button>
             </div>
           </div>

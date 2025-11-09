@@ -1,4 +1,7 @@
+import { useTranslation } from "react-i18next";
+
 export const Footer = () => {
+  const { t } = useTranslation();
   return (
     <footer className="bg-primary text-primary-foreground py-8">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -9,16 +12,16 @@ export const Footer = () => {
               <span className="text-accent">-tech</span>
             </p>
             <p className="text-sm text-primary-foreground/70">
-              Expert Indépendant en Stratégie IT, Data & IA
+              {t("footer.tagline")}
             </p>
           </div>
           
           <div className="text-center md:text-right">
             <p className="text-sm text-primary-foreground/70">
-              © 2025 SENT-tech. Tous droits réservés.
+              {t("footer.rights")}
             </p>
             <p className="text-sm text-primary-foreground/70 mt-1">
-              Montréal • Paris
+              {t("footer.location")}
             </p>
           </div>
         </div>

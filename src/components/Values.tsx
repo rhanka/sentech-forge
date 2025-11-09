@@ -1,60 +1,53 @@
-import { Eye, Wrench, Rocket, AlertCircle, Unlock, Target, DollarSign, Users } from "lucide-react";
-
-const values = [
-  {
-    icon: Eye,
-    title: "Vision Large",
-    description: "Approche holistique tenant compte de l'ensemble de votre écosystème",
-  },
-  {
-    icon: Wrench,
-    title: "Full Stack",
-    description: "De la stratégie papier jusqu'aux opérations - un interlocuteur unique",
-  },
-  {
-    icon: Rocket,
-    title: "Innovation",
-    description: "Accompagnement de la disruption et adoption des technologies émergentes",
-  },
-  {
-    icon: AlertCircle,
-    title: "Gestion de Crise",
-    description: "Expertise dans les situations complexes et les défis techniques majeurs",
-  },
-  {
-    icon: Unlock,
-    title: "Réversibilité",
-    description: "No lock-in - Open source - Architectures ouvertes et pérennes",
-  },
-  {
-    icon: Target,
-    title: "Enjeux Forts",
-    description: "Attiré par les challenges techniques et business à fort impact",
-  },
-  {
-    icon: DollarSign,
-    title: "ROI Driven",
-    description: "Focus sur la valeur business et le retour sur investissement mesurable",
-  },
-  {
-    icon: Users,
-    title: "Flexibilité",
-    description: "Positionnement complémentaire, adaptation à vos équipes et processus",
-  },
-];
+import { useTranslation } from "react-i18next";
+import { Wrench, Rocket, Unlock, DollarSign, Users, Eye } from "lucide-react";
 
 export const Values = () => {
+  const { t } = useTranslation();
+
+  const values = [
+    {
+      icon: Wrench,
+      title: t("values.fullstack.title"),
+      description: t("values.fullstack.description"),
+    },
+    {
+      icon: Rocket,
+      title: t("values.innovation.title"),
+      description: t("values.innovation.description"),
+    },
+    {
+      icon: Unlock,
+      title: t("values.openness.title"),
+      description: t("values.openness.description"),
+    },
+    {
+      icon: DollarSign,
+      title: t("values.roi.title"),
+      description: t("values.roi.description"),
+    },
+    {
+      icon: Users,
+      title: t("values.flexibility.title"),
+      description: t("values.flexibility.description"),
+    },
+    {
+      icon: Eye,
+      title: t("values.pragmatic.title"),
+      description: t("values.pragmatic.description"),
+    },
+  ];
+
   return (
     <section className="py-24 bg-gradient-to-br from-primary/5 to-accent/5">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">Valeurs & Approche</h2>
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4">{t("values.title")}</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Une philosophie pragmatique et orientée résultats
+            {t("values.subtitle")}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {values.map((value, index) => {
             const Icon = value.icon;
             return (
