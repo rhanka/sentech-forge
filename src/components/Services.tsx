@@ -10,7 +10,11 @@ interface IconProps extends Omit<LucideProps, 'ref'> {
 }
 
 const Icon = ({ name, ...props }: IconProps) => {
-  const LucideIcon = lazy(dynamicIconImports[name]);
+  const importer = dynamicIconImports[name];
+  if (!importer) {
+    return <div className="w-6 h-6" aria-hidden />;
+  }
+  const LucideIcon = lazy(importer);
   return (
     <Suspense fallback={<div className="w-6 h-6" />}>
       <LucideIcon {...props} />
@@ -44,7 +48,7 @@ export const Services = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service) => {
-              const iconName = service.icon.replace(/([A-Z])/g, '-$1').toLowerCase().replace(/^-/, '') as keyof typeof dynamicIconImports;
+              const iconName = service.icon.replace(/([a-z0-9])([A-Z])/g, '$1-$2').replace(/([a-zA-Z])([0-9])/g, '$1-$2').toLowerCase() as keyof typeof dynamicIconImports;
               const isClickable = service.clickable;
               
               return (
