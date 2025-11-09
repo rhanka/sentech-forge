@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Building2, Factory, Shield, Ship, Briefcase, Scale, TrendingUp, AlertTriangle } from "lucide-react";
+import { ArrowLeft, Building2, Factory, Shield, Ship, Briefcase, Scale, TrendingUp, AlertTriangle, Zap } from "lucide-react";
 
 export const StrategyDetails = () => {
   const { t } = useTranslation();
@@ -54,6 +54,12 @@ export const StrategyDetails = () => {
       title: t("strategy.curateur.title"),
       subtitle: t("strategy.curateur.subtitle"),
       description: t("strategy.curateur.description"),
+    },
+    {
+      icon: Zap,
+      title: t("strategy.expri.title"),
+      subtitle: t("strategy.expri.subtitle"),
+      description: t("strategy.expri.description"),
     },
   ];
 
