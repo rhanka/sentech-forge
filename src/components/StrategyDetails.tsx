@@ -56,11 +56,11 @@ export const StrategyDetails = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {strategies.map((strategy) => {
-              const iconName = strategy.metadata.icon.toLowerCase().replace(/([A-Z])/g, '-$1').replace(/^-/, '') as keyof typeof dynamicIconImports;
+              const iconName = strategy.icon.toLowerCase().replace(/([A-Z])/g, '-$1').replace(/^-/, '') as keyof typeof dynamicIconImports;
               
               return (
                 <Card
-                  key={strategy.metadata.id}
+                  key={strategy.id}
                   className="hover:shadow-large transition-all duration-300 hover:-translate-y-1 border-border bg-card"
                 >
                   <CardHeader>
