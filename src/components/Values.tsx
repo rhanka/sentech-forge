@@ -10,10 +10,18 @@ interface IconProps extends Omit<LucideProps, 'ref'> {
 
 const Icon = ({ name, ...props }: IconProps) => {
   const importer = dynamicIconImports[name];
-  if (!importer) {
+  if (!importer || typeof importer !== 'function') {
+    console.warn(`Icon "${name}" not found in lucide-react dynamicIconImports`);
     return <div className="w-6 h-6" aria-hidden />;
   }
-  const LucideIcon = lazy(importer);
+  
+  const LucideIcon = lazy(() => 
+    importer().catch((error) => {
+      console.error(`Failed to load icon "${name}":`, error);
+      return { default: (() => <div className="w-6 h-6" aria-hidden />) as any };
+    })
+  );
+  
   return (
     <Suspense fallback={<div className="w-6 h-6" />}>
       <LucideIcon {...props} />
