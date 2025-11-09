@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "services": "Services",
+    "sectors": "Secteurs",
+    "values": "Valeurs",
+    "about": "À Propos",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Transformez vos défis tech en avantages stratégiques",
+    "subtitle": "Expert indépendant en Stratégie IT, Data & IA - 23 ans d'expérience au service de votre transformation digitale",
+    "cta1": "Découvrir mes services",
+    "cta2": "Me contacter"
+  },
+  "services": {
+    "title": "Services",
+    "subtitle": "Une gamme complète de services pour accélérer votre transformation digitale",
+    "strategy": {
+      "title": "Stratégie IT, Data & IA",
+      "description": "Définition de votre stratégie digitale, évaluation make or buy, support RFI/RFP, roadmap technologique et innovation"
+    },
+    "governance": {
+      "title": "Gouvernance & Architecture",
+      "description": "Architecture d'entreprise, architecture solution, architecture infrastructure, gouvernance des données et frameworks de gestion"
+    },
+    "development": {
+      "title": "Développements Innovants",
+      "description": "Applications full-stack, IA générative, Machine Learning, IoT, prototypes et POC pour valider vos innovations"
+    },
+    "optimization": {
+      "title": "Optimisation des Opérations",
+      "description": "Amélioration des processus, automatisation, gestion de crise, résolution de problèmes complexes et accompagnement au changement"
+    }
+  },
+  "sectors": {
+    "title": "Secteurs d'Expertise",
+    "subtitle": "Une expérience éprouvée dans des secteurs variés et exigeants",
+    "manufacturing": {
+      "title": "Manufacturier",
+      "description": "Industrie 4.0, IoT industriel, optimisation de la production, supply chain intelligente"
+    },
+    "public": {
+      "title": "Secteur Public",
+      "description": "Transformation digitale des services publics, sécurité, modernisation des SI, projets d'envergure"
+    },
+    "finance": {
+      "title": "Services Financiers",
+      "description": "Fintech, conformité réglementaire, data analytics, automatisation des processus financiers"
+    },
+    "startups": {
+      "title": "Startups",
+      "description": "Architecture scalable, MVP, validation technique, accompagnement de la croissance rapide"
+    }
+  },
+  "values": {
+    "title": "Valeurs & Différenciateurs",
+    "subtitle": "Ce qui guide ma démarche et fait la différence dans mes interventions",
+    "fullstack": {
+      "title": "Couteau Suisse Full Stack",
+      "description": "De la stratégie papier jusqu'aux opérations, une vision complète et une exécution pragmatique"
+    },
+    "innovation": {
+      "title": "Innovation & Disruption",
+      "description": "Accompagner l'innovation et la disruption en grande entreprise avec pragmatisme"
+    },
+    "openness": {
+      "title": "Réversibilité & Ouverture",
+      "description": "No lock-in, Open Source, architectures ouvertes pour votre indépendance technologique"
+    },
+    "roi": {
+      "title": "Business Value Driven",
+      "description": "Focus sur le ROI et la valeur d'affaire concrète de chaque prestation"
+    },
+    "flexibility": {
+      "title": "Flexibilité",
+      "description": "Positionnement complémentaire aux équipes en place, adaptation à vos besoins"
+    },
+    "pragmatic": {
+      "title": "Curieux & Pragmatique",
+      "description": "État de l'art et innovation adaptés aux contraintes et coûts du terrain"
+    }
+  },
+  "engagement": {
+    "title": "Modèles d'Engagement",
+    "subtitle": "Des formules flexibles adaptées à vos besoins et votre organisation",
+    "fulltime": {
+      "title": "Mandat Full Time",
+      "description": "Engagement complet sur votre projet, immersion totale dans vos équipes",
+      "ideal": "Idéal pour",
+      "use1": "Transformation majeure",
+      "use2": "Direction de programme",
+      "use3": "Leadership stratégique"
+    },
+    "parttime": {
+      "title": "Part Time",
+      "description": "Intervention régulière et planifiée, présence ponctuelle selon vos besoins",
+      "ideal": "Idéal pour",
+      "use1": "Accompagnement continu",
+      "use2": "Conseil stratégique récurrent",
+      "use3": "Support expertise spécifique"
+    },
+    "fixed": {
+      "title": "Forfaits Fixes",
+      "description": "Projets à périmètre défini avec budget et délais fixés à l'avance",
+      "ideal": "Idéal pour",
+      "use1": "Études spécifiques",
+      "use2": "POC / Prototypes",
+      "use3": "Audits et diagnostics"
+    }
+  },
+  "about": {
+    "title": "À Propos",
+    "name": "Fabien ANTOINE - Expert Indépendant",
+    "bio1": "Formé en tant qu'ingénieur à la recherche en intelligence artificielle, j'ai acquis ces 23 années une solide expertise en stratégie et gestion des Technologies de l'information, ainsi qu'en innovation et stratégie des données et intelligence artificielle.",
+    "bio2": "J'aime résoudre des problèmes d'affaire et construire une valeur d'affaire, en adaptant une vision basée sur l'état de l'art et l'innovation au cas pratique du terrain, prenant en compte les contraintes et les coûts.",
+    "bio3": "Depuis 2025, j'offre des services conseils en stratégie, architecture et développement innovants en IT, données et IA pour des clients sur Montréal et Paris.",
+    "experience": "23 ans",
+    "experienceLabel": "d'expérience",
+    "role": "Ex-VP CGI",
+    "roleLabel": "Stratégie IA",
+    "education": "Polytechnique",
+    "educationLabel": "ENSTA, Master IA",
+    "background": "Parcours notable :",
+    "backgroundText": "Ex-Colonel, CDO adjoint ministères Justice et Intérieur (FR), Lead IA, Direction de programmes complexes (budgets 20-100M€/an, équipes 50-100 personnes)",
+    "cta": "Discutons de votre projet"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Discutons de votre projet et de la manière dont je peux vous accompagner",
+    "name": "Nom",
+    "email": "Email",
+    "message": "Message",
+    "send": "Envoyer",
+    "location": "Montréal • Paris",
+    "availability": "Disponible pour de nouveaux projets"
+  },
+  "footer": {
+    "tagline": "Expert Indépendant en Stratégie IT, Data & IA",
+    "rights": "© 2025 SENT-tech. Tous droits réservés.",
+    "location": "Montréal • Paris"
+  }
+}

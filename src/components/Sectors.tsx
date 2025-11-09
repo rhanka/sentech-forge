@@ -1,49 +1,39 @@
-import { Badge } from "@/components/ui/badge";
+import { useTranslation } from "react-i18next";
 import { Factory, Building2, Landmark, Sparkles } from "lucide-react";
 
-const sectors = [
-  {
-    icon: Factory,
-    name: "Manufacturier",
-    subtitle: "Industrie 4.0 & IoT",
-  },
-  {
-    icon: Landmark,
-    name: "Secteur Public",
-    subtitle: "Transformation digitale",
-  },
-  {
-    icon: Building2,
-    name: "Services Financiers",
-    subtitle: "FinTech & Innovation",
-  },
-  {
-    icon: Sparkles,
-    name: "Startups",
-    subtitle: "Disruption & Scale-up",
-  },
-];
-
-const expertise = [
-  "Grande Entreprise",
-  "PME",
-  "Startups",
-  "Aéronautique",
-  "Défense",
-  "Renseignement",
-  "Justice",
-  "Immigration",
-  "Sécurité",
-];
-
 export const Sectors = () => {
+  const { t } = useTranslation();
+
+  const sectors = [
+    {
+      icon: Factory,
+      name: t("sectors.manufacturing.title"),
+      subtitle: t("sectors.manufacturing.description"),
+    },
+    {
+      icon: Landmark,
+      name: t("sectors.public.title"),
+      subtitle: t("sectors.public.description"),
+    },
+    {
+      icon: Building2,
+      name: t("sectors.finance.title"),
+      subtitle: t("sectors.finance.description"),
+    },
+    {
+      icon: Sparkles,
+      name: t("sectors.startups.title"),
+      subtitle: t("sectors.startups.description"),
+    },
+  ];
+
   return (
     <section className="py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">Secteurs d'Expertise</h2>
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4">{t("sectors.title")}</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            23 ans d'expérience dans des environnements exigeants et complexes
+            {t("sectors.subtitle")}
           </p>
         </div>
 
@@ -63,21 +53,6 @@ export const Sectors = () => {
               </div>
             );
           })}
-        </div>
-
-        <div className="text-center">
-          <p className="text-lg mb-4 text-muted-foreground">Expérience approfondie dans :</p>
-          <div className="flex flex-wrap justify-center gap-3">
-            {expertise.map((item, index) => (
-              <Badge 
-                key={index} 
-                variant="secondary" 
-                className="text-base px-4 py-2"
-              >
-                {item}
-              </Badge>
-            ))}
-          </div>
         </div>
       </div>
     </section>
