@@ -1,8 +1,7 @@
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import heroImage from "@/assets/hero-tech.jpg";
-import { ArrowRight, Mail, Lightbulb, Factory, Heart, Handshake } from "lucide-react";
+import { Lightbulb, Factory, Heart, Handshake } from "lucide-react";
 
 export const Hero = () => {
   const { t } = useTranslation();
@@ -62,20 +61,10 @@ export const Hero = () => {
           <p className="text-xl sm:text-2xl mb-8 text-primary-foreground/90 animate-fade-in" style={{ animationDelay: "0.2s" }}>
             {t("hero.subtitle")}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in" style={{ animationDelay: "0.4s" }}>
-            <Button variant="hero" size="lg" className="group">
-              {t("hero.cta1")}
-              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button variant="outline-hero" size="lg">
-              <Mail className="mr-2" />
-              {t("hero.cta2")}
-            </Button>
-          </div>
         </div>
 
         {/* Quick Navigation Cards */}
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 animate-fade-in" style={{ animationDelay: "0.6s" }}>
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 animate-fade-in" style={{ animationDelay: "0.4s" }}>
           {quickLinks.map((link, index) => {
             const Icon = link.icon;
             return (
