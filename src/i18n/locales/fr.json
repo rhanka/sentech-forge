@@ -12,6 +12,51 @@
     "cta1": "Découvrir mes services",
     "cta2": "Me contacter"
   },
+  "strategy": {
+    "title": "Stratégie IT, Data & IA",
+    "subtitle": "Exemples de projets réalisés en stratégie, architecture et gouvernance",
+    "backToServices": "Retour aux services",
+    "justice": {
+      "title": "Feuille de route Data & IA - Ministère de la Justice",
+      "subtitle": "Budget 19M€ • 4 lignes d'affaires",
+      "description": "Définition et exécution de la feuille de route stratégique en données et IA. Mise en place de la gouvernance ministérielle avec comités stratégiques et cadre de gouvernance."
+    },
+    "airbus": {
+      "title": "Stratégie Scale-Up A220 - Airbus",
+      "subtitle": "Portefeuille 15M$ • Top 50 projets",
+      "description": "Analyse et priorisation des 50 projets TI prioritaires (Ingénierie, Opérations, Programme, Service client). Développement du framework d'architecture IA pour l'Amérique du Nord."
+    },
+    "separation": {
+      "title": "Stratégie TI de séparation Bombardier/Airbus",
+      "subtitle": "Accord niveau CEOs • 15 FTE",
+      "description": "Architecture stratégique de séparation des systèmes d'information suite à l'acquisition. Accord au niveau des CEOs et encadrement de l'exécution avec une équipe de 15 personnes."
+    },
+    "interior": {
+      "title": "Stratégie Data & IA - Ministère de l'Intérieur",
+      "subtitle": "Gouvernance multi-entités",
+      "description": "Mise en place de la gouvernance ministérielle en données et IA couvrant Police aux frontières, Sécurité routière, Immigration, Élections. Création du métamodèle et catalogue des données."
+    },
+    "riotinto": {
+      "title": "Feuille de route Digital Twin - Rio Tinto",
+      "subtitle": "Industrie minière • Jumeau numérique",
+      "description": "Définition de la stratégie et architecture pour le jumeau numérique industriel. Roadmap IA pour l'optimisation des opérations minières et données industrielles."
+    },
+    "maritime": {
+      "title": "Hub Data Maritime - SODES",
+      "subtitle": "Architecture centralisée",
+      "description": "Conception de l'architecture du hub de données maritimes centralisé. Stratégie d'intégration multi-sources et mise en place de la gouvernance sectorielle."
+    },
+    "nethris": {
+      "title": "Stratégie IA - Nethris/Desjardins",
+      "subtitle": "Solution de paie • Agents IA",
+      "description": "Feuille de route IA pour logiciel RH de gestion de paie. Architecture d'agents IA conversationnels et RAG pour automatisation des processus métier."
+    },
+    "curateur": {
+      "title": "Stratégie IA Fraude - Curateur Public",
+      "subtitle": "Détection de fraude • MVP",
+      "description": "Feuille de route stratégique IA pour cas d'usage de détection de fraude. Architecture MVP et coaching IA pour l'équipe interne."
+    }
+  },
   "services": {
     "title": "Services",
     "subtitle": "Une gamme complète de services pour accélérer votre transformation digitale",

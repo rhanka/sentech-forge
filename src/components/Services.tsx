@@ -5,11 +5,18 @@ import { Lightbulb, Network, Code, Cog } from "lucide-react";
 export const Services = () => {
   const { t } = useTranslation();
 
+  const scrollToStrategyDetails = () => {
+    const strategySection = document.getElementById("strategy-details");
+    strategySection?.scrollIntoView({ behavior: "smooth" });
+  };
+
   const services = [
     {
       icon: Lightbulb,
       title: t("services.strategy.title"),
       description: t("services.strategy.description"),
+      clickable: true,
+      onClick: scrollToStrategyDetails,
     },
     {
       icon: Network,
@@ -44,7 +51,10 @@ export const Services = () => {
             return (
               <Card 
                 key={index} 
-                className="hover:shadow-large transition-all duration-300 hover:-translate-y-1 border-border bg-card"
+                className={`hover:shadow-large transition-all duration-300 hover:-translate-y-1 border-border bg-card ${
+                  service.clickable ? 'cursor-pointer' : ''
+                }`}
+                onClick={service.onClick}
               >
                 <CardHeader>
                   <div className="w-12 h-12 rounded-lg bg-gradient-accent flex items-center justify-center mb-4">
