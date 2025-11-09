@@ -21,7 +21,7 @@ export const LanguageSwitcher = ({ isScrolled = false }: LanguageSwitcherProps) 
       variant="ghost"
       size="sm"
       onClick={toggleLanguage}
-      className={`gap-2 text-sm font-medium transition-colors hover:text-accent ${
+      className={`gap-2 text-sm font-medium transition-colors hover:text-accent hover:bg-transparent ${
         isScrolled ? "text-foreground" : "text-primary-foreground"
       }`}
     >
