@@ -1,5 +1,6 @@
 import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
+import { QuickNav } from "@/components/QuickNav";
 import { Services } from "@/components/Services";
 import { StrategyDetails } from "@/components/StrategyDetails";
 import { Sectors } from "@/components/Sectors";
@@ -14,6 +15,7 @@ const Index = () => {
     <div className="min-h-screen">
       <Navigation />
       <Hero />
+      <QuickNav />
       <div id="services">
         <Services />
       </div>
@@ -24,7 +26,9 @@ const Index = () => {
       <div id="values">
         <Values />
       </div>
-      <EngagementModels />
+      <div id="engagement">
+        <EngagementModels />
+      </div>
       <div id="about">
         <About />
       </div>

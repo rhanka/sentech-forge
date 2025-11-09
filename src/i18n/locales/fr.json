@@ -12,6 +12,12 @@
     "cta1": "Découvrir mes services",
     "cta2": "Me contacter"
   },
+  "quicknav": {
+    "servicesSubtitle": "Découvrez mon offre complète",
+    "sectorsSubtitle": "Industries et domaines d'expertise",
+    "valuesSubtitle": "Ce qui guide ma démarche",
+    "engagementSubtitle": "Formules d'intervention flexibles"
+  },
   "strategy": {
     "title": "Stratégie IT, Data & IA",
     "subtitle": "Exemples de projets réalisés en stratégie, architecture et gouvernance",
