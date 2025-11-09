@@ -49,7 +49,7 @@ export const About = () => {
                 <GraduationCap className="w-7 h-7 text-accent-foreground" />
               </div>
               <h3 className="text-3xl font-bold text-primary mb-2">ENSTA</h3>
-              <p className="text-muted-foreground">Grande École</p>
+              <p className="text-muted-foreground">Polytechnique</p>
             </div>
           </div>
 
