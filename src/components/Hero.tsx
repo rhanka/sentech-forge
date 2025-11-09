@@ -1,56 +1,37 @@
-import { useTranslation } from "react-i18next";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import heroImage from "@/assets/hero-tech.jpg";
-import { Lightbulb, Factory, Heart, Handshake } from "lucide-react";
+import dynamicIconImports from 'lucide-react/dynamicIconImports';
+import { lazy, Suspense } from 'react';
+import { LucideProps } from 'lucide-react';
+import { useHeroContent } from "@/hooks/useMarkdownContent";
+
+interface IconProps extends Omit<LucideProps, 'ref'> {
+  name: keyof typeof dynamicIconImports;
+}
+
+const Icon = ({ name, ...props }: IconProps) => {
+  const importer = dynamicIconImports[name];
+  if (!importer || typeof importer !== 'function') {
+    console.warn(`Icon "${name}" not found in lucide-react dynamicIconImports`);
+    return <div className="w-5 h-5" aria-hidden />;
+  }
+  
+  const LucideIcon = lazy(() => 
+    importer().catch((error) => {
+      console.error(`Failed to load icon "${name}":`, error);
+      return { default: (() => <div className="w-5 h-5" aria-hidden />) as any };
+    })
+  );
+  
+  return (
+    <Suspense fallback={<div className="w-5 h-5" />}>
+      <LucideIcon {...props} />
+    </Suspense>
+  );
+};
 
 export const Hero = () => {
-  const { t } = useTranslation();
-
-  const quickLinks = [
-    {
-      icon: Lightbulb,
-      title: t("services.title"),
-      items: [
-        t("services.strategy.title"),
-        t("services.governance.title"),
-        t("services.development.title"),
-        t("services.optimization.title"),
-      ],
-      targetId: "services",
-    },
-    {
-      icon: Factory,
-      title: t("sectors.title"),
-      items: [
-        t("sectors.manufacturing.title"),
-        t("sectors.public.title"),
-        t("sectors.finance.title"),
-        t("sectors.startups.title"),
-      ],
-      targetId: "sectors",
-    },
-    {
-      icon: Heart,
-      title: t("values.title"),
-      items: [
-        t("values.fullstack.title"),
-        t("values.innovation.title"),
-        t("values.roi.title"),
-        t("values.flexibility.title"),
-      ],
-      targetId: "values",
-    },
-    {
-      icon: Handshake,
-      title: t("engagement.title"),
-      items: [
-        t("engagement.fulltime.title"),
-        t("engagement.parttime.title"),
-        t("engagement.fixed.title"),
-      ],
-      targetId: "engagement",
-    },
-  ];
+  const { main, quicklinks, loading } = useHeroContent();
 
   const scrollToSection = (targetId: string) => {
     const section = document.getElementById(targetId);
@@ -73,45 +54,53 @@ export const Hero = () => {
 
       {/* Content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-4xl mx-auto text-center text-primary-foreground mb-12">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in">
-            {t("hero.title")}
-          </h1>
-          <p className="text-lg sm:text-xl mb-8 text-primary-foreground/90 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            {t("hero.subtitle")}
-          </p>
-        </div>
+        {loading || !main ? (
+          <div className="text-center text-primary-foreground">Loading...</div>
+        ) : (
+          <>
+            <div className="max-w-4xl mx-auto text-center text-primary-foreground mb-12">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in">
+                {main.metadata.title}
+              </h1>
+              <p className="text-lg sm:text-xl mb-8 text-primary-foreground/90 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+                {main.metadata.subtitle}
+              </p>
+            </div>
 
-        {/* Quick Navigation Cards */}
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 animate-fade-in" style={{ animationDelay: "0.4s" }}>
-          {quickLinks.map((link, index) => {
-            const Icon = link.icon;
-            return (
-              <Card
-                key={index}
-                className="cursor-pointer hover:shadow-large transition-all duration-300 hover:-translate-y-1 border-border/50 bg-card/95 backdrop-blur"
-                onClick={() => scrollToSection(link.targetId)}
-              >
-                <CardHeader className="pb-3">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-accent flex items-center justify-center mb-3">
-                    <Icon className="w-5 h-5 text-accent-foreground" />
-                  </div>
-                  <CardTitle className="text-lg">{link.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-1.5">
-                    {link.items.map((item, itemIndex) => (
-                      <li key={itemIndex} className="text-xs text-muted-foreground flex items-start">
-                        <span className="mr-1.5 mt-0.5">•</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
+            {/* Quick Navigation Cards */}
+            <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 animate-fade-in" style={{ animationDelay: "0.4s" }}>
+              {quicklinks.map((link) => {
+                const iconName = link.metadata.icon.replace(/([a-z0-9])([A-Z])/g, '$1-$2').replace(/([a-zA-Z])([0-9])/g, '$1-$2').toLowerCase() as keyof typeof dynamicIconImports;
+                const items = link.content.split('\n').filter(line => line.startsWith('- ')).map(line => line.substring(2));
+                
+                return (
+                  <Card
+                    key={link.id}
+                    className="cursor-pointer hover:shadow-large transition-all duration-300 hover:-translate-y-1 border-border/50 bg-card/95 backdrop-blur"
+                    onClick={() => scrollToSection(link.metadata.targetId)}
+                  >
+                    <CardHeader className="pb-3">
+                      <div className="w-10 h-10 rounded-lg bg-gradient-accent flex items-center justify-center mb-3">
+                        <Icon name={iconName} className="w-5 h-5 text-accent-foreground" />
+                      </div>
+                      <CardTitle className="text-lg">{link.content.split('\n')[0].replace('# ', '')}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-1.5">
+                        {items.map((item, itemIndex) => (
+                          <li key={itemIndex} className="text-xs text-muted-foreground flex items-start">
+                            <span className="mr-1.5 mt-0.5">•</span>
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
+          </>
+        )}
       </div>
 
       {/* Scroll Indicator */}
