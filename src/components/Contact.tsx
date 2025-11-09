@@ -27,10 +27,10 @@ export const Contact = () => {
                   <div className="text-left">
                     <p className="text-sm text-primary-foreground/70 mb-1">{t("contact.email")}</p>
                     <a 
-                      href="mailto:fabien.antoine@gmail.com" 
+                      href="mailto:contact@sent-tech.ca" 
                       className="text-lg font-semibold hover:text-accent transition-colors"
                     >
-                      fabien.antoine@gmail.com
+                      contact@sent-tech.ca
                     </a>
                   </div>
                 </div>
@@ -69,7 +69,7 @@ export const Contact = () => {
               className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
               asChild
             >
-              <a href="mailto:fabien.antoine@gmail.com">
+              <a href="mailto:contact@sent-tech.ca">
                 <Mail className="mr-2" />
                 {t("contact.send")}
               </a>
