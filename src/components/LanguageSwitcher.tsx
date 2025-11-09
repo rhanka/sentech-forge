@@ -14,7 +14,7 @@ export const LanguageSwitcher = () => {
 
   return (
     <Button
-      variant="ghost"
+      variant="hero"
       size="sm"
       onClick={toggleLanguage}
       className="gap-2"
