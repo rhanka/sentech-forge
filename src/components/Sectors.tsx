@@ -38,11 +38,11 @@ export const Sectors = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             {sectors.map((sector) => {
-              const iconName = sector.metadata.icon.toLowerCase().replace(/([A-Z])/g, '-$1').replace(/^-/, '') as keyof typeof dynamicIconImports;
+              const iconName = sector.icon.toLowerCase().replace(/([A-Z])/g, '-$1').replace(/^-/, '') as keyof typeof dynamicIconImports;
               
               return (
                 <div 
-                  key={sector.metadata.id}
+                  key={sector.id}
                   className="text-center p-6 rounded-lg bg-card border border-border hover:shadow-medium transition-all duration-300"
                 >
                   <div className="w-16 h-16 rounded-full bg-gradient-primary flex items-center justify-center mx-auto mb-4">

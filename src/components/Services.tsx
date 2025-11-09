@@ -44,12 +44,12 @@ export const Services = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service) => {
-              const iconName = service.metadata.icon.toLowerCase().replace(/([A-Z])/g, '-$1').replace(/^-/, '') as keyof typeof dynamicIconImports;
-              const isClickable = service.metadata.clickable;
+              const iconName = service.icon.toLowerCase().replace(/([A-Z])/g, '-$1').replace(/^-/, '') as keyof typeof dynamicIconImports;
+              const isClickable = service.clickable;
               
               return (
                 <Card 
-                  key={service.metadata.id} 
+                  key={service.id}
                   className={`hover:shadow-large transition-all duration-300 hover:-translate-y-1 border-border bg-card ${
                     isClickable ? 'cursor-pointer' : ''
                   }`}

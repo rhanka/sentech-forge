@@ -40,11 +40,11 @@ export const EngagementModels = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {engagements.map((engagement) => {
-              const iconName = engagement.metadata.icon.toLowerCase().replace(/([A-Z])/g, '-$1').replace(/^-/, '') as keyof typeof dynamicIconImports;
+              const iconName = engagement.icon.toLowerCase().replace(/([A-Z])/g, '-$1').replace(/^-/, '') as keyof typeof dynamicIconImports;
               
               return (
                 <Card 
-                  key={engagement.metadata.id}
+                  key={engagement.id}
                   className="hover:shadow-large transition-all duration-300 hover:-translate-y-1 border-border"
                 >
                   <CardHeader className="text-center">
@@ -59,7 +59,7 @@ export const EngagementModels = () => {
                   <CardContent>
                     <p className="text-sm font-semibold text-muted-foreground mb-3">{t("engagement.fulltime.ideal")}</p>
                     <ul className="space-y-3">
-                      {engagement.metadata.features.map((feature, idx) => (
+                      {engagement.features.map((feature, idx) => (
                         <li key={idx} className="flex items-start gap-2">
                           <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
                           <span className="text-foreground">{feature}</span>

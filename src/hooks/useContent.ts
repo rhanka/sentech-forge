@@ -1,138 +1,64 @@
-import { useEffect, useState } from 'react';
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import {
-  loadAllStrategies,
-  loadAllServices,
-  loadAllSectors,
-  loadAllValues,
-  loadAllEngagements,
-  StrategyContent,
-  ServiceContent,
-  BaseContent,
-  EngagementContent,
-} from '@/lib/contentLoader';
+import { strategiesFr, strategiesEn, StrategyItem } from '@/content/strategies';
+import { servicesFr, servicesEn, ServiceItem } from '@/content/services';
+import { sectorsFr, sectorsEn, SectorItem } from '@/content/sectors';
+import { valuesFr, valuesEn, ValueItem } from '@/content/values';
+import { engagementFr, engagementEn, EngagementItem } from '@/content/engagement';
 
 export function useStrategyContent() {
   const { i18n } = useTranslation();
-  const [strategies, setStrategies] = useState<StrategyContent[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const loadContent = async () => {
-      setLoading(true);
-      try {
-        const locale = i18n.language as 'fr' | 'en';
-        const content = await loadAllStrategies(locale);
-        setStrategies(content);
-      } catch (error) {
-        console.error('Error loading strategy content:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadContent();
+  
+  const strategies = useMemo(() => {
+    const locale = i18n.language as 'fr' | 'en';
+    return locale === 'fr' ? strategiesFr : strategiesEn;
   }, [i18n.language]);
 
-  return { strategies, loading };
+  return { strategies, loading: false };
 }
 
 export function useServiceContent() {
   const { i18n } = useTranslation();
-  const [services, setServices] = useState<ServiceContent[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const loadContent = async () => {
-      setLoading(true);
-      try {
-        const locale = i18n.language as 'fr' | 'en';
-        const content = await loadAllServices(locale);
-        setServices(content);
-      } catch (error) {
-        console.error('Error loading service content:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadContent();
+  
+  const services = useMemo(() => {
+    const locale = i18n.language as 'fr' | 'en';
+    return locale === 'fr' ? servicesFr : servicesEn;
   }, [i18n.language]);
 
-  return { services, loading };
+  return { services, loading: false };
 }
 
 export function useSectorContent() {
   const { i18n } = useTranslation();
-  const [sectors, setSectors] = useState<BaseContent[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const loadContent = async () => {
-      setLoading(true);
-      try {
-        const locale = i18n.language as 'fr' | 'en';
-        const content = await loadAllSectors(locale);
-        setSectors(content);
-      } catch (error) {
-        console.error('Error loading sector content:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadContent();
+  
+  const sectors = useMemo(() => {
+    const locale = i18n.language as 'fr' | 'en';
+    return locale === 'fr' ? sectorsFr : sectorsEn;
   }, [i18n.language]);
 
-  return { sectors, loading };
+  return { sectors, loading: false };
 }
 
 export function useValueContent() {
   const { i18n } = useTranslation();
-  const [values, setValues] = useState<BaseContent[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const loadContent = async () => {
-      setLoading(true);
-      try {
-        const locale = i18n.language as 'fr' | 'en';
-        const content = await loadAllValues(locale);
-        setValues(content);
-      } catch (error) {
-        console.error('Error loading value content:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadContent();
+  
+  const values = useMemo(() => {
+    const locale = i18n.language as 'fr' | 'en';
+    return locale === 'fr' ? valuesFr : valuesEn;
   }, [i18n.language]);
 
-  return { values, loading };
+  return { values, loading: false };
 }
 
 export function useEngagementContent() {
   const { i18n } = useTranslation();
-  const [engagements, setEngagements] = useState<EngagementContent[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const loadContent = async () => {
-      setLoading(true);
-      try {
-        const locale = i18n.language as 'fr' | 'en';
-        const content = await loadAllEngagements(locale);
-        setEngagements(content);
-      } catch (error) {
-        console.error('Error loading engagement content:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadContent();
+  
+  const engagements = useMemo(() => {
+    const locale = i18n.language as 'fr' | 'en';
+    return locale === 'fr' ? engagementFr : engagementEn;
   }, [i18n.language]);
 
-  return { engagements, loading };
+  return { engagements, loading: false };
 }
+
+export type { StrategyItem, ServiceItem, SectorItem, ValueItem, EngagementItem };

@@ -38,11 +38,11 @@ export const Values = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {values.map((value) => {
-              const iconName = value.metadata.icon.toLowerCase().replace(/([A-Z])/g, '-$1').replace(/^-/, '') as keyof typeof dynamicIconImports;
+              const iconName = value.icon.toLowerCase().replace(/([A-Z])/g, '-$1').replace(/^-/, '') as keyof typeof dynamicIconImports;
               
               return (
                 <div 
-                  key={value.metadata.id}
+                  key={value.id}
                   className="p-6 rounded-lg bg-card border border-border hover:border-accent transition-all duration-300 group"
                 >
                   <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
