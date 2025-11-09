@@ -2,7 +2,11 @@ import { useTranslation } from 'react-i18next';
 import { Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-export const LanguageSwitcher = () => {
+interface LanguageSwitcherProps {
+  isScrolled?: boolean;
+}
+
+export const LanguageSwitcher = ({ isScrolled = false }: LanguageSwitcherProps) => {
   const { i18n } = useTranslation();
 
   const toggleLanguage = () => {
@@ -14,10 +18,12 @@ export const LanguageSwitcher = () => {
 
   return (
     <Button
-      variant="hero"
+      variant="ghost"
       size="sm"
       onClick={toggleLanguage}
-      className="gap-2"
+      className={`gap-2 text-sm font-medium transition-colors hover:text-accent ${
+        isScrolled ? "text-foreground" : "text-primary-foreground"
+      }`}
     >
       <Globe className="h-4 w-4" />
       <span className="font-medium">{i18n.language === 'fr' ? 'EN' : 'FR'}</span>

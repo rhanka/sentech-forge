@@ -69,14 +69,7 @@ export const Navigation = () => {
                 {link.label}
               </button>
             ))}
-            <LanguageSwitcher />
-            <Button 
-              variant="hero" 
-              size="sm"
-              onClick={() => scrollToSection("contact")}
-            >
-              {t("nav.contact")}
-            </Button>
+            <LanguageSwitcher isScrolled={isScrolled} />
           </div>
 
           {/* Mobile Menu Button */}
@@ -104,15 +97,8 @@ export const Navigation = () => {
                 {link.label}
               </button>
             ))}
-            <div className="px-4 pt-3 flex flex-col gap-3">
-              <LanguageSwitcher />
-              <Button 
-                variant="hero" 
-                className="w-full"
-                onClick={() => scrollToSection("contact")}
-              >
-                {t("nav.contact")}
-              </Button>
+            <div className="px-4 pt-3">
+              <LanguageSwitcher isScrolled={true} />
             </div>
           </div>
         )}
