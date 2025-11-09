@@ -1,67 +1,28 @@
 import { useTranslation } from "react-i18next";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Building2, Factory, Shield, Ship, Briefcase, Scale, TrendingUp, AlertTriangle, Zap } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
+import dynamicIconImports from 'lucide-react/dynamicIconImports';
+import { lazy, Suspense } from 'react';
+import { LucideProps } from 'lucide-react';
+import { useStrategyContent } from "@/hooks/useStrategyContent";
+
+interface IconProps extends Omit<LucideProps, 'ref'> {
+  name: keyof typeof dynamicIconImports;
+}
+
+const Icon = ({ name, ...props }: IconProps) => {
+  const LucideIcon = lazy(dynamicIconImports[name]);
+  return (
+    <Suspense fallback={<div className="w-6 h-6" />}>
+      <LucideIcon {...props} />
+    </Suspense>
+  );
+};
 
 export const StrategyDetails = () => {
   const { t } = useTranslation();
-
-  const projects = [
-    {
-      icon: Scale,
-      title: t("strategy.justice.title"),
-      subtitle: t("strategy.justice.subtitle"),
-      description: t("strategy.justice.description"),
-    },
-    {
-      icon: Factory,
-      title: t("strategy.airbus.title"),
-      subtitle: t("strategy.airbus.subtitle"),
-      description: t("strategy.airbus.description"),
-    },
-    {
-      icon: Building2,
-      title: t("strategy.separation.title"),
-      subtitle: t("strategy.separation.subtitle"),
-      description: t("strategy.separation.description"),
-    },
-    {
-      icon: Shield,
-      title: t("strategy.interior.title"),
-      subtitle: t("strategy.interior.subtitle"),
-      description: t("strategy.interior.description"),
-    },
-    {
-      icon: TrendingUp,
-      title: t("strategy.riotinto.title"),
-      subtitle: t("strategy.riotinto.subtitle"),
-      description: t("strategy.riotinto.description"),
-    },
-    {
-      icon: Ship,
-      title: t("strategy.maritime.title"),
-      subtitle: t("strategy.maritime.subtitle"),
-      description: t("strategy.maritime.description"),
-    },
-    {
-      icon: Briefcase,
-      title: t("strategy.nethris.title"),
-      subtitle: t("strategy.nethris.subtitle"),
-      description: t("strategy.nethris.description"),
-    },
-    {
-      icon: AlertTriangle,
-      title: t("strategy.curateur.title"),
-      subtitle: t("strategy.curateur.subtitle"),
-      description: t("strategy.curateur.description"),
-    },
-    {
-      icon: Zap,
-      title: t("strategy.expri.title"),
-      subtitle: t("strategy.expri.subtitle"),
-      description: t("strategy.expri.description"),
-    },
-  ];
+  const { strategies, loading } = useStrategyContent();
 
   const scrollToServices = () => {
     const servicesSection = document.getElementById("services");
@@ -88,32 +49,39 @@ export const StrategyDetails = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => {
-            const Icon = project.icon;
-            return (
-              <Card
-                key={index}
-                className="hover:shadow-large transition-all duration-300 hover:-translate-y-1 border-border bg-card"
-              >
-                <CardHeader>
-                  <div className="w-12 h-12 rounded-lg bg-gradient-accent flex items-center justify-center mb-4">
-                    <Icon className="w-6 h-6 text-accent-foreground" />
-                  </div>
-                  <CardTitle className="text-xl">{project.title}</CardTitle>
-                  <CardDescription className="text-sm font-semibold text-foreground/80">
-                    {project.subtitle}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {project.description}
-                  </p>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
+        {loading ? (
+          <div className="text-center py-12">
+            <p className="text-muted-foreground">{t("common.loading", "Chargement...")}</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {strategies.map((strategy) => {
+              const iconName = strategy.metadata.icon.toLowerCase().replace(/([A-Z])/g, '-$1').replace(/^-/, '') as keyof typeof dynamicIconImports;
+              
+              return (
+                <Card
+                  key={strategy.metadata.id}
+                  className="hover:shadow-large transition-all duration-300 hover:-translate-y-1 border-border bg-card"
+                >
+                  <CardHeader>
+                    <div className="w-12 h-12 rounded-lg bg-gradient-accent flex items-center justify-center mb-4">
+                      <Icon name={iconName} className="w-6 h-6 text-accent-foreground" />
+                    </div>
+                    <CardTitle className="text-xl">{strategy.title}</CardTitle>
+                    <CardDescription className="text-sm font-semibold text-foreground/80">
+                      {strategy.subtitle}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {strategy.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        )}
 
         <Card className="mt-12 bg-gradient-subtle border-border/50">
           <CardContent className="p-8 md:p-12">
