@@ -108,10 +108,10 @@
   },
   "values": {
     "title": "Valeurs & Différenciateurs",
-    "subtitle": "Ce qui guide ma démarche et fait la différence dans mes interventions",
+    "subtitle": "Ce qui guide la démarche et fait la différence dans les interventions",
     "fullstack": {
-      "title": "Couteau Suisse Full Stack",
-      "description": "De la stratégie papier jusqu'aux opérations, une vision complète et une exécution pragmatique"
+      "title": "Expertise tout en un",
+      "description": "De la vision stratégique jusqu'aux opérations, une approche complète et pragmatique"
     },
     "innovation": {
       "title": "Innovation & Disruption",
@@ -122,8 +122,8 @@
       "description": "No lock-in, Open Source, architectures ouvertes pour votre indépendance technologique"
     },
     "roi": {
-      "title": "Business Value Driven",
-      "description": "Focus sur le ROI et la valeur d'affaire concrète de chaque prestation"
+      "title": "Orienté ROI et valeur d'affaires",
+      "description": "Focus sur le retour sur investissement et la valeur d'affaires concrète de chaque prestation"
     },
     "flexibility": {
       "title": "Flexibilité",
