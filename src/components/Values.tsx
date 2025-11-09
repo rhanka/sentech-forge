@@ -38,7 +38,7 @@ export const Values = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {values.map((value) => {
-              const iconName = value.icon.toLowerCase().replace(/([A-Z])/g, '-$1').replace(/^-/, '') as keyof typeof dynamicIconImports;
+              const iconName = value.icon.replace(/([A-Z])/g, '-$1').toLowerCase().replace(/^-/, '') as keyof typeof dynamicIconImports;
               
               return (
                 <div 

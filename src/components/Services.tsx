@@ -44,7 +44,7 @@ export const Services = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service) => {
-              const iconName = service.icon.toLowerCase().replace(/([A-Z])/g, '-$1').replace(/^-/, '') as keyof typeof dynamicIconImports;
+              const iconName = service.icon.replace(/([A-Z])/g, '-$1').toLowerCase().replace(/^-/, '') as keyof typeof dynamicIconImports;
               const isClickable = service.clickable;
               
               return (

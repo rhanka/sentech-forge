@@ -40,7 +40,7 @@ export const EngagementModels = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {engagements.map((engagement) => {
-              const iconName = engagement.icon.toLowerCase().replace(/([A-Z])/g, '-$1').replace(/^-/, '') as keyof typeof dynamicIconImports;
+              const iconName = engagement.icon.replace(/([A-Z])/g, '-$1').toLowerCase().replace(/^-/, '') as keyof typeof dynamicIconImports;
               
               return (
                 <Card 

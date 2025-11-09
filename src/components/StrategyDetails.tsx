@@ -56,7 +56,7 @@ export const StrategyDetails = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {strategies.map((strategy) => {
-              const iconName = strategy.icon.toLowerCase().replace(/([A-Z])/g, '-$1').replace(/^-/, '') as keyof typeof dynamicIconImports;
+              const iconName = strategy.icon.replace(/([A-Z])/g, '-$1').toLowerCase().replace(/^-/, '') as keyof typeof dynamicIconImports;
               
               return (
                 <Card
