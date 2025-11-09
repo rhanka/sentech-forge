@@ -3,8 +3,6 @@ import { initReactI18next } from 'react-i18next';
 import fr from './locales/fr.json';
 import en from './locales/en.json';
 
-const savedLanguage = localStorage.getItem('language') || 'fr';
-
 i18n
   .use(initReactI18next)
   .init({
@@ -12,11 +10,17 @@ i18n
       fr: { translation: fr },
       en: { translation: en }
     },
-    lng: savedLanguage,
+    lng: 'fr',
     fallbackLng: 'fr',
     interpolation: {
       escapeValue: false
     }
   });
+
+// Load saved language after initialization
+const savedLanguage = localStorage.getItem('language');
+if (savedLanguage && (savedLanguage === 'fr' || savedLanguage === 'en')) {
+  i18n.changeLanguage(savedLanguage);
+}
 
 export default i18n;
