@@ -7,13 +7,25 @@ import { useGovernanceContent } from '@/hooks/useContent';
 import dynamicIconImports from 'lucide-react/dynamicIconImports';
 import { lazy, Suspense } from 'react';
 import { LucideProps } from 'lucide-react';
+import { toDynamicIconKey } from '@/lib/iconResolver';
 
 interface IconProps extends Omit<LucideProps, 'ref'> {
-  name: string;
+  name: keyof typeof dynamicIconImports;
 }
 
 const Icon = ({ name, ...props }: IconProps) => {
-  const LucideIcon = lazy(dynamicIconImports[name]);
+  const importer = dynamicIconImports[name];
+  if (!importer || typeof importer !== 'function') {
+    console.warn(`Icon "${name}" not found in lucide-react dynamicIconImports`);
+    return <div className="w-6 h-6" aria-hidden />;
+  }
+  
+  const LucideIcon = lazy(() => 
+    importer().catch((error) => {
+      console.error(`Failed to load icon "${name}":`, error);
+      return { default: (() => <div className="w-6 h-6" aria-hidden />) as any };
+    })
+  );
   
   return (
     <Suspense fallback={<div className="w-6 h-6" />}>
@@ -72,12 +84,15 @@ const GovernanceDetails = ({ isOpen = false }: GovernanceDetailsProps) => {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-              {governances.map((governance) => (
-                <Card key={governance.id} className="p-6 hover:shadow-lg transition-shadow">
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="p-3 rounded-lg bg-primary/10 text-primary">
-                      <Icon name={governance.icon as keyof typeof dynamicIconImports} className="w-6 h-6" />
-                    </div>
+              {governances.map((governance) => {
+                const iconName = toDynamicIconKey(governance.icon);
+                
+                return (
+                  <Card key={governance.id} className="p-6 hover:shadow-lg transition-shadow">
+                    <div className="flex items-start gap-4 mb-4">
+                      <div className="p-3 rounded-lg bg-primary/10 text-primary">
+                        <Icon name={iconName} className="w-6 h-6" />
+                      </div>
                     <div className="flex-1">
                       <h3 className="font-bold text-lg mb-2">{governance.title}</h3>
                       <p className="text-sm text-muted-foreground mb-3">{governance.subtitle}</p>
@@ -85,7 +100,8 @@ const GovernanceDetails = ({ isOpen = false }: GovernanceDetailsProps) => {
                   </div>
                   <p className="text-sm text-foreground/80">{governance.description}</p>
                 </Card>
-              ))}
+                );
+              })}
             </div>
 
             <Card className="p-8 bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
