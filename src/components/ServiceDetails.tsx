@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import dynamicIconImports from 'lucide-react/dynamicIconImports';
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { LucideProps } from 'lucide-react';
 import { toDynamicIconKey } from "@/lib/iconResolver";
 import {
@@ -56,6 +56,25 @@ export const ServiceDetails = ({ isOpen = false, onClose, serviceType, items, lo
     }, 100);
   };
 
+  // Scroll to the section when opened
+  useEffect(() => {
+    if (isOpen && !loading) {
+      // Wait for CollapsibleContent animation
+      setTimeout(() => {
+        const section = document.getElementById(`${serviceType}-details`);
+        if (section) {
+          const offset = 80;
+          const elementPosition = section.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - offset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 300);
+    }
+  }, [isOpen, serviceType, loading]);
+
   return (
     <Collapsible open={isOpen} onOpenChange={onClose}>
       <CollapsibleContent>
@@ -80,13 +99,17 @@ export const ServiceDetails = ({ isOpen = false, onClose, serviceType, items, lo
               <div className="text-center py-12">
                 <p className="text-muted-foreground">{t("common.loading")}</p>
               </div>
+            ) : items.length === 0 ? (
+              <div className="text-center py-12">
+                <p className="text-muted-foreground">Aucune expérience disponible</p>
+              </div>
             ) : (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
                 {items.map((item) => {
                   const iconName = toDynamicIconKey(item.icon);
                   
                   return (
-                    <Card key={item.id} className="p-6 hover:shadow-lg transition-shadow">
+                    <Card key={item.id} className="p-6 hover:shadow-lg transition-shadow animate-fade-in">
                       <div className="flex items-start gap-4 mb-4">
                         <div className="p-3 rounded-lg bg-primary/10 text-primary">
                           <Icon name={iconName} className="w-6 h-6" />
