@@ -9,4 +9,4 @@ published: true
 
 ## CEO-level agreement • 15 FTE
 
-Strategic architecture for IT systems separation following acquisition. CEO-level agreement and execution management with a team of 15 people.
+IT systems separation scenario following C-Series acquisition. Facilitation of CEO-level agreement and execution management of part of the system with a team of 15 people.
