@@ -72,7 +72,7 @@ export const EngagementModels = () => {
                   <CardContent>
                     <p className="text-sm font-semibold text-muted-foreground mb-3">{t("engagement.fulltime.ideal")}</p>
                     <ul className="space-y-3">
-                      {engagement.features.map((feature, idx) => (
+                      {(engagement.features || []).map((feature, idx) => (
                         <li key={idx} className="flex items-start gap-2">
                           <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
                           <span className="text-foreground">{feature}</span>
