@@ -1,12 +1,10 @@
 ---
 id: cloud-devops
+title: Architecture Cloud & DevOps - Justice
+subtitle: OpenShift • DevOps • CI/CD
 icon: Cloud
 order: 7
 published: true
 ---
-
-# Architecture Cloud & DevOps - Justice
-
-## OpenShift • DevOps • CI/CD
 
 Architecture et migration vers cloud interne Alpha (OpenShift). Stratégie DevOps, pipelines CI/CD et gouvernance de la plateforme cloud ministérielle.
