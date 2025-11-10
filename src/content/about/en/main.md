@@ -1,12 +1,11 @@
 ---
 id: about
 title: About
-name: Samy Elmhamdi
 ---
 
 # Bio
 
-I am a solutions architect specializing in artificial intelligence and data strategies. With over 23 years of experience, I have supported major organizations in their digital transformation and AI adoption.
+Solutions architect specializing in artificial intelligence and data strategies. With over 23 years of experience, I have supported major organizations in their digital transformation and AI adoption.
 
 My expertise covers the entire lifecycle of technology projects: from strategic definition to operational execution, including governance and solution architecture. I have led large-scale mandates in both public and private sectors, with budgets up to €19M.
 
@@ -32,8 +31,16 @@ label: Director General consulting & data architecture
 id: education
 icon: GraduationCap
 order: 3
-value: Master's
-label: École Polytechnique de Montréal
+value: Polytechnique • ENSTA
+label: Master AI
+---
+
+---
+id: projects
+icon: Rocket
+order: 4
+value: 50+
+label: major projects delivered
 ---
 
 # Background
