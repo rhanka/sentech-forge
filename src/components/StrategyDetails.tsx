@@ -8,11 +8,10 @@ import { LucideProps } from 'lucide-react';
 import { useStrategyContent } from "@/hooks/useContent";
 import { toDynamicIconKey } from "@/lib/iconResolver";
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 
 interface IconProps extends Omit<LucideProps, 'ref'> {
   name: keyof typeof dynamicIconImports;
@@ -39,17 +38,27 @@ const Icon = ({ name, ...props }: IconProps) => {
   );
 };
 
-export const StrategyDetails = () => {
+interface StrategyDetailsProps {
+  isOpen?: boolean;
+  onClose?: () => void;
+}
+
+export const StrategyDetails = ({ isOpen = false, onClose }: StrategyDetailsProps) => {
   const { t } = useTranslation();
   const { strategies, loading } = useStrategyContent();
 
   const scrollToServices = () => {
-    const servicesSection = document.getElementById("services");
-    servicesSection?.scrollIntoView({ behavior: "smooth" });
+    onClose?.();
+    setTimeout(() => {
+      const servicesSection = document.getElementById("services");
+      servicesSection?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
   };
 
   return (
-    <section id="strategy-details" className="py-24 bg-secondary/30">
+    <Collapsible open={isOpen} onOpenChange={onClose}>
+      <CollapsibleContent>
+        <section id="strategy-details" className="py-24 bg-secondary/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <Button
@@ -73,36 +82,33 @@ export const StrategyDetails = () => {
             <p className="text-muted-foreground">{t("common.loading", "Chargement...")}</p>
           </div>
         ) : (
-          <Accordion type="single" collapsible className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {strategies.map((strategy) => {
               const iconName = toDynamicIconKey(strategy.icon);
               
               return (
-                <AccordionItem key={strategy.id} value={strategy.id} className="border-none">
-                  <Card className="overflow-hidden border-border bg-card">
-                    <AccordionTrigger className="hover:no-underline px-6 py-4 hover:bg-secondary/50 transition-colors">
-                      <div className="flex items-center gap-4 w-full">
-                        <div className="w-12 h-12 rounded-lg bg-gradient-accent flex items-center justify-center flex-shrink-0">
-                          <Icon name={iconName} className="w-6 h-6 text-accent-foreground" />
-                        </div>
-                        <div className="text-left flex-1">
-                          <h3 className="text-xl font-semibold">{strategy.title}</h3>
-                          <p className="text-sm font-semibold text-foreground/80 mt-1">
-                            {strategy.subtitle}
-                          </p>
-                        </div>
-                      </div>
-                    </AccordionTrigger>
-                    <AccordionContent className="px-6 pb-6">
-                      <p className="text-muted-foreground leading-relaxed">
-                        {strategy.description}
-                      </p>
-                    </AccordionContent>
-                  </Card>
-                </AccordionItem>
+                <Card
+                  key={strategy.id}
+                  className="hover:shadow-large transition-all duration-300 hover:-translate-y-1 border-border bg-card"
+                >
+                  <CardHeader>
+                    <div className="w-12 h-12 rounded-lg bg-gradient-accent flex items-center justify-center mb-4">
+                      <Icon name={iconName} className="w-6 h-6 text-accent-foreground" />
+                    </div>
+                    <CardTitle className="text-xl">{strategy.title}</CardTitle>
+                    <CardDescription className="text-sm font-semibold text-foreground/80">
+                      {strategy.subtitle}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {strategy.description}
+                    </p>
+                  </CardContent>
+                </Card>
               );
             })}
-          </Accordion>
+          </div>
         )}
 
         <Card className="mt-12 bg-gradient-subtle border-border/50">
@@ -129,5 +135,7 @@ export const StrategyDetails = () => {
         </Card>
       </div>
     </section>
+      </CollapsibleContent>
+    </Collapsible>
   );
 };

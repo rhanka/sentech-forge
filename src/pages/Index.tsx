@@ -8,16 +8,19 @@ import { About } from "@/components/About";
 import { EngagementModels } from "@/components/EngagementModels";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
+import { useState } from "react";
 
 const Index = () => {
+  const [isStrategyOpen, setIsStrategyOpen] = useState(false);
+
   return (
     <div className="min-h-screen">
       <Navigation />
       <Hero />
       <div id="services">
-        <Services />
+        <Services onStrategyClick={() => setIsStrategyOpen(!isStrategyOpen)} />
       </div>
-      <StrategyDetails />
+      <StrategyDetails isOpen={isStrategyOpen} onClose={() => setIsStrategyOpen(false)} />
       <div id="sectors">
         <Sectors />
       </div>

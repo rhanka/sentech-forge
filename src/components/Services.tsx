@@ -30,13 +30,20 @@ const Icon = ({ name, ...props }: IconProps) => {
   );
 };
 
-export const Services = () => {
+interface ServicesProps {
+  onStrategyClick?: () => void;
+}
+
+export const Services = ({ onStrategyClick }: ServicesProps) => {
   const { t } = useTranslation();
   const { services, loading } = useServiceContent();
 
-  const scrollToStrategyDetails = () => {
-    const strategySection = document.getElementById("strategy-details");
-    strategySection?.scrollIntoView({ behavior: "smooth" });
+  const handleStrategyClick = () => {
+    onStrategyClick?.();
+    setTimeout(() => {
+      const strategySection = document.getElementById("strategy-details");
+      strategySection?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
   };
 
   return (
@@ -65,7 +72,7 @@ export const Services = () => {
                   className={`hover:shadow-large transition-all duration-300 hover:-translate-y-1 border-border bg-card ${
                     isClickable ? 'cursor-pointer' : ''
                   }`}
-                  onClick={isClickable ? scrollToStrategyDetails : undefined}
+                  onClick={isClickable ? handleStrategyClick : undefined}
                 >
                   <CardHeader>
                     <div className="w-12 h-12 rounded-lg bg-gradient-accent flex items-center justify-center mb-4">
