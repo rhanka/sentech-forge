@@ -15,34 +15,26 @@ Passionate about pragmatic innovation, I believe in a balanced approach between 
 id: experience
 icon: Briefcase
 order: 1
-value: 23+ years
-label: of expertise in AI and development
+value: 23 years
+label: of experience
 ---
 
 ---
 id: role
 icon: Award
 order: 2
-value: Ex-CEO
-label: Director General consulting & data architecture
+value: ex-VP CGI
+label: AI strategy
 ---
 
 ---
 id: education
 icon: GraduationCap
 order: 3
-value: Polytechnique • ENSTA
-label: Master AI
+value: Polytechnique
+label: ENSTA, Master AI
 ---
 
----
-id: projects
-icon: Rocket
-order: 4
-value: 50+
-label: major projects delivered
----
+# Notable Background
 
-# Background
-
-**Complete technical expertise:** From cloud (Azure, AWS, GCP) to full-stack development (Python, TypeScript, React), including AI (RAG, agents, ML) and enterprise architecture.
+Former Colonel (Armament Engineer), Deputy CDO Ministry of Justice and Interior (FR), AI Lead, Complex program management (budgets €20-100M/year, teams 50-100 people)

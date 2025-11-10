@@ -15,34 +15,26 @@ Passionné par l'innovation pragmatique, je crois en une approche équilibrée e
 id: experience
 icon: Briefcase
 order: 1
-value: 23+ ans
-label: d'expertise en AI et développement
+value: 23 ans
+label: d'expérience
 ---
 
 ---
 id: role
 icon: Award
 order: 2
-value: Ex-DG
-label: Dir. général conseil & architecture data
+value: ex-VP CGI
+label: stratégie IA
 ---
 
 ---
 id: education
 icon: GraduationCap
 order: 3
-value: Polytechnique • ENSTA
-label: Master IA
+value: Polytechnique
+label: ENSTA, Master IA
 ---
 
----
-id: projects
-icon: Rocket
-order: 4
-value: 50+
-label: projets majeurs réalisés
----
+# Parcours notable
 
-# Background
-
-**Expertise technique complète :** Du cloud (Azure, AWS, GCP) au développement full-stack (Python, TypeScript, React), en passant par l'IA (RAG, agents, ML) et l'architecture d'entreprise.
+Ex-Colonel (Ingénieur de l'Armement), CDO adjoint ministères Justice et Intérieur (FR), Lead IA, Direction de programmes complexes (budgets 20-100M€/an, équipes 50-100 personnes)
