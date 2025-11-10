@@ -9,4 +9,4 @@ published: true
 
 ## Accord niveau CEOs • 15 FTE
 
-Architecture stratégique de séparation des systèmes d'information suite à l'acquisition. Accord au niveau des CEOs et encadrement de l'exécution avec une équipe de 15 personnes.
+Scénario de séparation des systèmes d'information suite à l'acquisition des C-Series. Facilitation de l'accord au niveau des CEOs et encadrement de l'exécution d'une partie du système avec une équipe de 15 personnes.
