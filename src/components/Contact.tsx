@@ -71,16 +71,16 @@ export const Contact = () => {
                         <Icon name={iconName} className="w-6 h-6 text-accent-foreground" />
                       </div>
                       <div className="text-left">
-                        <p className="text-sm text-primary-foreground/70 mb-1">{card.metadata.label}</p>
+                        <p className="text-sm text-primary-foreground/80 mb-1">{card.metadata.label}</p>
                         {card.id === 'email' ? (
                           <a 
                             href={card.metadata.link}
-                            className="text-lg font-semibold hover:text-accent transition-colors"
+                            className="text-lg font-semibold text-primary-foreground hover:text-accent transition-colors"
                           >
                             {card.metadata.value}
                           </a>
                         ) : (
-                          <div className="text-lg font-semibold">
+                          <div className="text-lg font-semibold text-primary-foreground">
                             <div>{card.metadata.value}</div>
                             {card.metadata.valueSecondary && (
                               <div className="text-base">{card.metadata.valueSecondary}</div>
@@ -113,7 +113,7 @@ export const Contact = () => {
                   size="lg"
                   className={social.id === 'send' 
                     ? 'bg-primary-foreground text-primary hover:bg-primary-foreground/90'
-                    : 'border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10'
+                    : 'bg-primary-foreground/10 border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/20 hover:border-primary-foreground/60'
                   }
                   asChild
                 >

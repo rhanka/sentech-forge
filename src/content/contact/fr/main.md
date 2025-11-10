@@ -35,7 +35,7 @@ order: 1
 id: linkedin
 icon: Linkedin
 label: LinkedIn
-link: https://www.linkedin.com/in/samy-elmhamdi/
+link: https://www.linkedin.com/in/fabien-antoine-ia/
 order: 2
 ---
 
@@ -43,6 +43,6 @@ order: 2
 id: github
 icon: Github
 label: GitHub
-link: https://github.com/selmhamdi
+link: https://github.com/rhanka/
 order: 3
 ---
