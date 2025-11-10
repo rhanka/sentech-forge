@@ -76,3 +76,15 @@ export function useGovernanceContent() {
   const governances = allGovernances.filter(g => g.published !== false);
   return { governances, loading };
 }
+
+export function useDevelopmentContent() {
+  const { items: allDevelopments, loading } = useDynamicContent<StrategyItem>('development');
+  const developments = allDevelopments.filter(d => d.published !== false);
+  return { developments, loading };
+}
+
+export function useOptimizationContent() {
+  const { items: allOptimizations, loading } = useDynamicContent<StrategyItem>('optimization');
+  const optimizations = allOptimizations.filter(o => o.published !== false);
+  return { optimizations, loading };
+}

@@ -3,6 +3,8 @@ import { Hero } from "@/components/Hero";
 import { Services } from "@/components/Services";
 import { StrategyDetails } from "@/components/StrategyDetails";
 import GovernanceDetails from "@/components/GovernanceDetails";
+import DevelopmentDetails from "@/components/DevelopmentDetails";
+import OptimizationDetails from "@/components/OptimizationDetails";
 import { Sectors } from "@/components/Sectors";
 import { Values } from "@/components/Values";
 import { About } from "@/components/About";
@@ -14,6 +16,8 @@ import { useState } from "react";
 const Index = () => {
   const [isStrategyOpen, setIsStrategyOpen] = useState(false);
   const [isGovernanceOpen, setIsGovernanceOpen] = useState(false);
+  const [isDevelopmentOpen, setIsDevelopmentOpen] = useState(false);
+  const [isOptimizationOpen, setIsOptimizationOpen] = useState(false);
 
   return (
     <div className="min-h-screen">
@@ -23,10 +27,14 @@ const Index = () => {
         <Services 
           onStrategyClick={() => setIsStrategyOpen(!isStrategyOpen)} 
           onGovernanceClick={() => setIsGovernanceOpen(!isGovernanceOpen)}
+          onDevelopmentClick={() => setIsDevelopmentOpen(!isDevelopmentOpen)}
+          onOptimizationClick={() => setIsOptimizationOpen(!isOptimizationOpen)}
         />
       </div>
       <StrategyDetails isOpen={isStrategyOpen} onClose={() => setIsStrategyOpen(false)} />
-      <GovernanceDetails isOpen={isGovernanceOpen} />
+      {isGovernanceOpen && <GovernanceDetails onBack={() => setIsGovernanceOpen(false)} />}
+      {isDevelopmentOpen && <DevelopmentDetails onBack={() => setIsDevelopmentOpen(false)} />}
+      {isOptimizationOpen && <OptimizationDetails onBack={() => setIsOptimizationOpen(false)} />}
       <div id="sectors">
         <Sectors />
       </div>

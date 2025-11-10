@@ -2,6 +2,8 @@
 id: development
 icon: Code
 order: 3
+clickable: true
+scrollTo: development
 ---
 
 # Innovative Development
