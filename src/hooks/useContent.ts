@@ -1,64 +1,72 @@
-import { useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
-import { strategiesFr, strategiesEn, StrategyItem } from '@/content/strategies';
-import { servicesFr, servicesEn, ServiceItem } from '@/content/services';
-import { sectorsFr, sectorsEn, SectorItem } from '@/content/sectors';
-import { valuesFr, valuesEn, ValueItem } from '@/content/values';
-import { engagementFr, engagementEn, EngagementItem } from '@/content/engagement';
+import { useDynamicContent } from './useMarkdownContent';
+
+export interface StrategyItem {
+  id: string;
+  icon: string;
+  order: number;
+  published?: boolean;
+  title: string;
+  subtitle: string;
+  description: string;
+}
+
+export interface ServiceItem {
+  id: string;
+  icon: string;
+  order: number;
+  clickable?: boolean;
+  scrollTo?: string;
+  title: string;
+  description: string;
+}
+
+export interface SectorItem {
+  id: string;
+  icon: string;
+  order: number;
+  title: string;
+  description: string;
+}
+
+export interface ValueItem {
+  id: string;
+  icon: string;
+  order: number;
+  title: string;
+  description: string;
+}
+
+export interface EngagementItem {
+  id: string;
+  icon: string;
+  order: number;
+  features?: string[];
+  title: string;
+  description: string;
+}
 
 export function useStrategyContent() {
-  const { i18n } = useTranslation();
-  
-  const strategies = useMemo(() => {
-    const locale = i18n.language as 'fr' | 'en';
-    return locale === 'fr' ? strategiesFr : strategiesEn;
-  }, [i18n.language]);
-
-  return { strategies, loading: false };
+  const { items: allStrategies, loading } = useDynamicContent<StrategyItem>('strategies');
+  const strategies = allStrategies.filter(s => s.published !== false);
+  return { strategies, loading };
 }
 
 export function useServiceContent() {
-  const { i18n } = useTranslation();
-  
-  const services = useMemo(() => {
-    const locale = i18n.language as 'fr' | 'en';
-    return locale === 'fr' ? servicesFr : servicesEn;
-  }, [i18n.language]);
-
-  return { services, loading: false };
+  const { items: services, loading } = useDynamicContent<ServiceItem>('services');
+  return { services, loading };
 }
 
 export function useSectorContent() {
-  const { i18n } = useTranslation();
-  
-  const sectors = useMemo(() => {
-    const locale = i18n.language as 'fr' | 'en';
-    return locale === 'fr' ? sectorsFr : sectorsEn;
-  }, [i18n.language]);
-
-  return { sectors, loading: false };
+  const { items: sectors, loading } = useDynamicContent<SectorItem>('sectors');
+  return { sectors, loading };
 }
 
 export function useValueContent() {
-  const { i18n } = useTranslation();
-  
-  const values = useMemo(() => {
-    const locale = i18n.language as 'fr' | 'en';
-    return locale === 'fr' ? valuesFr : valuesEn;
-  }, [i18n.language]);
-
-  return { values, loading: false };
+  const { items: values, loading } = useDynamicContent<ValueItem>('values');
+  return { values, loading };
 }
 
 export function useEngagementContent() {
-  const { i18n } = useTranslation();
-  
-  const engagements = useMemo(() => {
-    const locale = i18n.language as 'fr' | 'en';
-    return locale === 'fr' ? engagementFr : engagementEn;
-  }, [i18n.language]);
-
-  return { engagements, loading: false };
+  const { items: engagements, loading } = useDynamicContent<EngagementItem>('engagement');
+  return { engagements, loading };
 }
-
-export type { StrategyItem, ServiceItem, SectorItem, ValueItem, EngagementItem };

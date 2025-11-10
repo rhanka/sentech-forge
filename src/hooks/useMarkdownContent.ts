@@ -80,3 +80,75 @@ export function useContactContent() {
 
   return { sections, loading };
 }
+
+// Generic hook to load all markdown files from a content folder
+export function useDynamicContent<T>(contentType: string) {
+  const { i18n } = useTranslation();
+  const [items, setItems] = useState<T[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadContent = async () => {
+      setLoading(true);
+      const locale = i18n.language as 'fr' | 'en';
+      
+      try {
+        // Import all markdown files for the given content type and locale
+        const modules = import.meta.glob('../content/**/*.md', { query: '?raw', import: 'default' });
+        const pattern = `../content/${contentType}/${locale}/`;
+        
+        const relevantModules = Object.entries(modules)
+          .filter(([path]) => path.startsWith(pattern));
+        
+        const loadedItems = await Promise.all(
+          relevantModules.map(async ([, loader]) => {
+            const raw = await loader() as string;
+            const parsed = parseSingleSectionMarkdown(raw);
+            
+            // Extract title and description from content
+            const lines = parsed.content.trim().split('\n');
+            let title = '';
+            let subtitle = '';
+            let description = '';
+            
+            for (let i = 0; i < lines.length; i++) {
+              const line = lines[i].trim();
+              if (line.startsWith('# ')) {
+                title = line.substring(2).trim();
+              } else if (line.startsWith('## ')) {
+                subtitle = line.substring(3).trim();
+              } else if (line && !line.startsWith('#')) {
+                description = line;
+                break;
+              }
+            }
+            
+            return {
+              ...parsed.metadata,
+              title,
+              subtitle,
+              description,
+            } as T;
+          })
+        );
+        
+        // Sort by order if available
+        const sorted = loadedItems.sort((a: any, b: any) => {
+          const orderA = a.order ?? 999;
+          const orderB = b.order ?? 999;
+          return orderA - orderB;
+        });
+        
+        setItems(sorted);
+      } catch (error) {
+        console.error(`Error loading ${contentType} content:`, error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadContent();
+  }, [i18n.language, contentType]);
+
+  return { items, loading };
+}
