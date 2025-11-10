@@ -122,6 +122,14 @@ export function useDynamicContent<T>(contentType: string) {
                 break;
               }
             }
+
+            // Fallback to frontmatter if headings are absent
+            const fmTitle = (parsed.metadata as any).title;
+            const fmSubtitle = (parsed.metadata as any).subtitle;
+            const fmDescription = (parsed.metadata as any).description;
+            if (!title && fmTitle) title = fmTitle;
+            if (!subtitle && fmSubtitle) subtitle = fmSubtitle;
+            if (!description && fmDescription) description = fmDescription;
             
             return {
               ...parsed.metadata,
