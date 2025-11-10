@@ -17,20 +17,22 @@
     "engagementSubtitle": "Formules d'intervention flexibles"
   },
   "strategy": {
-    "title": "Expériences Stratégie IT, Data & IA",
+    "title": "Stratégie IT, Data & IA",
+    "subtitle": "Définition et exécution de votre vision digitale, de la feuille de route stratégique à l'implémentation terrain",
     "backToServices": "Retour aux Services",
     "mandateFormat": {
-      "title": "Format de mandat",
-      "description": "Ces expériences peuvent être réalisées en mandat full-time, part-time ou en forfait fixe selon vos besoins et l'ampleur du projet.",
+      "title": "Format de mandat flexible",
+      "description": "Chaque intervention s'adapte à vos besoins : mandats full-time pour les transformations majeures et direction de programmes, part-time pour l'accompagnement stratégique continu, ou forfaits fixes pour études spécifiques, RFI/RFP et diagnostics. La formule s'ajuste à l'ampleur du projet et à votre organisation.",
       "cta": "Discuter de votre projet"
     }
   },
   "governance": {
-    "title": "Expériences Gouvernance & Architecture",
+    "title": "Gouvernance & Architecture",
+    "subtitle": "Architecture d'entreprise, gouvernance des données et frameworks de gestion pour structurer votre transformation",
     "backToServices": "Retour aux Services",
     "mandateFormat": {
-      "title": "Format de mandat",
-      "description": "Ces expériences peuvent être réalisées en mandat full-time, part-time ou en forfait fixe selon vos besoins et l'ampleur du projet.",
+      "title": "Format de mandat flexible",
+      "description": "Chaque intervention s'adapte à vos besoins : mandats full-time pour l'implémentation de frameworks complexes et gouvernance d'entreprise, part-time pour conseil architectural continu, ou forfaits fixes pour audits, évaluations d'architecture et définition de standards. La formule s'ajuste à la complexité et à vos contraintes.",
       "cta": "Discuter de votre projet"
     }
   },

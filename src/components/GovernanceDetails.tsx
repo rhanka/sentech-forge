@@ -71,12 +71,15 @@ const GovernanceDetails = ({ isOpen = false }: GovernanceDetailsProps) => {
       <CollapsibleContent>
         <section id="governance-details" className="py-20 bg-muted/30">
           <div className="container">
-            <div className="flex justify-between items-center mb-12">
-              <h2 className="text-3xl font-bold">{t('governance.title')}</h2>
+            <div className="flex justify-between items-start mb-12">
+              <div className="flex-1">
+                <h2 className="text-3xl font-bold mb-2">{t('governance.title')}</h2>
+                <p className="text-muted-foreground max-w-3xl">{t('governance.subtitle')}</p>
+              </div>
               <Button
                 variant="outline"
                 onClick={() => scrollToSection('services')}
-                className="gap-2"
+                className="gap-2 ml-4"
               >
                 <ArrowLeft className="w-4 h-4" />
                 {t('governance.backToServices')}
