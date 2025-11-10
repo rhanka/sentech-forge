@@ -46,7 +46,11 @@ export const About = () => {
   const mainSection = sections.find(s => s.id === 'about');
   const bioSection = sections.find(s => s.content.startsWith('# Bio'));
   const statSections = sections.filter(s => ['experience', 'role', 'education'].includes(s.id));
-  const backgroundSection = sections.find(s => s.content.startsWith('# Background'));
+  const backgroundSection = sections.find(s => 
+    s.content.startsWith('# Background') ||
+    s.content.startsWith('# Notable Background') ||
+    s.content.startsWith('# Parcours notable')
+  );
 
   const bioParagraphs = bioSection?.content
     .replace('# Bio\n\n', '')
@@ -76,7 +80,12 @@ export const About = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             {statSections.sort((a, b) => a.metadata.order - b.metadata.order).map((stat) => {
-              const iconName = stat.metadata.icon.replace(/([a-z0-9])([A-Z])/g, '$1-$2').replace(/([a-zA-Z])([0-9])/g, '$1-$2').toLowerCase() as keyof typeof dynamicIconImports;
+              const iconName = (stat.metadata.icon
+                ? String(stat.metadata.icon)
+                    .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+                    .replace(/([a-zA-Z])([0-9])/g, '$1-$2')
+                    .toLowerCase()
+                : 'circle') as keyof typeof dynamicIconImports;
               
               return (
                 <div key={stat.id} className="text-center p-6 bg-card border border-border rounded-lg">
@@ -92,7 +101,7 @@ export const About = () => {
 
           <div className="text-center">
             <p className="text-lg text-muted-foreground mb-6">
-              {backgroundSection?.content.replace('# Background\n\n', '')}
+              {backgroundSection?.content.replace(/^# [^\n]+\n\n?/, '')}
             </p>
             <Button variant="hero" size="lg" onClick={() => {
               const contactSection = document.getElementById("contact");

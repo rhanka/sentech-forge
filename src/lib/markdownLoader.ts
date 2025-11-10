@@ -52,54 +52,20 @@ function parseFrontmatter(text: string): { metadata: Record<string, any>; conten
  */
 export function parseMultiSectionMarkdown(raw: string): ParsedMarkdownSection[] {
   const sections: ParsedMarkdownSection[] = [];
-  
-  // Split by frontmatter blocks
-  const parts = raw.split(/\n---\s*\n/);
-  
-  // First part might be empty or have content before first frontmatter
-  let i = parts[0].trim() === '' ? 1 : 0;
-  
-  // Process pairs of (frontmatter, content)
-  while (i < parts.length) {
-    const frontmatter = parts[i];
-    const content = parts[i + 1] || '';
-    
-    if (!frontmatter.trim()) {
-      i++;
-      continue;
-    }
-    
-    const metadata: Record<string, any> = {};
-    
-    // Parse YAML-like frontmatter
-    frontmatter.split('\n').forEach(line => {
-      const colonIndex = line.indexOf(':');
-      if (colonIndex > 0) {
-        const key = line.substring(0, colonIndex).trim();
-        let value: any = line.substring(colonIndex + 1).trim();
-        
-        // Remove quotes if present
-        if ((value.startsWith('"') && value.endsWith('"')) || 
-            (value.startsWith("'") && value.endsWith("'"))) {
-          value = value.slice(1, -1);
-        }
-        
-        // Convert numbers
-        if (!isNaN(Number(value)) && value !== '') {
-          value = Number(value);
-        }
-        
-        metadata[key] = value;
-      }
-    });
-    
+  const regex = /(^|\n)---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*?)(?=(\n---\s*\n|$))/g;
+  let match: RegExpExecArray | null;
+
+  while ((match = regex.exec(raw)) !== null) {
+    const front = match[2] || '';
+    const body = match[3] || '';
+
+    const { metadata, content } = parseFrontmatter(`---\n${front}\n---\n${body}`);
+
     sections.push({
       id: (metadata.id as string) || '',
       metadata,
-      content: content.trim(),
+      content,
     });
-    
-    i += 2;
   }
 
   return sections;
