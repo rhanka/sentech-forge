@@ -17,20 +17,22 @@
     "engagementSubtitle": "Flexible engagement models"
   },
   "strategy": {
-    "title": "IT, Data & AI Strategy Experience",
+    "title": "IT, Data & AI Strategy",
+    "subtitle": "Definition and execution of your digital vision, from strategic roadmap to field implementation",
     "backToServices": "Back to Services",
     "mandateFormat": {
-      "title": "Mandate Format",
-      "description": "These experiences can be delivered as full-time mandates, part-time engagements, or fixed packages depending on your needs and project scope.",
+      "title": "Flexible mandate format",
+      "description": "Each engagement adapts to your needs: full-time mandates for major transformations and program management, part-time for continuous strategic support, or fixed packages for specific studies, RFI/RFP and diagnostics. The format adjusts to project scope and your organization.",
       "cta": "Discuss your project"
     }
   },
   "governance": {
-    "title": "Governance & Architecture Experience",
+    "title": "Governance & Architecture",
+    "subtitle": "Enterprise architecture, data governance and management frameworks to structure your transformation",
     "backToServices": "Back to Services",
     "mandateFormat": {
-      "title": "Mandate Format",
-      "description": "These experiences can be delivered as full-time mandates, part-time engagements, or fixed packages depending on your needs and project scope.",
+      "title": "Flexible mandate format",
+      "description": "Each engagement adapts to your needs: full-time mandates for implementing complex frameworks and enterprise governance, part-time for continuous architectural consulting, or fixed packages for audits, architecture assessments and standards definition. The format adjusts to complexity and your constraints.",
       "cta": "Discuss your project"
     }
   },
