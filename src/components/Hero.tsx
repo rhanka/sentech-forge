@@ -70,7 +70,15 @@ export const Hero = () => {
             {/* Quick Navigation Cards */}
             <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 animate-fade-in" style={{ animationDelay: "0.4s" }}>
               {quicklinks.map((link) => {
-                const iconName = link.metadata.icon.replace(/([a-z0-9])([A-Z])/g, '$1-$2').replace(/([a-zA-Z])([0-9])/g, '$1-$2').toLowerCase() as keyof typeof dynamicIconImports;
+                const rawIcon = link.metadata?.icon as string | undefined;
+                const iconName = (
+                  rawIcon
+                    ? rawIcon
+                        .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+                        .replace(/([a-zA-Z])([0-9])/g, '$1-$2')
+                        .toLowerCase()
+                    : 'circle'
+                ) as keyof typeof dynamicIconImports;
                 const items = link.content.split('\n').filter(line => line.startsWith('- ')).map(line => line.substring(2));
                 
                 return (

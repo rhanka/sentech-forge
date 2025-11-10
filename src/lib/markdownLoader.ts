@@ -47,21 +47,28 @@ function parseFrontmatter(text: string): { metadata: Record<string, any>; conten
 }
 
 /**
- * Parse a markdown file with multiple sections separated by ---
- * Each section can have its own frontmatter
+ * Parse a markdown file with multiple sections separated by frontmatter blocks
+ * Each section is: ---\nfrontmatter\n---\ncontent
  */
 export function parseMultiSectionMarkdown(raw: string): ParsedMarkdownSection[] {
-  // Split by --- that are on their own line
-  const sections = raw.split(/\n---\n/).filter(s => s.trim());
-  
-  return sections.map(section => {
-    const { metadata, content } = parseFrontmatter(section.trim());
-    return {
-      id: metadata.id || '',
+  const sections: ParsedMarkdownSection[] = [];
+  const regex = /(^|\n)---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*?)(?=(\n---\s*\n|$))/g;
+  let match: RegExpExecArray | null;
+
+  while ((match = regex.exec(raw)) !== null) {
+    const front = match[2] || '';
+    const body = match[3] || '';
+
+    const { metadata, content } = parseFrontmatter(`---\n${front}\n---\n${body}`);
+
+    sections.push({
+      id: (metadata.id as string) || '',
       metadata,
-      content
-    };
-  });
+      content,
+    });
+  }
+
+  return sections;
 }
 
 /**
