@@ -5,6 +5,7 @@ import dynamicIconImports from 'lucide-react/dynamicIconImports';
 import { lazy, Suspense } from 'react';
 import { LucideProps } from 'lucide-react';
 import { useEngagementContent } from "@/hooks/useContent";
+import { toDynamicIconKey } from "@/lib/iconResolver";
 
 interface IconProps extends Omit<LucideProps, 'ref'> {
   name: keyof typeof dynamicIconImports;
@@ -52,7 +53,7 @@ export const EngagementModels = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {engagements.map((engagement) => {
-              const iconName = engagement.icon.replace(/([a-z0-9])([A-Z])/g, '$1-$2').replace(/([a-zA-Z])([0-9])/g, '$1-$2').toLowerCase() as keyof typeof dynamicIconImports;
+              const iconName = toDynamicIconKey(engagement.icon);
               
               return (
                 <Card 
