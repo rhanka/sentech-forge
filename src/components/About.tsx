@@ -45,12 +45,18 @@ export const About = () => {
 
   const mainSection = sections.find(s => s.id === 'about');
   const bioSection = sections.find(s => s.content.startsWith('# Bio'));
-  const statSections = sections.filter(s => ['experience', 'role', 'education'].includes(s.id));
+  const statSections = sections.filter(s => typeof s.metadata.order === 'number');
   const backgroundSection = sections.find(s => 
     s.content.startsWith('# Background') ||
     s.content.startsWith('# Notable Background') ||
     s.content.startsWith('# Parcours notable')
   );
+
+  // Debug: log parsed sections
+  if (typeof window !== 'undefined') {
+    // Avoid spamming logs: only log once per render when sections length changes
+    console.debug('[About] sections parsed:', sections.map(s => ({ id: s.id, order: s.metadata.order, icon: s.metadata.icon, preview: s.content.slice(0, 20) })));
+  }
 
   const bioParagraphs = bioSection?.content
     .replace('# Bio\n\n', '')
