@@ -7,6 +7,12 @@ import { lazy, Suspense } from 'react';
 import { LucideProps } from 'lucide-react';
 import { useStrategyContent } from "@/hooks/useContent";
 import { toDynamicIconKey } from "@/lib/iconResolver";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 interface IconProps extends Omit<LucideProps, 'ref'> {
   name: keyof typeof dynamicIconImports;
@@ -67,33 +73,36 @@ export const StrategyDetails = () => {
             <p className="text-muted-foreground">{t("common.loading", "Chargement...")}</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <Accordion type="single" collapsible className="space-y-4">
             {strategies.map((strategy) => {
               const iconName = toDynamicIconKey(strategy.icon);
               
               return (
-                <Card
-                  key={strategy.id}
-                  className="hover:shadow-large transition-all duration-300 hover:-translate-y-1 border-border bg-card"
-                >
-                  <CardHeader>
-                    <div className="w-12 h-12 rounded-lg bg-gradient-accent flex items-center justify-center mb-4">
-                      <Icon name={iconName} className="w-6 h-6 text-accent-foreground" />
-                    </div>
-                    <CardTitle className="text-xl">{strategy.title}</CardTitle>
-                    <CardDescription className="text-sm font-semibold text-foreground/80">
-                      {strategy.subtitle}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {strategy.description}
-                    </p>
-                  </CardContent>
-                </Card>
+                <AccordionItem key={strategy.id} value={strategy.id} className="border-none">
+                  <Card className="overflow-hidden border-border bg-card">
+                    <AccordionTrigger className="hover:no-underline px-6 py-4 hover:bg-secondary/50 transition-colors">
+                      <div className="flex items-center gap-4 w-full">
+                        <div className="w-12 h-12 rounded-lg bg-gradient-accent flex items-center justify-center flex-shrink-0">
+                          <Icon name={iconName} className="w-6 h-6 text-accent-foreground" />
+                        </div>
+                        <div className="text-left flex-1">
+                          <h3 className="text-xl font-semibold">{strategy.title}</h3>
+                          <p className="text-sm font-semibold text-foreground/80 mt-1">
+                            {strategy.subtitle}
+                          </p>
+                        </div>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-6 pb-6">
+                      <p className="text-muted-foreground leading-relaxed">
+                        {strategy.description}
+                      </p>
+                    </AccordionContent>
+                  </Card>
+                </AccordionItem>
               );
             })}
-          </div>
+          </Accordion>
         )}
 
         <Card className="mt-12 bg-gradient-subtle border-border/50">
