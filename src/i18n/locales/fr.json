@@ -23,7 +23,6 @@
   "strategy": {
     "title": "Stratégie IT, Data & IA",
     "subtitle": "Définition et exécution de votre vision digitale, de la feuille de route stratégique à l'implémentation terrain",
-    "backToServices": "Retour aux Services",
     "mandateFormat": {
       "title": "Format de mandat flexible",
       "description": "Chaque intervention s'adapte à vos besoins : mandats full-time pour les transformations majeures et direction de programmes, part-time pour l'accompagnement stratégique continu, ou forfaits fixes pour études spécifiques, RFI/RFP et diagnostics. La formule s'ajuste à l'ampleur du projet et à votre organisation.",
@@ -33,67 +32,28 @@
   "governance": {
     "title": "Gouvernance & Architecture",
     "subtitle": "Architecture d'entreprise, gouvernance des données et frameworks de gestion pour structurer votre transformation",
-    "format": {
-      "title": "Format de mandat",
-      "intro": "Interventions adaptées pour implémenter des frameworks robustes et structurer votre transformation",
-      "approach": {
-        "title": "Approche",
-        "item1": "Audit et diagnostic de l'existant",
-        "item2": "Définition de standards et frameworks",
-        "item3": "Mise en place de la gouvernance",
-        "item4": "Accompagnement au changement"
-      },
-      "deliverables": {
-        "title": "Livrables",
-        "item1": "Documentation d'architecture",
-        "item2": "Frameworks de gouvernance",
-        "item3": "Standards et politiques",
-        "item4": "Formations et coaching"
-      }
+    "mandateFormat": {
+      "title": "Format de mandat flexible",
+      "description": "Chaque intervention s'adapte à vos besoins : mandats full-time pour l'implémentation de frameworks complexes et gouvernance d'entreprise, part-time pour conseil architectural continu, ou forfaits fixes pour audits, évaluations d'architecture et définition de standards. La formule s'ajuste à la complexité et à vos contraintes.",
+      "cta": "Discuter de votre projet"
     }
   },
   "development": {
     "title": "Développements Innovants",
     "subtitle": "Applications full-stack, IA et prototypes pour concrétiser votre vision et valider vos innovations",
-    "format": {
-      "title": "Format de mandat",
-      "intro": "Développements sur-mesure pour transformer vos idées en solutions opérationnelles",
-      "approach": {
-        "title": "Approche",
-        "item1": "Design thinking et prototypage rapide",
-        "item2": "Architecture scalable et moderne",
-        "item3": "Développement agile et itératif",
-        "item4": "DevOps et automatisation"
-      },
-      "deliverables": {
-        "title": "Livrables",
-        "item1": "Applications full-stack production-ready",
-        "item2": "Modèles IA et ML opérationnels",
-        "item3": "POCs et prototypes fonctionnels",
-        "item4": "Documentation technique complète"
-      }
+    "mandateFormat": {
+      "title": "Format de mandat flexible",
+      "description": "Chaque intervention s'adapte à vos besoins : mandats full-time pour développements complexes et encadrement technique, part-time pour expertise ponctuelle et code reviews, ou forfaits fixes pour POCs, prototypes et applications spécifiques. La formule s'ajuste à la taille du projet et aux délais.",
+      "cta": "Discuter de votre projet"
     }
   },
   "optimization": {
     "title": "Optimisation des Opérations",
     "subtitle": "Amélioration des processus et automatisation pour maximiser l'efficacité opérationnelle",
-    "format": {
-      "title": "Format de mandat",
-      "intro": "Interventions ciblées pour améliorer performance, coûts et efficacité opérationnelle",
-      "approach": {
-        "title": "Approche",
-        "item1": "Analyse et diagnostic des processus",
-        "item2": "Identification des gains potentiels",
-        "item3": "Mise en œuvre des optimisations",
-        "item4": "Mesure des résultats et KPIs"
-      },
-      "deliverables": {
-        "title": "Livrables",
-        "item1": "Plans d'optimisation détaillés",
-        "item2": "Automatisations et workflows",
-        "item3": "Dashboards et reporting",
-        "item4": "Documentation des gains obtenus"
-      }
+    "mandateFormat": {
+      "title": "Format de mandat flexible",
+      "description": "Chaque intervention s'adapte à vos besoins : mandats full-time pour transformations opérationnelles majeures, part-time pour amélioration continue et coaching, ou forfaits fixes pour audits, diagnostics de performance et plans d'optimisation. La formule s'ajuste aux objectifs et à l'urgence.",
+      "cta": "Discuter de votre projet"
     }
   },
   "services": {
