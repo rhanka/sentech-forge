@@ -1,10 +1,7 @@
 import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
 import { Services } from "@/components/Services";
-import { StrategyDetails } from "@/components/StrategyDetails";
-import GovernanceDetails from "@/components/GovernanceDetails";
-import DevelopmentDetails from "@/components/DevelopmentDetails";
-import OptimizationDetails from "@/components/OptimizationDetails";
+import { ServiceDetails } from "@/components/ServiceDetails";
 import { Sectors } from "@/components/Sectors";
 import { Values } from "@/components/Values";
 import { About } from "@/components/About";
@@ -12,12 +9,18 @@ import { EngagementModels } from "@/components/EngagementModels";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { useState } from "react";
+import { useStrategyContent, useGovernanceContent, useDevelopmentContent, useOptimizationContent } from "@/hooks/useContent";
 
 const Index = () => {
   const [isStrategyOpen, setIsStrategyOpen] = useState(false);
   const [isGovernanceOpen, setIsGovernanceOpen] = useState(false);
   const [isDevelopmentOpen, setIsDevelopmentOpen] = useState(false);
   const [isOptimizationOpen, setIsOptimizationOpen] = useState(false);
+
+  const { strategies, loading: strategyLoading } = useStrategyContent();
+  const { governances, loading: governanceLoading } = useGovernanceContent();
+  const { developments, loading: developmentLoading } = useDevelopmentContent();
+  const { optimizations, loading: optimizationLoading } = useOptimizationContent();
 
   return (
     <div className="min-h-screen">
@@ -31,10 +34,34 @@ const Index = () => {
           onOptimizationClick={() => setIsOptimizationOpen(!isOptimizationOpen)}
         />
       </div>
-      <StrategyDetails isOpen={isStrategyOpen} onClose={() => setIsStrategyOpen(false)} />
-      {isGovernanceOpen && <GovernanceDetails onBack={() => setIsGovernanceOpen(false)} />}
-      {isDevelopmentOpen && <DevelopmentDetails onBack={() => setIsDevelopmentOpen(false)} />}
-      {isOptimizationOpen && <OptimizationDetails onBack={() => setIsOptimizationOpen(false)} />}
+      <ServiceDetails 
+        isOpen={isStrategyOpen} 
+        onClose={() => setIsStrategyOpen(false)}
+        serviceType="strategy"
+        items={strategies}
+        loading={strategyLoading}
+      />
+      <ServiceDetails 
+        isOpen={isGovernanceOpen} 
+        onClose={() => setIsGovernanceOpen(false)}
+        serviceType="governance"
+        items={governances}
+        loading={governanceLoading}
+      />
+      <ServiceDetails 
+        isOpen={isDevelopmentOpen} 
+        onClose={() => setIsDevelopmentOpen(false)}
+        serviceType="development"
+        items={developments}
+        loading={developmentLoading}
+      />
+      <ServiceDetails 
+        isOpen={isOptimizationOpen} 
+        onClose={() => setIsOptimizationOpen(false)}
+        serviceType="optimization"
+        items={optimizations}
+        loading={optimizationLoading}
+      />
       <div id="sectors">
         <Sectors />
       </div>
