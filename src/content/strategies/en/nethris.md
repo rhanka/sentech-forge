@@ -5,8 +5,8 @@ order: 7
 published: true
 ---
 
-# AI Strategy - Nethris/Desjardins
+# AI Strategy - Payroll Software
 
 ## Payroll solution • AI agents
 
-AI roadmap for HR payroll management software. Architecture of conversational AI agents and RAG for business process automation.
+AI roadmap for HR payroll management software. Facilitation of ideation across 5 business lines (operations and support, product management, marketing and sales, finance and HR, IT and cyber). AI architecture consulting, and conversational AI agent prototype with RAG for support (>100 advisors).
