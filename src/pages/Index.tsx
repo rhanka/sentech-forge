@@ -22,16 +22,23 @@ const Index = () => {
   const { developments, loading: developmentLoading } = useDevelopmentContent();
   const { optimizations, loading: optimizationLoading } = useOptimizationContent();
 
+  const handleServiceClick = (service: 'strategy' | 'governance' | 'development' | 'optimization') => {
+    setIsStrategyOpen(service === 'strategy' ? !isStrategyOpen : false);
+    setIsGovernanceOpen(service === 'governance' ? !isGovernanceOpen : false);
+    setIsDevelopmentOpen(service === 'development' ? !isDevelopmentOpen : false);
+    setIsOptimizationOpen(service === 'optimization' ? !isOptimizationOpen : false);
+  };
+
   return (
     <div className="min-h-screen">
       <Navigation />
       <Hero />
       <div id="services">
         <Services 
-          onStrategyClick={() => setIsStrategyOpen(!isStrategyOpen)} 
-          onGovernanceClick={() => setIsGovernanceOpen(!isGovernanceOpen)}
-          onDevelopmentClick={() => setIsDevelopmentOpen(!isDevelopmentOpen)}
-          onOptimizationClick={() => setIsOptimizationOpen(!isOptimizationOpen)}
+          onStrategyClick={() => handleServiceClick('strategy')} 
+          onGovernanceClick={() => handleServiceClick('governance')}
+          onDevelopmentClick={() => handleServiceClick('development')}
+          onOptimizationClick={() => handleServiceClick('optimization')}
         />
       </div>
       <ServiceDetails 
