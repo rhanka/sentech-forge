@@ -6,6 +6,7 @@ import dynamicIconImports from 'lucide-react/dynamicIconImports';
 import { lazy, Suspense } from 'react';
 import { LucideProps } from 'lucide-react';
 import { useStrategyContent } from "@/hooks/useContent";
+import { toDynamicIconKey } from "@/lib/iconResolver";
 
 interface IconProps extends Omit<LucideProps, 'ref'> {
   name: keyof typeof dynamicIconImports;
@@ -68,7 +69,7 @@ export const StrategyDetails = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {strategies.map((strategy) => {
-              const iconName = strategy.icon.replace(/([a-z0-9])([A-Z])/g, '$1-$2').replace(/([a-zA-Z])([0-9])/g, '$1-$2').toLowerCase() as keyof typeof dynamicIconImports;
+              const iconName = toDynamicIconKey(strategy.icon);
               
               return (
                 <Card

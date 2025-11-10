@@ -3,6 +3,7 @@ import dynamicIconImports from 'lucide-react/dynamicIconImports';
 import { lazy, Suspense } from 'react';
 import { LucideProps } from 'lucide-react';
 import { useValueContent } from "@/hooks/useContent";
+import { toDynamicIconKey } from "@/lib/iconResolver";
 
 interface IconProps extends Omit<LucideProps, 'ref'> {
   name: keyof typeof dynamicIconImports;
@@ -50,7 +51,7 @@ export const Values = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {values.map((value) => {
-              const iconName = value.icon.replace(/([a-z0-9])([A-Z])/g, '$1-$2').replace(/([a-zA-Z])([0-9])/g, '$1-$2').toLowerCase() as keyof typeof dynamicIconImports;
+              const iconName = toDynamicIconKey(value.icon);
               
               return (
                 <div 

@@ -4,7 +4,7 @@ import { lazy, Suspense } from 'react';
 import { LucideProps } from 'lucide-react';
 import { useAboutContent } from "@/hooks/useMarkdownContent";
 import { Mail } from "lucide-react";
-
+import { toDynamicIconKey } from "@/lib/iconResolver";
 interface IconProps extends Omit<LucideProps, 'ref'> {
   name: keyof typeof dynamicIconImports;
 }
@@ -85,18 +85,16 @@ export const About = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            {statSections.sort((a, b) => a.metadata.order - b.metadata.order).map((stat) => {
+            {statSections.sort((a, b) => (a.metadata.order ?? 0) - (b.metadata.order ?? 0)).map((stat) => {
               const iconName = (stat.metadata.icon
                 ? String(stat.metadata.icon)
-                    .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
-                    .replace(/([a-zA-Z])([0-9])/g, '$1-$2')
-                    .toLowerCase()
-                : 'circle') as keyof typeof dynamicIconImports;
+                : 'circle');
+              const resolvedIconName = toDynamicIconKey(iconName) as keyof typeof dynamicIconImports;
               
               return (
                 <div key={stat.id} className="text-center p-6 bg-card border border-border rounded-lg">
                   <div className="w-14 h-14 rounded-full bg-gradient-accent flex items-center justify-center mx-auto mb-4">
-                    <Icon name={iconName} className="w-7 h-7 text-accent-foreground" />
+                    <Icon name={resolvedIconName} className="w-7 h-7 text-accent-foreground" />
                   </div>
                   <h3 className="text-3xl font-bold text-primary mb-2">{stat.metadata.value}</h3>
                   <p className="text-muted-foreground">{stat.metadata.label}</p>

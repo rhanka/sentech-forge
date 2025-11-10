@@ -52,14 +52,26 @@ function parseFrontmatter(text: string): { metadata: Record<string, any>; conten
  */
 export function parseMultiSectionMarkdown(raw: string): ParsedMarkdownSection[] {
   const sections: ParsedMarkdownSection[] = [];
-  const regex = /(^|\n)---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*?)(?=(\n---\s*\n|$))/g;
+
+  // Find all frontmatter blocks and compute content ranges manually for robustness
+  const fmRegex = /---\s*\n([\s\S]*?)\n---\s*/g;
+  const blocks: { front: string; contentStart: number; blockStart: number }[] = [];
   let match: RegExpExecArray | null;
 
-  while ((match = regex.exec(raw)) !== null) {
-    const front = match[2] || '';
-    const body = match[3] || '';
+  while ((match = fmRegex.exec(raw)) !== null) {
+    blocks.push({
+      front: match[1] || '',
+      contentStart: fmRegex.lastIndex,
+      blockStart: match.index,
+    });
+  }
 
-    const { metadata, content } = parseFrontmatter(`---\n${front}\n---\n${body}`);
+  for (let i = 0; i < blocks.length; i++) {
+    const current = blocks[i];
+    const next = blocks[i + 1];
+    const body = raw.slice(current.contentStart, next ? next.blockStart : raw.length);
+
+    const { metadata, content } = parseFrontmatter(`---\n${current.front}\n---\n${body}`);
 
     sections.push({
       id: (metadata.id as string) || '',
