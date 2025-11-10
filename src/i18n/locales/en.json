@@ -1,4 +1,8 @@
 {
+  "common": {
+    "loading": "Loading...",
+    "backToServices": "Back to Services"
+  },
   "nav": {
     "services": "Services",
     "sectors": "Sectors",
@@ -29,11 +33,67 @@
   "governance": {
     "title": "Governance & Architecture",
     "subtitle": "Enterprise architecture, data governance and management frameworks to structure your transformation",
-    "backToServices": "Back to Services",
-    "mandateFormat": {
-      "title": "Flexible mandate format",
-      "description": "Each engagement adapts to your needs: full-time mandates for implementing complex frameworks and enterprise governance, part-time for continuous architectural consulting, or fixed packages for audits, architecture assessments and standards definition. The format adjusts to complexity and your constraints.",
-      "cta": "Discuss your project"
+    "format": {
+      "title": "Mandate Format",
+      "intro": "Tailored interventions to implement robust frameworks and structure your transformation",
+      "approach": {
+        "title": "Approach",
+        "item1": "Audit and diagnosis of existing systems",
+        "item2": "Standards and frameworks definition",
+        "item3": "Governance implementation",
+        "item4": "Change management support"
+      },
+      "deliverables": {
+        "title": "Deliverables",
+        "item1": "Architecture documentation",
+        "item2": "Governance frameworks",
+        "item3": "Standards and policies",
+        "item4": "Training and coaching"
+      }
+    }
+  },
+  "development": {
+    "title": "Innovative Development",
+    "subtitle": "Full-stack applications, AI and prototypes to bring your vision to life and validate your innovations",
+    "format": {
+      "title": "Mandate Format",
+      "intro": "Custom development to transform your ideas into operational solutions",
+      "approach": {
+        "title": "Approach",
+        "item1": "Design thinking and rapid prototyping",
+        "item2": "Scalable and modern architecture",
+        "item3": "Agile and iterative development",
+        "item4": "DevOps and automation"
+      },
+      "deliverables": {
+        "title": "Deliverables",
+        "item1": "Production-ready full-stack applications",
+        "item2": "Operational AI and ML models",
+        "item3": "Functional POCs and prototypes",
+        "item4": "Complete technical documentation"
+      }
+    }
+  },
+  "optimization": {
+    "title": "Operations Optimization",
+    "subtitle": "Process improvement and automation to maximize operational efficiency",
+    "format": {
+      "title": "Mandate Format",
+      "intro": "Targeted interventions to improve performance, costs and operational efficiency",
+      "approach": {
+        "title": "Approach",
+        "item1": "Process analysis and diagnosis",
+        "item2": "Identification of potential gains",
+        "item3": "Implementation of optimizations",
+        "item4": "Results measurement and KPIs"
+      },
+      "deliverables": {
+        "title": "Deliverables",
+        "item1": "Detailed optimization plans",
+        "item2": "Automations and workflows",
+        "item3": "Dashboards and reporting",
+        "item4": "Documentation of achieved gains"
+      }
     }
   },
   "services": {

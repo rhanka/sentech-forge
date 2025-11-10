@@ -33,9 +33,11 @@ const Icon = ({ name, ...props }: IconProps) => {
 interface ServicesProps {
   onStrategyClick?: () => void;
   onGovernanceClick?: () => void;
+  onDevelopmentClick?: () => void;
+  onOptimizationClick?: () => void;
 }
 
-export const Services = ({ onStrategyClick, onGovernanceClick }: ServicesProps) => {
+export const Services = ({ onStrategyClick, onGovernanceClick, onDevelopmentClick, onOptimizationClick }: ServicesProps) => {
   const { t } = useTranslation();
   const { services, loading } = useServiceContent();
 
@@ -45,6 +47,10 @@ export const Services = ({ onStrategyClick, onGovernanceClick }: ServicesProps) 
         onStrategyClick?.();
       } else if (service.id === 'governance') {
         onGovernanceClick?.();
+      } else if (service.id === 'development') {
+        onDevelopmentClick?.();
+      } else if (service.id === 'optimization') {
+        onOptimizationClick?.();
       }
       
       setTimeout(() => {

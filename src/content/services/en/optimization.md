@@ -2,6 +2,8 @@
 id: optimization
 icon: Cog
 order: 4
+clickable: true
+scrollTo: optimization
 ---
 
 # Operations Optimization
