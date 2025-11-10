@@ -70,3 +70,9 @@ export function useEngagementContent() {
   const { items: engagements, loading } = useDynamicContent<EngagementItem>('engagement');
   return { engagements, loading };
 }
+
+export function useGovernanceContent() {
+  const { items: allGovernances, loading } = useDynamicContent<StrategyItem>('governance');
+  const governances = allGovernances.filter(g => g.published !== false);
+  return { governances, loading };
+}

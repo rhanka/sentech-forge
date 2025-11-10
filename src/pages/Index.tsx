@@ -2,6 +2,7 @@ import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
 import { Services } from "@/components/Services";
 import { StrategyDetails } from "@/components/StrategyDetails";
+import GovernanceDetails from "@/components/GovernanceDetails";
 import { Sectors } from "@/components/Sectors";
 import { Values } from "@/components/Values";
 import { About } from "@/components/About";
@@ -12,15 +13,20 @@ import { useState } from "react";
 
 const Index = () => {
   const [isStrategyOpen, setIsStrategyOpen] = useState(false);
+  const [isGovernanceOpen, setIsGovernanceOpen] = useState(false);
 
   return (
     <div className="min-h-screen">
       <Navigation />
       <Hero />
       <div id="services">
-        <Services onStrategyClick={() => setIsStrategyOpen(!isStrategyOpen)} />
+        <Services 
+          onStrategyClick={() => setIsStrategyOpen(!isStrategyOpen)} 
+          onGovernanceClick={() => setIsGovernanceOpen(!isGovernanceOpen)}
+        />
       </div>
       <StrategyDetails isOpen={isStrategyOpen} onClose={() => setIsStrategyOpen(false)} />
+      <GovernanceDetails isOpen={isGovernanceOpen} />
       <div id="sectors">
         <Sectors />
       </div>

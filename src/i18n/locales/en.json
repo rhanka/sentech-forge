@@ -17,14 +17,24 @@
     "engagementSubtitle": "Flexible engagement models"
   },
   "strategy": {
-    "title": "IT, Data & AI Strategy",
-    "subtitle": "Examples of completed projects in strategy, architecture, and governance",
-    "backToServices": "Back to services",
+    "title": "IT, Data & AI Strategy Experience",
+    "backToServices": "Back to Services",
     "mandateFormat": {
-      "title": "Strategic Mandate Format",
-      "description": "Strategic mandates typically last 6 to 12 weeks, carried out solo, with a partner, or with a multidisciplinary team, for a workload of 0.5 to 2 FTE. They are generally structured in three phases: discover, evaluate, and propose, and are adapted to any level of company maturity. They typically include a benchmark and leverage the best AI technologies according to the client's choice.",
-      "cta": "Request a quote"
-    },
+      "title": "Mandate Format",
+      "description": "These experiences can be delivered as full-time mandates, part-time engagements, or fixed packages depending on your needs and project scope.",
+      "cta": "Discuss your project"
+    }
+  },
+  "governance": {
+    "title": "Governance & Architecture Experience",
+    "backToServices": "Back to Services",
+    "mandateFormat": {
+      "title": "Mandate Format",
+      "description": "These experiences can be delivered as full-time mandates, part-time engagements, or fixed packages depending on your needs and project scope.",
+      "cta": "Discuss your project"
+    }
+  },
+  "services": {
     "justice": {
       "title": "Data & AI Roadmap - Ministry of Justice",
       "subtitle": "Budget €19M • 4 business lines",
