@@ -4,7 +4,7 @@ title: Analytique avancé - Éducation routière
 subtitle: Self BI • Big data
 icon: Shield
 order: 2
-category: Architecture
+category: [Architecture, Innovation]
 published: true
 ---
 

@@ -1,11 +1,11 @@
 ---
 id: nlp-justice
-title: Justice Automated Processing
-subtitle: NLP for decision analysis
+title: Justice NLP Processing
+subtitle: NLP for decision anonymization
 icon: FileText
 order: 5
-category: Innovation
+category: [Architecture, Innovation, Operations]
 published: true
 ---
 
-Creation of a natural language processing platform to analyze and classify judicial decisions, accelerating magistrates' work and improving access to law through generative AI.
+The Court of Cassation wanted to release court decisions after anonymization. Following an Etalab challenge, a FlairNLP/PyTorch model was implemented to detect 19 types of identifying entities, and software was built to accelerate anonymization validation. The DevOps and MLOps system was industrialized on a dual Kubernetes architecture (private and public cloud), with an API exposed to legaltech players and other reusers.

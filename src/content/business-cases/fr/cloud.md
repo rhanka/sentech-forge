@@ -2,7 +2,7 @@
 id: cloud
 icon: Cloud
 order: 9
-category: Strategy
+category: [Strategy, Architecture]
 published: true
 ---
 
