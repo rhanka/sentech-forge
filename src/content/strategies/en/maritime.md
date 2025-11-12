@@ -7,6 +7,6 @@ published: true
 
 # Maritime Data Hub - SODES
 
-## Centralized architecture
+## Distributed architecture
 
-Design of centralized maritime data hub architecture. Multi-source integration strategy and sectoral governance implementation.
+SODES is the St. Lawrence economic development consortium. After benchmarking similar transport initiatives, the goal was to define the operating and technology model to share data around concrete use cases in day-to-day St. Lawrence operations.

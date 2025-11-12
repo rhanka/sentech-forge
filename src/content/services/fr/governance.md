@@ -8,4 +8,4 @@ scrollTo: governance-details
 
 # Gouvernance & Architecture
 
-Architecture d'entreprise, architecture solution, architecture infrastructure, gouvernance des données et frameworks de gestion
+Architecture d'entreprise, architecture solution, architectuer ete gouvernance des données et IA

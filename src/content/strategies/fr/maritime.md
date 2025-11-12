@@ -7,6 +7,6 @@ published: true
 
 # Hub Data Maritime - SODES
 
-## Architecture centralisée
+## Architecture déconcentrée
 
-Conception de l'architecture du hub de données maritimes centralisé. Stratégie d'intégration multi-sources et mise en place de la gouvernance sectorielle.
+SODES est le groupement économique de développement du Saint Laurent. Après une phase de benchmark des initiatives similaires autour du transport, l'enjeux était de définir le modèle opérationnel et technologique pour l'organisation du partage des données autour de finalités concrètes dans les opérations quotidiennes du Saint Laurent.

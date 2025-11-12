@@ -9,4 +9,4 @@ published: true
 
 ## Budget 19M€ • 4 lignes d'affaires
 
-Définition et exécution de la feuille de route stratégique en données et IA. Mise en place de la gouvernance ministérielle avec comités stratégiques et cadre de gouvernance.
+Sous supervision du Premier ministre, le ministère de la Justice a défini sa feuille de route données et IA. Elle a instauré une gouvernance partagée avec les directions métiers et priorisé une trentaine d'initiatives, de l'anonymisation des décisions à l'industrialisation de l'analytics et l'adoption des patterns API pour les justices pénale, civile et pénitentiaire.

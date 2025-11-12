@@ -9,4 +9,4 @@ published: true
 
 ## Mining industry • Digital twin
 
-Strategy and architecture definition for industrial digital twin. AI roadmap for mining operations optimization and industrial data.
+A benchmark of 70 digital twin use cases in aluminum kicked off a sensitization, ideation, and alignment workshop. CRDA and Digital teams focused on prioritizing carbon, electrolysis, and casting processes. The identified catalysts—symbolic twins, data streaming, governance, and quality—will guide Rio Tinto’s phased adoption of digital twins.
