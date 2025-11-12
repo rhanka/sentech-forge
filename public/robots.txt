@@ -1,8 +1,16 @@
+# Robots.txt pour sent-tech.ca
+
+# Sitemap
+Sitemap: https://sent-tech.ca/sitemap.xml
+
+# Permissions pour les robots principaux
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Twitterbot
 Allow: /
@@ -10,5 +18,11 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
+# Permissions générales
 User-agent: *
 Allow: /
+Crawl-delay: 1
+
+# Interdire certains chemins si nécessaire
+# Disallow: /admin/
+# Disallow: /private/
