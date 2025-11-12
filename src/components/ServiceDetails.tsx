@@ -10,7 +10,7 @@ import {
   Collapsible,
   CollapsibleContent,
 } from "@/components/ui/collapsible";
-import { StrategyItem } from "@/hooks/useContent";
+import { useBusinessCases } from "@/hooks/useBusinessCases";
 
 interface IconProps extends Omit<LucideProps, 'ref'> {
   name: keyof typeof dynamicIconImports;
@@ -41,12 +41,12 @@ interface ServiceDetailsProps {
   isOpen?: boolean;
   onClose?: () => void;
   serviceType: 'strategy' | 'governance' | 'development' | 'optimization';
-  items: StrategyItem[];
-  loading: boolean;
+  category: 'Strategy' | 'Architecture' | 'Innovation' | 'Operations';
 }
 
-export const ServiceDetails = ({ isOpen = false, onClose, serviceType, items, loading }: ServiceDetailsProps) => {
+export const ServiceDetails = ({ isOpen = false, onClose, serviceType, category }: ServiceDetailsProps) => {
   const { t } = useTranslation();
+  const { items, loading } = useBusinessCases(category);
 
   const scrollToServices = () => {
     onClose?.();

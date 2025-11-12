@@ -9,7 +9,6 @@ import { EngagementModels } from "@/components/EngagementModels";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { useState } from "react";
-import { useStrategyContent, useGovernanceContent, useDevelopmentContent, useOptimizationContent } from "@/hooks/useContent";
 
 const Index = () => {
   const [isStrategyOpen, setIsStrategyOpen] = useState(false);
@@ -17,10 +16,6 @@ const Index = () => {
   const [isDevelopmentOpen, setIsDevelopmentOpen] = useState(false);
   const [isOptimizationOpen, setIsOptimizationOpen] = useState(false);
 
-  const { strategies, loading: strategyLoading } = useStrategyContent();
-  const { governances, loading: governanceLoading } = useGovernanceContent();
-  const { developments, loading: developmentLoading } = useDevelopmentContent();
-  const { optimizations, loading: optimizationLoading } = useOptimizationContent();
 
   const handleServiceClick = (service: 'strategy' | 'governance' | 'development' | 'optimization') => {
     setIsStrategyOpen(service === 'strategy' ? !isStrategyOpen : false);
@@ -45,29 +40,25 @@ const Index = () => {
         isOpen={isStrategyOpen} 
         onClose={() => setIsStrategyOpen(false)}
         serviceType="strategy"
-        items={strategies}
-        loading={strategyLoading}
+        category="Strategy"
       />
       <ServiceDetails 
         isOpen={isGovernanceOpen} 
         onClose={() => setIsGovernanceOpen(false)}
         serviceType="governance"
-        items={governances}
-        loading={governanceLoading}
+        category="Architecture"
       />
       <ServiceDetails 
         isOpen={isDevelopmentOpen} 
         onClose={() => setIsDevelopmentOpen(false)}
         serviceType="development"
-        items={developments}
-        loading={developmentLoading}
+        category="Innovation"
       />
       <ServiceDetails 
         isOpen={isOptimizationOpen} 
         onClose={() => setIsOptimizationOpen(false)}
         serviceType="optimization"
-        items={optimizations}
-        loading={optimizationLoading}
+        category="Operations"
       />
       <div id="sectors">
         <Sectors />
