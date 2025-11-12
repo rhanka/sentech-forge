@@ -6,6 +6,7 @@ icon: Sparkles
 order: 17
 category: [Innovation, Strategy]
 published: true
+url: [https://top-ai-ideas.sent-tech.ca/, https://github.com/rhanka/top-ai-ideas-fullstack/]
 ---
 
 Creation of a proof-of-concept for AI use case ideation and prioritization assistance. Decision support tool enabling identification, evaluation, and prioritization of artificial intelligence opportunities based on business value, technical feasibility, and strategic impact. Acceleration of AI roadmap definition.

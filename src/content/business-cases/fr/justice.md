@@ -4,6 +4,7 @@ icon: Scale
 order: 1
 category: [Strategy, Architecture, Innovation]
 published: true
+url: [https://www.justice.gouv.fr/sites/default/files/migrations/portail/art_pix/20210917_Feuille_de_route_AMDAC-MJ.pdf]
 ---
 
 # Feuille de route Data & IA - Ministère de la Justice
