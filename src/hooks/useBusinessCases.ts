@@ -11,6 +11,7 @@ export interface BusinessCase {
   order: number;
   category: ('Strategy' | 'Architecture' | 'Innovation' | 'Operations')[];
   published: boolean;
+  url?: string | string[];
 }
 
 export function useBusinessCases(category?: 'Strategy' | 'Architecture' | 'Innovation' | 'Operations') {
