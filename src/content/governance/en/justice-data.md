@@ -7,4 +7,4 @@ order: 1
 published: true
 ---
 
-Implementation of ministerial-level data and AI governance. Creation of strategic committees, governance framework and prioritization processes for 4 business lines.
+Analysis of legacy interfaces and ESB to prepare the API-first transition. Target architecture implementation: integration with api.gouv.fr catalog, PISTE API manager, and Alpha cloud zones. Roadmap, governance, and incentive mechanism to launch ten high-impact data product APIs (court decisions, inmate investigations, offense codifications, criminal records).

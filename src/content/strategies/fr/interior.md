@@ -9,4 +9,4 @@ published: true
 
 ## Gouvernance multi-entités • Lab Data & IA
 
-Mise en place de la gouvernance ministérielle en données et IA couvrant Police aux frontières, Sécurité routière, Immigration, Élections. Création du Lab Data & IA avec encadrement de 10 projets innovants. Métamodèle et catalogue des données.
+Le ministère devait installer la gouvernance des données et l’a structurée en trois chantiers. Recenser 80 cas d’usage data/IA, lancer un lab d’innovation pour livrer 10 initiatives majeures et 20 mineures en trois ans, puis définir le métamodèle du catalogue pour organiser partage et qualité des données. Domaines concernés : Police aux frontières, Sécurité routière, Immigration, Élections.

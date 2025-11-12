@@ -7,6 +7,6 @@ published: true
 
 # IT Separation Strategy Bombardier/Airbus
 
-## CEO-level agreement • 15 FTE
+## CEO-level agreement
 
-IT systems separation scenario following C-Series acquisition. Facilitation of CEO-level agreement and execution management of part of the system with a team of 15 people.
+IT systems separation scenario following the C-Series acquisition. Built the evaluation framework balancing business impact and costs, facilitated the CEO-level agreement, and supported the implementation choices.
