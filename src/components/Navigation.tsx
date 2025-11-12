@@ -46,14 +46,18 @@ export const Navigation = () => {
           {/* Logo */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="text-2xl font-bold"
+            className="flex items-center h-12"
           >
-            <span className={`${isScrolled ? "text-primary" : "text-primary-foreground"}`}>
-              SENT
-            </span>
-            <span className={`${isScrolled ? "text-accent" : "text-accent"}`}>
-              -tech
-            </span>
+            <img 
+              src="/SENT-logo.svg" 
+              alt="SENT-tech" 
+              className="h-8 md:h-10 w-auto transition-all duration-300"
+              style={{
+                filter: isScrolled 
+                  ? "none" 
+                  : "brightness(0) invert(1)"
+              }}
+            />
           </button>
 
           {/* Desktop Navigation */}
