@@ -9,7 +9,7 @@ export interface BusinessCase {
   description: string;
   icon: string;
   order: number;
-  category: 'Strategy' | 'Architecture' | 'Innovation' | 'Operations';
+  category: ('Strategy' | 'Architecture' | 'Innovation' | 'Operations')[];
   published: boolean;
 }
 
@@ -73,7 +73,11 @@ export function useBusinessCases(category?: 'Strategy' | 'Architecture' | 'Innov
         // Filter by category if provided
         let filtered = loadedItems;
         if (category) {
-          filtered = loadedItems.filter(item => item.category === category);
+          filtered = loadedItems.filter(item => 
+            Array.isArray(item.category) 
+              ? item.category.includes(category)
+              : item.category === category
+          );
         }
         
         // Sort by order

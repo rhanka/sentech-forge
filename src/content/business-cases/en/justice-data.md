@@ -4,7 +4,7 @@ title: Data & AI Roadmap - Ministry of Justice
 subtitle: Ministerial governance • 4 business lines
 icon: Scale
 order: 1
-category: Architecture
+category: [Strategy, Architecture]
 published: true
 ---
 

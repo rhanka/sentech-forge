@@ -4,7 +4,7 @@ title: Donnée produit et architecture API - Ministère de la Justice
 subtitle: Gouvernance ministérielle • 4 directions
 icon: Scale
 order: 1
-category: Architecture
+category: [Strategy, Architecture]
 published: true
 ---
 
