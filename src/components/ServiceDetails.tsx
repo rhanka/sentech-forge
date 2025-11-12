@@ -122,20 +122,27 @@ export const ServiceDetails = ({ isOpen = false, onClose, serviceType, category 
                       <p className="text-sm text-foreground/80 mb-3">{item.description}</p>
                       {item.url && (
                         <div className="flex flex-wrap gap-2 mt-4">
-                          {(Array.isArray(item.url) ? item.url : [item.url]).map((link, idx) => (
-                            <a
-                              key={idx}
-                              href={link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-xs text-primary hover:underline inline-flex items-center gap-1"
-                            >
-                              {new URL(link).hostname}
-                              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                              </svg>
-                            </a>
-                          ))}
+                          {(Array.isArray(item.url) ? item.url : [item.url]).map((link, idx) => {
+                            try {
+                              const urlObj = new URL(link);
+                              return (
+                                <a
+                                  key={idx}
+                                  href={link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-xs text-primary hover:underline inline-flex items-center gap-1"
+                                >
+                                  {urlObj.hostname}
+                                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                  </svg>
+                                </a>
+                              );
+                            } catch {
+                              return null;
+                            }
+                          })}
                         </div>
                       )}
                     </Card>
