@@ -28,14 +28,25 @@ function parseFrontmatter(text: string): { metadata: Record<string, any>; conten
       const key = line.substring(0, colonIndex).trim();
       let value: any = line.substring(colonIndex + 1).trim();
       
+      // Parse arrays [item1, item2]
+      if (value.startsWith('[') && value.endsWith(']')) {
+        const arrayContent = value.slice(1, -1);
+        value = arrayContent.split(',').map((item: string) => item.trim());
+      }
       // Remove quotes if present
-      if ((value.startsWith('"') && value.endsWith('"')) || 
+      else if ((value.startsWith('"') && value.endsWith('"')) || 
           (value.startsWith("'") && value.endsWith("'"))) {
         value = value.slice(1, -1);
       }
-      
+      // Convert booleans
+      else if (value === 'true') {
+        value = true;
+      }
+      else if (value === 'false') {
+        value = false;
+      }
       // Convert numbers
-      if (!isNaN(Number(value)) && value !== '') {
+      else if (!isNaN(Number(value)) && value !== '') {
         value = Number(value);
       }
       
