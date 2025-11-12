@@ -4,7 +4,7 @@ title: Offre PaaS Data & IA - Ministère de l'Intérieur
 subtitle: Multi-direction • Self BI • Analytique avancé • IA
 icon: Shield
 order: 2
-category: Architecture
+category: [Architecture, Innovation]
 published: true
 ---
 

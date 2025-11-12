@@ -2,7 +2,7 @@
 id: interior
 icon: Shield
 order: 4
-category: Strategy
+category: [Strategy, Architecture]
 published: true
 ---
 

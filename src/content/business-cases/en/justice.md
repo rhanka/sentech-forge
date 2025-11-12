@@ -2,7 +2,7 @@
 id: justice
 icon: Scale
 order: 1
-category: Strategy
+category: [Strategy, Architecture, Innovation]
 published: true
 ---
 

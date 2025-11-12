@@ -2,7 +2,7 @@
 id: maritime
 icon: Ship
 order: 6
-category: Strategy
+category: [Strategy, Architecture, Innovation]
 published: true
 ---
 

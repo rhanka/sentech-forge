@@ -1,5 +1,5 @@
 ---
-id: rampup
+id: airbus
 icon: Factory
 order: 2
 category: Strategy

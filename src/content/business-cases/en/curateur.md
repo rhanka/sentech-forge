@@ -10,4 +10,4 @@ published: true
 
 ## Fraud detection • MVP
 
-Strategic AI roadmap for fraud detection use case. MVP architecture and AI coaching for internal team.
+The curator sought to evaluate how AI could enhance its mission. A study followed by a PoC demonstrated a feasible 50% efficiency gain while raising problematic case detection from 30% to 85%. The work defined the feature set and safeguarded against bias linked to sensitive data and limited volumes.
