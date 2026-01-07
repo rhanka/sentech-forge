@@ -19,8 +19,7 @@ id: phone
 icon: Phone
 order: 2
 label: Phone
-value: +1 438 334 96 24
-valueSecondary: +33 6 60 73 43 15
+value: contact@sent-tech.ca
 ---
 
 ---
