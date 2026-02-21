@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import dynamicIconImports from "lucide-react/dynamicIconImports";
 import { ArrowUpRight, Calendar, Clock, LucideProps } from "lucide-react";
@@ -49,6 +50,11 @@ const formatDate = (rawDate: string, locale: string) => {
   }).format(parsedDate);
 };
 
+const isDraftPost = (post: { draft?: boolean; tags?: string[] }) => {
+  if (post.draft) return true;
+  return Array.isArray(post.tags) && post.tags.some((tag) => tag.toLowerCase() === "draft");
+};
+
 export const Blog = () => {
   const { t, i18n } = useTranslation();
   const { posts, loading } = useBlogContent();
@@ -78,6 +84,7 @@ export const Blog = () => {
               const postUrl = post.url && post.url !== "#" ? post.url : `/blog/${post.id}`;
               const isExternal = Boolean(postUrl.startsWith("http"));
               const publicationDate = post.date ? formatDate(post.date, i18n.language) : t("blog.soon");
+              const isDraft = isDraftPost(post);
 
               return (
                 <Card key={post.id} className="hover:shadow-large transition-all duration-300 hover:-translate-y-1 border-border">
@@ -96,6 +103,7 @@ export const Blog = () => {
                           {post.readTime}
                         </span>
                       )}
+                      {isDraft && <Badge variant="secondary">{t("blog.draft", "Draft")}</Badge>}
                     </div>
                     <CardTitle className="text-2xl">{post.title}</CardTitle>
                     <CardDescription className="text-base leading-relaxed">{post.description}</CardDescription>

@@ -2,11 +2,13 @@
 id: ai-dev-autonomy
 icon: Workflow
 order: 4
-date: 2026-02-20
+draft: true
+tags: [draft]
+date: 2026-02-21
 readTime: 11 min read
 ---
 
-# AI dev autonomy in the delivery cycle: what actually works
+# AI dev autonomy in the delivery cycle: what actually works (draft)
 
 AI autonomy does not run on a magic prompt: it runs on strict guides, controlled environments, and a disciplined multi-branch workflow.
 

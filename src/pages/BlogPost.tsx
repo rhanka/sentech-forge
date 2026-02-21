@@ -1,5 +1,6 @@
 import { Footer } from "@/components/Footer";
 import { Navigation } from "@/components/Navigation";
+import { Badge } from "@/components/ui/badge";
 import heroImage from "@/assets/hero-tech.jpg";
 import { parseSingleSectionMarkdown } from "@/lib/markdownLoader";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
@@ -12,6 +13,8 @@ interface BlogArticle {
   content: string;
   date?: string;
   readTime?: string;
+  tags?: string[];
+  draft?: boolean;
 }
 
 const parseDate = (rawDate: string) => {
@@ -34,6 +37,11 @@ const formatDate = (rawDate: string, locale: string) => {
     month: "long",
     day: "numeric",
   }).format(parsedDate);
+};
+
+const isDraftArticle = (article: { draft?: boolean; tags?: string[] }) => {
+  if (article.draft) return true;
+  return Array.isArray(article.tags) && article.tags.some((tag) => tag.toLowerCase() === "draft");
 };
 
 const SPECIAL_LINE = /^(##|###)\s|^-\s|^\d+\.\s|^\||^```|^!\[/;
@@ -337,6 +345,8 @@ const BlogPost = () => {
           content: parsed.content,
           date: (parsed.metadata as { date?: string }).date,
           readTime: (parsed.metadata as { readTime?: string }).readTime,
+          tags: (parsed.metadata as { tags?: string[] }).tags,
+          draft: (parsed.metadata as { draft?: boolean }).draft,
         });
       } catch (error) {
         console.error("Error loading blog article:", error);
@@ -404,6 +414,11 @@ const BlogPost = () => {
                         <Clock className="w-4 h-4" />
                         {article.readTime}
                       </span>
+                    )}
+                    {isDraftArticle(article) && (
+                      <Badge variant="secondary" className="bg-primary-foreground/20 text-primary-foreground border border-primary-foreground/35">
+                        {t("blog.draft", "Draft")}
+                      </Badge>
                     )}
                   </div>
                 </>

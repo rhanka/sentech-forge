@@ -41,6 +41,8 @@ export interface BlogPostItem {
   order: number;
   date?: string;
   readTime?: string;
+  tags?: string[];
+  draft?: boolean;
   url?: string;
   title: string;
   description: string;
