@@ -7,6 +7,7 @@
     "services": "Services",
     "sectors": "Secteurs",
     "values": "Valeurs",
+    "blog": "Blog",
     "about": "À Propos",
     "contact": "Contact"
   },
@@ -18,7 +19,18 @@
     "servicesSubtitle": "Découvrir l'offre complète",
     "sectorsSubtitle": "Industries et domaines d'expertise",
     "valuesSubtitle": "Les principes directeurs",
-    "engagementSubtitle": "Formules d'intervention flexibles"
+    "engagementSubtitle": "Formules d'intervention flexibles",
+    "blogSubtitle": "Articles et retours d'expérience"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Analyses, retours d'expérience et points de vue sur la stratégie IT, la data et l'IA.",
+    "empty": "Les premiers articles seront publiés très bientôt.",
+    "soon": "Bientôt",
+    "readArticle": "Lire l'article",
+    "backToBlog": "Retour au blog",
+    "notFoundTitle": "Article introuvable",
+    "notFoundBody": "Cet article n'existe pas ou n'est pas disponible dans cette langue."
   },
   "strategy": {
     "title": "Stratégie IT, Data & IA",

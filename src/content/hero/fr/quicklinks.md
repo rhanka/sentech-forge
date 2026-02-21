@@ -52,3 +52,16 @@ targetId: engagement
 - Mandat Full Time
 - Part Time
 - Forfaits Fixes
+
+---
+id: blog
+icon: Newspaper
+order: 5
+targetId: blog
+---
+
+# Blog
+
+- Articles de fond
+- Retours d'expérience
+- Stratégie IT, Data & IA
