@@ -2,11 +2,13 @@
 id: ai-dev-autonomy
 icon: Workflow
 order: 4
+draft: true
+tags: [draft]
 date: 2026-02-21
 readTime: 11 min de lecture
 ---
 
-# Autonomie IA dans le cycle de dev: ce qui marche vraiment
+# Autonomie IA dans le cycle de dev: ce qui marche vraiment (draft)
 
 L'autonomie IA ne tient pas sur un prompt magique: elle tient sur des guides stricts, un environnement maîtrisé, et un workflow multi-branches discipliné.
 

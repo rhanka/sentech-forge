@@ -2,11 +2,13 @@
 id: coding-assistant-alternatives
 icon: Scale
 order: 3
+draft: true
+tags: [draft]
 date: 2026-02-21
 readTime: 14 min de lecture
 ---
 
-# Tests d'alternatives à Cursor: benchmark terrain
+# Tests d'alternatives à Cursor: benchmark terrain (draft)
 
 Ce benchmark n'est pas académique: il est fait en parallèle d'un vrai delivery, avec la contrainte principale de ne pas casser la vélocité (cf. article 1).
 

@@ -2,11 +2,13 @@
 id: coding-assistant-alternatives
 icon: Scale
 order: 3
+draft: true
+tags: [draft]
 date: 2026-02-21
 readTime: 14 min read
 ---
 
-# Cursor alternatives: a field benchmark
+# Cursor alternatives: a field benchmark (draft)
 
 This benchmark is not academic: it was run while shipping real features, with one hard constraint: keep delivery velocity high (see article 1).
 
