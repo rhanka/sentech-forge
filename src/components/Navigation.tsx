@@ -3,9 +3,12 @@ import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const Navigation = () => {
   const { t } = useTranslation();
+  const location = useLocation();
+  const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -18,17 +21,24 @@ export const Navigation = () => {
   }, []);
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsMobileMenuOpen(false);
+    if (location.pathname === "/") {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+        setIsMobileMenuOpen(false);
+        return;
+      }
     }
+
+    navigate(`/#${id}`);
+    setIsMobileMenuOpen(false);
   };
 
   const navLinks = [
     { label: t("nav.services"), id: "services" },
     { label: t("nav.sectors"), id: "sectors" },
     { label: t("nav.values"), id: "values" },
+    { label: t("nav.blog"), id: "blog" },
     { label: t("nav.about"), id: "about" },
     { label: t("nav.contact"), id: "contact" },
   ];
@@ -45,7 +55,13 @@ export const Navigation = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            onClick={() => {
+              if (location.pathname === "/") {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+                return;
+              }
+              navigate("/");
+            }}
             className="flex items-center h-12"
           >
             <img 

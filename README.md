@@ -1,73 +1,72 @@
-# Welcome to your Lovable project
+# SENT-tech Forge
 
-## Project info
+Site vitrine bilingue (FR/EN) de SENT-tech, construit en SPA React.
+Le site presente les offres de conseil (strategie, gouvernance, innovation, operations), les secteurs couverts, et un blog alimente par des fichiers Markdown dans le repo.
 
-**URL**: https://lovable.dev/projects/d69d9fbc-0c16-4cbb-b7a5-8bf483f03684
+## Stack technique
 
-## How can I edit this code?
+- Vite + React 18 + TypeScript
+- Tailwind CSS + shadcn/ui + Radix UI
+- React Router
+- TanStack React Query
+- react-i18next (langue par defaut: FR, preference sauvegardee en localStorage)
+- ESLint
 
-There are several ways of editing your application.
+## Prerequis
 
-**Use Lovable**
+- Node.js 18+ (LTS recommande)
+- npm
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/d69d9fbc-0c16-4cbb-b7a5-8bf483f03684) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## Demarrage local
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Serveur local Vite: `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Scripts npm
 
-**Use GitHub Codespaces**
+```sh
+npm run dev        # lance le serveur de dev
+npm run build      # build production dans dist/
+npm run build:dev  # build mode developpement
+npm run preview    # previsualise le build localement
+npm run lint       # verifie le code avec ESLint
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Structure du contenu
 
-## What technologies are used for this project?
+Le contenu est principalement gere via Markdown dans `src/content/`:
 
-This project is built with:
+- `src/content/hero/{fr,en}/`
+- `src/content/about/{fr,en}/`
+- `src/content/services/{fr,en}/`
+- `src/content/contact/{fr,en}/`
+- `src/content/blog/{fr,en}/`
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Le blog est charge dynamiquement et expose des pages via la route `/blog/:slug`.
 
-## How can I deploy this project?
+## Build et deploiement
 
-Simply open [Lovable](https://lovable.dev/projects/d69d9fbc-0c16-4cbb-b7a5-8bf483f03684) and click on Share -> Publish.
+Le projet genere un site statique (`dist/`) deployable sur n'importe quel hebergeur statique.
+Le repo contient deja les assets SEO principaux:
 
-## Can I connect a custom domain to my Lovable project?
+- `index.html` (meta, Open Graph, schema.org)
+- `public/robots.txt`
+- `public/sitemap.xml`
 
-Yes, you can!
+Le domaine de reference est `https://sent-tech.ca`.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## SEO
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Checklist et recommandations SEO: `SEO.md`.
+
+## Outil annexe
+
+Script Python disponible pour generer des metriques hebdo de dev et alimenter des donnees du blog:
+
+```sh
+python scripts/generate_weekly_dev_metrics.py
+```

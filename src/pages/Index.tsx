@@ -8,13 +8,31 @@ import { About } from "@/components/About";
 import { EngagementModels } from "@/components/EngagementModels";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
-import { useState } from "react";
+import { Blog } from "@/components/Blog";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const Index = () => {
+  const location = useLocation();
   const [isStrategyOpen, setIsStrategyOpen] = useState(false);
   const [isGovernanceOpen, setIsGovernanceOpen] = useState(false);
   const [isDevelopmentOpen, setIsDevelopmentOpen] = useState(false);
   const [isOptimizationOpen, setIsOptimizationOpen] = useState(false);
+
+  useEffect(() => {
+    if (!location.hash) return;
+    const id = location.hash.replace("#", "");
+
+    const tryScroll = () => {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    };
+
+    const raf = window.requestAnimationFrame(tryScroll);
+    return () => window.cancelAnimationFrame(raf);
+  }, [location.hash]);
 
 
   const handleServiceClick = (service: 'strategy' | 'governance' | 'development' | 'optimization') => {
@@ -65,6 +83,9 @@ const Index = () => {
       </div>
       <div id="values">
         <Values />
+      </div>
+      <div id="blog">
+        <Blog />
       </div>
       <div id="engagement">
         <EngagementModels />

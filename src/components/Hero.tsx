@@ -68,7 +68,7 @@ export const Hero = () => {
             </div>
 
             {/* Quick Navigation Cards */}
-            <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 animate-fade-in" style={{ animationDelay: "0.4s" }}>
+            <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 animate-fade-in" style={{ animationDelay: "0.4s" }}>
               {quicklinks.map((link) => {
                 const rawIcon = link.metadata?.icon as string | undefined;
                 const iconName = (

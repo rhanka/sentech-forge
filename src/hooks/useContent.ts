@@ -35,6 +35,17 @@ export interface EngagementItem {
   description: string;
 }
 
+export interface BlogPostItem {
+  id: string;
+  icon?: string;
+  order: number;
+  date?: string;
+  readTime?: string;
+  url?: string;
+  title: string;
+  description: string;
+}
+
 export function useServiceContent() {
   const { items: services, loading } = useDynamicContent<ServiceItem>('services');
   return { services, loading };
@@ -55,3 +66,7 @@ export function useEngagementContent() {
   return { engagements, loading };
 }
 
+export function useBlogContent() {
+  const { items: posts, loading } = useDynamicContent<BlogPostItem>('blog');
+  return { posts, loading };
+}

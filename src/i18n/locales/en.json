@@ -7,6 +7,7 @@
     "services": "Services",
     "sectors": "Sectors",
     "values": "Values",
+    "blog": "Blog",
     "about": "About",
     "contact": "Contact"
   },
@@ -18,7 +19,18 @@
     "servicesSubtitle": "Discover the complete offering",
     "sectorsSubtitle": "Industries and areas of expertise",
     "valuesSubtitle": "Guiding principles",
-    "engagementSubtitle": "Flexible engagement models"
+    "engagementSubtitle": "Flexible engagement models",
+    "blogSubtitle": "Articles and experience reports"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Insights, field feedback, and perspectives on IT strategy, data, and AI.",
+    "empty": "First articles are coming soon.",
+    "soon": "Soon",
+    "readArticle": "Read article",
+    "backToBlog": "Back to blog",
+    "notFoundTitle": "Article not found",
+    "notFoundBody": "This article does not exist or is not available in this language."
   },
   "strategy": {
     "title": "IT, Data & AI Strategy",

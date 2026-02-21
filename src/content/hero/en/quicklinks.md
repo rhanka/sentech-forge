@@ -52,3 +52,16 @@ targetId: engagement
 - Full Time Mandate
 - Part Time
 - Fixed Packages
+
+---
+id: blog
+icon: Newspaper
+order: 5
+targetId: blog
+---
+
+# Blog
+
+- In-depth articles
+- Field feedback
+- IT, Data & AI strategy
