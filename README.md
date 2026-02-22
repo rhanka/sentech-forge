@@ -1,15 +1,14 @@
 # SENT-tech Forge
 
-Site vitrine bilingue (FR/EN) de SENT-tech, construit en SPA React.
+Site vitrine bilingue (FR/EN) de SENT-tech, construit en SPA Svelte 5.
 Le site presente les offres de conseil (strategie, gouvernance, innovation, operations), les secteurs couverts, et un blog alimente par des fichiers Markdown dans le repo.
 
 ## Stack technique
 
-- Vite + React 18 + TypeScript
-- Tailwind CSS + shadcn/ui + Radix UI
-- React Router
-- TanStack React Query
-- react-i18next (langue par defaut: FR, preference sauvegardee en localStorage)
+- Vite + Svelte 5 + TypeScript
+- Tailwind CSS
+- Routage SPA client-side
+- i18next (langue par defaut: FR, preference sauvegardee en localStorage)
 - ESLint
 
 ## Prerequis
