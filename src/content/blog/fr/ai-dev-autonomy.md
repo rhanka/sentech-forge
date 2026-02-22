@@ -2,8 +2,6 @@
 id: ai-dev-autonomy
 icon: Workflow
 order: 4
-draft: true
-tags: [draft]
 date: 2026-02-21
 readTime: 11 min de lecture
 ---
@@ -125,4 +123,3 @@ Fabien Antoine
 - https://github.com/rhanka/top-ai-ideas-fullstack/blob/main/BRANCH_TEMPLATE.md
 - https://github.com/rhanka/top-ai-ideas-fullstack/blob/main/Makefile
 - [Qui je suis](/blog/who-i-am)
-
