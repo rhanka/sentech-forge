@@ -2,7 +2,7 @@
 id: ai-dev-autonomy
 icon: Workflow
 order: 4
-date: 2026-02-21
+date: 2026-02-22
 readTime: 11 min de lecture
 ---
 
