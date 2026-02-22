@@ -6,7 +6,7 @@ export default [
     ignores: ["dist"],
   },
   {
-    files: ["**/*.{js,svelte}"],
+    files: ["**/*.js"],
     ...js.configs.recommended,
     languageOptions: {
       ecmaVersion: 2020,
