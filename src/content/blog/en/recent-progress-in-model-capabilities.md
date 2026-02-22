@@ -56,13 +56,51 @@ Then Opus 4.6 came out. I tried it and found it really good. But after one hour.
 
 Cursor does not allow using existing subscriptions (Anthropic, ChatGPT Pro, Gemini), and using your own API keys is even worse. So I explored other modes. At this stage, I am on the Codex plugin, mainly to amortize my OpenAI Pro subscription that I also use outside coding, and because the alternatives are not perfect either.
 
+## Subscription math vs token math (1B tokens/month)
+
+To make this concrete, I normalized costs to a simple scenario: **1B total tokens/month**, split **50% input / 50% output**, without caching discounts, batch discounts, or long-context surcharges.
+
+### Single normalized table (subscriptions + API token pricing)
+
+| Type | Offer / model | Pricing unit | Input ($/1M) | Output ($/1M) | Monthly figure in this comparison | Public seat token quota |
+| --- | --- | --- | --- | --- | --- | --- |
+| Subscription | ChatGPT Plus | $/seat/month | - | - | **$20/month** | Not disclosed (limits apply) |
+| Subscription | ChatGPT Pro | $/seat/month | - | - | **$200/month** | Not disclosed ("unlimited" with guardrails) |
+| Subscription | Claude Pro | $/seat/month | - | - | **$20/month** (or about **$17/month** annualized) | Not disclosed (more usage) |
+| Subscription | Claude Max | $/seat/month | - | - | **from $100/month** | Not disclosed (5x or 20x vs Pro) |
+| Subscription | Google AI Plus | $/seat/month | - | - | **$7.99/month** | Not disclosed (More usage tier) |
+| Subscription | Google AI Pro | $/seat/month | - | - | **$19.99/month** | Not disclosed (Higher usage tier) |
+| Subscription | Google AI Ultra | $/seat/month | - | - | **$249.99/month** | Not disclosed (Highest usage tier) |
+| API tokens | GPT 5.3 Codex* | $/1M tokens | $1.75 | $14.00 | **$7,875/month** at 1B tokens (50/50) | N/A (token-metered API) |
+| API tokens | Gemini 3.1 Pro (Preview)** | $/1M tokens | $2.00 | $12.00 | **$7,000/month** at 1B tokens (50/50) | N/A (token-metered API) |
+| API tokens | Claude Opus 4.6** | $/1M tokens | $5.00 | $25.00 | **$15,000/month** at 1B tokens (50/50) | N/A (token-metered API) |
+| API tokens | DeepSeek-R1-0528 (Together AI) | $/1M tokens | $3.00 | $7.00 | **$5,000/month** at 1B tokens (50/50) | N/A (token-metered API) |
+
+\* I could not find a public standalone API tariff labeled `GPT 5.3 Codex` in the scraped pricing tables; this line uses published `gpt-5.2-codex` pricing as a proxy (fallback `gpt-5.2` if needed).
+
+\** For Gemini 3.1 Pro and Claude Opus 4.6, this uses the <=200K prompt pricing tier.
+
+References for "not disclosed" subscription quotas:
+
+- OpenAI plans page: https://chatgpt.com/pricing/
+- Anthropic (plans + usage limits): https://claude.com/pricing and https://support.claude.com/en/articles/9797557-usage-limit-best-practices
+- Google (plans + restrictions + AI credits): https://one.google.com/about/google-ai-plans/ and https://support.google.com/googleone/answer/16105039 and https://support.google.com/googleone/answer/16287445
+
+Community measurement attempts (indicative, non-official):
+
+- ChatGPT limits tracker (community aggregation): https://gpt.bstr.dev/
+- Claude Pro quota burn benchmark (community post): https://www.reddit.com/r/ClaudeAI/comments/1r9npwn/i_benchmarked_claude_pro_quota_burn_then_built_an/
+- Gemini Pro limit counter experiment (community post): https://www.reddit.com/r/GeminiAI/comments/1ra0sb3/stop_guessing_when_youll_run_out_of_thinkingpro/
+
+Even with rough assumptions, the gap is obvious: seat plans are cheap if your usage stays inside product guardrails, while raw API-token economics at 1B/month move into multi-thousand-dollar territory very fast.
+
 ## Bottom line
 
-Cursor was an excellent accelerator. But honestly, the switch was not painful at all. And with my own application, I am not far from being able to build my own plugin. Their model worked, and might work again later, but by then there may be too many alternatives, possibly including my own plugin.
+Cursor was an excellent accelerator. But honestly, the switch was not painful at all. And with my own application, I am not far from being able to build my own plugin. Their model worked, and might work again later, but by then there may be too many alternatives, possibly including my own plugin. For a practical comparison of those alternatives, read [Coding assistant alternatives](/blog/coding-assistant-alternatives).
 
 ## Next article
 
-The next article will compare tested alternatives (Roo Code, Codex VS Code, Opencode, Antigravity, Blackbox) with an explicit framework and real-world tradeoffs.
+The [next article](/blog/coding-assistant-alternatives) will compare tested alternatives (Roo Code, Codex VS Code, Opencode, Antigravity, Blackbox) with an explicit framework and real-world tradeoffs.
 
 ## About the author
 

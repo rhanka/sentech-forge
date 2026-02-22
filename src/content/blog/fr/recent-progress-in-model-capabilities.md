@@ -56,13 +56,51 @@ Et puis sort Opus 4.6. Je l'essaye et je le trouve vraiment bien. Mais là, 1h e
 
 Cursor ne permet pas d'utiliser des abonnementss(Anthropic, ChatGPT pro, Gemini), et utiliser ses propres clés pour les tokens c'est pire. Alors j'ai cherché différents mode. A ce stade je suis sur le plugin Codex, essentiemment par opportunité d'amortir mon abonnement OpenAI pro que j'utilise aussi en dehors du code - et parce que le reste n'est pas non plus parfait
 
+## Abonnement vs tokens: comparaison a 1B tokens/mois
+
+Pour objectiver un peu, je normalise sur un scenario simple: **1B tokens/mois au total**, avec une repartition **50% input / 50% output**, sans remise cache, sans batch, et sans surcout long contexte.
+
+### Tableau unique normalise (abonnements + tarifs API tokens)
+
+| Type | Offre / modele | Unite tarifaire | Input ($/1M) | Output ($/1M) | Montant mensuel dans ce comparatif | Quota tokens forfait (public) |
+| --- | --- | --- | --- | --- | --- | --- |
+| Abonnement | ChatGPT Plus | $/siege/mois | - | - | **$20/mois** | Non communique (limits apply) |
+| Abonnement | ChatGPT Pro | $/siege/mois | - | - | **$200/mois** | Non communique ("unlimited" avec guardrails) |
+| Abonnement | Claude Pro | $/siege/mois | - | - | **$20/mois** (ou environ **$17/mois** annualise) | Non communique (more usage) |
+| Abonnement | Claude Max | $/siege/mois | - | - | **a partir de $100/mois** | Non communique (5x ou 20x vs Pro) |
+| Abonnement | Google AI Plus | $/siege/mois | - | - | **$7.99/mois** | Non communique (palier More) |
+| Abonnement | Google AI Pro | $/siege/mois | - | - | **$19.99/mois** | Non communique (palier Higher) |
+| Abonnement | Google AI Ultra | $/siege/mois | - | - | **$249.99/mois** | Non communique (palier Highest) |
+| API tokens | GPT 5.3 Codex* | $/1M tokens | $1.75 | $14.00 | **$7,875/mois** a 1B tokens (50/50) | N/A (facturation au token) |
+| API tokens | Gemini 3.1 Pro (Preview)** | $/1M tokens | $2.00 | $12.00 | **$7,000/mois** a 1B tokens (50/50) | N/A (facturation au token) |
+| API tokens | Claude Opus 4.6** | $/1M tokens | $5.00 | $25.00 | **$15,000/mois** a 1B tokens (50/50) | N/A (facturation au token) |
+| API tokens | DeepSeek-R1-0528 (Together AI) | $/1M tokens | $3.00 | $7.00 | **$5,000/mois** a 1B tokens (50/50) | N/A (facturation au token) |
+
+\* Je n'ai pas trouve de tarif API public explicite libelle `GPT 5.3 Codex` dans les tables scrapees; cette ligne utilise le tarif public `gpt-5.2-codex` comme proxy (fallback `gpt-5.2` si besoin).
+
+\** Pour Gemini 3.1 Pro et Claude Opus 4.6, j'utilise le palier de prix <=200K tokens en entree.
+
+References utiles pour le "non communique" sur les quotas forfait:
+
+- OpenAI (pricing plans): https://chatgpt.com/pricing/
+- Anthropic (plans + limites): https://claude.com/pricing et https://support.claude.com/en/articles/9797557-usage-limit-best-practices
+- Google (plans + restrictions + AI credits): https://one.google.com/about/google-ai-plans/ et https://support.google.com/googleone/answer/16105039 et https://support.google.com/googleone/answer/16287445
+
+Tentatives de mesure cote communaute (indicatif, non officiel):
+
+- Tracker communautaire des limites ChatGPT: https://gpt.bstr.dev/
+- Benchmark communautaire sur la conso quota Claude Pro: https://www.reddit.com/r/ClaudeAI/comments/1r9npwn/i_benchmarked_claude_pro_quota_burn_then_built_an/
+- Experience communautaire de compteur de limites Gemini Pro: https://www.reddit.com/r/GeminiAI/comments/1ra0sb3/stop_guessing_when_youll_run_out_of_thinkingpro/
+
+Meme avec ces hypotheses simplifiees, l'ecart est net: les abonnements restent tres competitifs tant que l'usage rentre dans les garde-fous produit, alors que l'economie full token API passe tres vite a plusieurs milliers de dollars par mois.
+
 ## Bilan
 
 Cursor a été un excellent accélérateur. Mais a vrai dire le switch n'a pas été pénible du tout. Et avec mon application, je ne suis pas loin de pouvoir me dévevelopper mon propre plugin - leur modèle fonctionnait et refonctionnera peut être un peu plus tard, même si d'ici là, il y aura trop d'alternatives, peut être même mon plugin.
 
 ## Prochain article
 
-Le prochain article comparera les alternatives testées (Roo Code, Codex VS Code, Opencode, Antigravity, Blackbox) avec une grille explicite et les compromis réels observés sur le terrain.
+Le [prochain article](/blog/coding-assistant-alternatives) compare les alternatives testées (Roo Code, Codex VS Code, Opencode, Antigravity, Blackbox) avec une grille explicite et les compromis réels observés sur le terrain.
 
 ## À propos de l'auteur
 
