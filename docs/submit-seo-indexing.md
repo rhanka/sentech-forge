@@ -1,4 +1,4 @@
-# Soumission et contrôle SEO (GSC / Bing)
+# Soumission et contrôle SEO
 
 Objectif: finaliser l’étape 7 après la correction technique.
 
@@ -24,14 +24,6 @@ Objectif: finaliser l’étape 7 après la correction technique.
   - `https://www.sent-tech.ca/en/blog/ai-dev-autonomy/`
   - `https://www.sent-tech.ca/?lang=en` (attendu : redirect côté client vers `/en/...` si applicable)
 
-## 2) Bing Webmaster Tools
-
-- Propriété: `https://www.sent-tech.ca`
-- Aller dans **Sitemaps** et soumettre:
-  - `https://www.sent-tech.ca/sitemap.xml`
-- Vérifier **Index Explorer / Diagnostics**
-- Demander un nouveau crawl si nécessaire.
-
 ## 3) Contrôles périodiques (hebdo)
 
 - Rejouer les 4 vérifications rapides après publication:
@@ -41,7 +33,7 @@ Objectif: finaliser l’étape 7 après la correction technique.
   - `curl -I https://www.sent-tech.ca/blog/ai-dev-autonomy/`
   - `curl -I https://www.sent-tech.ca/en/blog/ai-dev-autonomy/`
   - `curl -I https://sent-tech.ca/blog/ai-dev-autonomy/?utm=1`
-- Vérifier les nouvelles anomalies dans **Coverage** (GSC) / **Diagnostics** (Bing)
+- Vérifier les nouvelles anomalies dans **Coverage** (GSC)
 
 ## 4) Execution en une commande locale
 
@@ -106,7 +98,7 @@ Ajouter les secrets GitHub suivants pour activer l’envoi:
 
 Si une des valeurs manque, l’envoi est skipé proprement et le rapport reste disponible dans les artifacts du workflow.
 
-## 7) Contrôle indexation (GSC / Bing) automatisable hebdomadaire
+## 7) Contrôle indexation (GSC) automatisable hebdomadaire
 
 - Exécuter: `npm run seo:indexing`
 - Sorties:
@@ -118,10 +110,4 @@ Secrets GitHub requis pour GSC:
 - `GSC_SERVICE_ACCOUNT_KEY` ou `GSC_SERVICE_ACCOUNT_JSON`
 - `GSC_SITE_URL` (optionnel, par défaut `https://www.sent-tech.ca/`)
 
-Secrets optionnels pour Bing (si un endpoint Bing propre est disponible):
-- `BING_REPORT_URL`
-- `BING_REPORT_API_KEY`
-- `BING_REPORT_HEADER_NAME`
-- `BING_REPORT_HEADER_VALUE`
-
-Si Bing n’est pas configuré, le rapport indique `Bing: skipped` et le job continue.
+Un futur contrôle Bing sera ajouté plus tard.
