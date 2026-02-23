@@ -56,8 +56,8 @@
 - [x] Ajouter un contrôle local automatisé via `npm run seo:verify`
 - [x] Ajouter une vérification SEO post-déploiement dans la CI GitHub Pages
 - [x] Ajouter une vérification SEO hebdomadaire avec envoi de rapport vers admin@sent-tech.ca
-- [ ] Soumettre sitemap dans Google Search Console + Bing Webmaster Tools
-- [ ] Contrôler les rapports d’indexation (soft 404, pages avec redirection, duplicates)
+- [ ] Soumettre sitemap dans Google Search Console (Bing Webmaster Tools: plus tard)
+- [ ] Contrôler les rapports d’indexation GSC (soft 404, pages avec redirection, duplicates)
 
 ## Definition of Done
 - [ ] 100% des pages SEO critiques sont servies en 200 sur URL canonique
