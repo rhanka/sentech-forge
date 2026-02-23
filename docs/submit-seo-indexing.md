@@ -110,4 +110,8 @@ Secrets GitHub requis pour GSC:
 - `GSC_SERVICE_ACCOUNT_KEY` ou `GSC_SERVICE_ACCOUNT_JSON`
 - `GSC_SITE_URL` (optionnel, par défaut `https://www.sent-tech.ca/`)
 
+Formats selon le type de propriété GSC:
+- Propriété `Préfixe d’URL` : `https://www.sent-tech.ca/`
+- Propriété `Domaine` : `sc-domain:sent-tech.ca`
+
 Un futur contrôle Bing sera ajouté plus tard.
