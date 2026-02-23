@@ -1,0 +1,77 @@
+# Soumission et contrôle SEO (GSC / Bing)
+
+Objectif: finaliser l’étape 7 après la correction technique.
+
+## 1) Google Search Console
+
+- Ouvrir la propriété de site pour:
+  - `https://www.sent-tech.ca`
+  - (optionnel: la version `https://sent-tech.ca` peut être gardée en complément pendant la migration DNS)
+- Aller dans **Sitemaps**
+  - Ajouter: `sitemap.xml`
+  - Cliquer sur **Submit**
+- Ouvrir **Coverage**
+  - Vérifier les états: `Valid` pour les pages critiques
+  - Noter les erreurs:
+    - `Soft 404`
+    - `Redirect error`
+    - `Duplicate, submitted URL not selected as canonical`
+- Ouvrir **Inspect any URL** pour contrôle final (sans tout lister):
+  - `https://www.sent-tech.ca/`
+  - `https://www.sent-tech.ca/blog/`
+  - `https://www.sent-tech.ca/en/blog/`
+  - `https://www.sent-tech.ca/blog/ai-dev-autonomy/`
+  - `https://www.sent-tech.ca/en/blog/ai-dev-autonomy/`
+  - `https://www.sent-tech.ca/?lang=en` (attendu : redirect côté client vers `/en/...` si applicable)
+
+## 2) Bing Webmaster Tools
+
+- Propriété: `https://www.sent-tech.ca`
+- Aller dans **Sitemaps** et soumettre:
+  - `https://www.sent-tech.ca/sitemap.xml`
+- Vérifier **Index Explorer / Diagnostics**
+- Demander un nouveau crawl si nécessaire.
+
+## 3) Contrôles périodiques (hebdo)
+
+- Rejouer les 4 vérifications rapides après publication:
+  - `curl -I https://www.sent-tech.ca/`
+  - `curl -I https://www.sent-tech.ca/blog/`
+  - `curl -I https://www.sent-tech.ca/en/blog/`
+  - `curl -I https://www.sent-tech.ca/blog/ai-dev-autonomy/`
+  - `curl -I https://www.sent-tech.ca/en/blog/ai-dev-autonomy/`
+  - `curl -I https://sent-tech.ca/blog/ai-dev-autonomy/?utm=1`
+- Vérifier les nouvelles anomalies dans **Coverage** (GSC) / **Diagnostics** (Bing)
+
+## 4) Contrôle technique recommandé pour les 404 canoniques
+
+1. Extraire la liste actuelle du sitemap.
+2. Vérifier que les URLs canoniques répondent en 200.
+3. Vérifier qu’aucune URL sitemap ne contient de version sans slash final.
+4. Vérifier qu’une variante non-canonique basique renvoie bien en 301:
+   - `/blog` -> `/blog/`
+   - `/en/blog` -> `/en/blog/`
+   - `https://sent-tech.ca/...` -> `https://www.sent-tech.ca/...`
+
+Commandes utiles:
+
+```bash
+python - <<'PY'
+import re
+from urllib.request import urlopen
+
+xml = urlopen('https://www.sent-tech.ca/sitemap.xml').read().decode('utf-8')
+paths = re.findall(r'<loc>(.*?)</loc>', xml)
+print('\n'.join(paths))
+print(f"Total: {len(paths)}")
+PY
+
+for url in $(python - <<'PY'
+import re,sys
+from urllib.request import urlopen
+xml=urlopen('https://www.sent-tech.ca/sitemap.xml').read().decode('utf-8')
+for v in re.findall(r'<loc>(.*?)</loc>', xml):
+    print(v)
+PY
+); do echo "==> $url"; curl -I -s "$url" | head -n 4; done
+```

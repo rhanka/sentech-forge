@@ -50,7 +50,7 @@
 - [x] Exclure les URLs non canoniques du sitemap
 
 ## Etape 7 - Validation finale
-- [ ] Verifier status codes: canonical en 200, non-canonique en 301
+- [x] Verifier status codes: canonical en 200, non-canonique en 301
 - [x] Verifier absence de 404 sur les routes SEO critiques
 - [x] Verifier canonical/hreflang/sitemap coherents entre eux
 - [ ] Soumettre sitemap dans Google Search Console + Bing Webmaster Tools
