@@ -1,7 +1,7 @@
 # Robots.txt pour sent-tech.ca
 
 # Sitemap
-Sitemap: https://sent-tech.ca/sitemap.xml
+Sitemap: https://www.sent-tech.ca/sitemap.xml
 
 # Permissions pour les robots principaux
 User-agent: Googlebot
