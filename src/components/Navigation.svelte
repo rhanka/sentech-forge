@@ -66,7 +66,7 @@
     <div class="flex items-center justify-between h-20">
       <button type="button" on:click={handleLogoClick} class="flex items-center h-12">
         <img
-          src="/SENT-logo.svg"
+          src="/SENT-logo.png"
           alt="SENT-tech"
           class="h-8 md:h-10 w-auto transition-all duration-300"
           style={`filter: ${isScrolled ? 'none' : 'brightness(0) invert(1)'}`}
