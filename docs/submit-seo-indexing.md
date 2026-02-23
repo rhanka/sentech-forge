@@ -82,7 +82,7 @@ import re,sys
 from urllib.request import urlopen
 xml=urlopen('https://www.sent-tech.ca/sitemap.xml').read().decode('utf-8')
 for v in re.findall(r'<loc>(.*?)</loc>', xml):
-     print(v)
+    print(v)
 PY
 ); do echo "==> $url"; curl -I -s "$url" | head -n 4; done
 ```
