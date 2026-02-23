@@ -7,6 +7,7 @@
   import { language, t } from '@/i18n/config';
   import { loadBlogArticle, type BlogArticle, type Locale } from '@/lib/content';
   import { renderMarkdown } from '@/lib/markdownRenderer';
+  import { applySeo, createArticleSummary } from '@/lib/seo';
 
   export let slug: string | null = null;
 
@@ -20,6 +21,32 @@
   $: if (loadKey !== loadedKey) {
     loadedKey = loadKey;
     void load(currentLanguage, slug || undefined);
+  }
+
+  $: if (slug && !loading && article) {
+    const routePath = currentLanguage === 'en' ? `/en/blog/${slug}` : `/blog/${slug}`;
+    const description = createArticleSummary(article.content);
+    applySeo({
+      path: routePath,
+      locale: currentLanguage,
+      title: `SENT-tech | ${article.title}`,
+      description,
+      type: 'article',
+      noIndex: false,
+    });
+  } else if (slug && !loading && !article) {
+    const routePath = currentLanguage === 'en' ? `/en/blog/${slug}` : `/blog/${slug}`;
+    applySeo({
+      path: routePath,
+      locale: currentLanguage,
+      title: 'SENT-tech | Article not found',
+      description:
+        currentLanguage === 'en'
+          ? 'This article does not exist or is not available in this language.'
+          : "Cet article n'existe pas ou n'est pas disponible dans cette langue.",
+      type: 'article',
+      noIndex: true,
+    });
   }
 
   $: renderedContent = article ? renderMarkdown(article.content) : '';
