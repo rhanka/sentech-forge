@@ -55,7 +55,7 @@
 - [x] Verifier canonical/hreflang/sitemap coherents entre eux
 - [x] Ajouter un contrôle local automatisé via `npm run seo:verify`
 - [x] Ajouter une vérification SEO post-déploiement dans la CI GitHub Pages
-- [ ] Ajouter une vérification SEO hebdomadaire avec envoi de rapport vers admin@sent-tech.ca
+- [x] Ajouter une vérification SEO hebdomadaire avec envoi de rapport vers admin@sent-tech.ca
 - [ ] Soumettre sitemap dans Google Search Console + Bing Webmaster Tools
 - [ ] Contrôler les rapports d’indexation (soft 404, pages avec redirection, duplicates)
 
