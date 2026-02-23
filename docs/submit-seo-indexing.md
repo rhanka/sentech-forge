@@ -82,7 +82,26 @@ import re,sys
 from urllib.request import urlopen
 xml=urlopen('https://www.sent-tech.ca/sitemap.xml').read().decode('utf-8')
 for v in re.findall(r'<loc>(.*?)</loc>', xml):
-    print(v)
+     print(v)
 PY
 ); do echo "==> $url"; curl -I -s "$url" | head -n 4; done
 ```
+
+## 6) Contrôles automatisés dans le CI
+
+- `npm run seo:verify` tourne automatiquement dans GitHub Actions:
+  - après déploiement `main` (post-deploiement)
+  - chaque semaine (cron)
+- Le contrôle post-deploiement ajoute une attente de propagation avant exécution.
+- Le contrôle hebdo génère un rapport et tente d’envoyer un email vers `admin@sent-tech.ca`.
+
+### Réglage du mail hebdo
+
+Ajouter les secrets GitHub suivants pour activer l’envoi:
+- `SEO_SMTP_HOST`
+- `SEO_SMTP_PORT`
+- `SEO_SMTP_USER`
+- `SEO_SMTP_PASS`
+- `SEO_SMTP_FROM`
+
+Si une des valeurs manque, l’envoi est skipé proprement et le rapport reste disponible dans les artifacts du workflow.

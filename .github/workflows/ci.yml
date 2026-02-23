@@ -8,6 +8,8 @@ on:
     branches:
       - main
   workflow_dispatch:
+  schedule:
+    - cron: '0 6 * * 1'
 
 permissions:
   contents: read
@@ -65,3 +67,105 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
+  seo-verify-postdeploy:
+    name: SEO verify post deploy
+    needs: deploy
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Wait for production availability
+        run: |
+          echo "Waiting for https://www.sent-tech.ca/ to respond 200..."
+          for attempt in $(seq 1 18); do
+            status=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 https://www.sent-tech.ca/ || true)
+            if [ "$status" = "200" ]; then
+              echo "Production is reachable (HTTP 200)."
+              exit 0
+            fi
+            echo "Attempt $attempt/18: status=$status"
+            sleep 20
+          done
+
+          echo "Production was not reachable in time."
+          exit 1
+
+      - name: Run SEO verification
+        run: |
+          mkdir -p .artifacts
+          npm run seo:verify 2>&1 | tee .artifacts/seo-verify-postdeploy.txt
+
+      - name: Upload SEO verification report
+        uses: actions/upload-artifact@v4
+        with:
+          name: seo-verify-postdeploy
+          path: .artifacts/seo-verify-postdeploy.txt
+
+  seo-verify-weekly:
+    name: SEO verify weekly
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run SEO verification
+        run: |
+          mkdir -p .artifacts
+          npm run seo:verify 2>&1 | tee .artifacts/seo-verify-weekly.txt
+
+      - name: Upload SEO verification report
+        uses: actions/upload-artifact@v4
+        with:
+          name: seo-verify-weekly
+          path: .artifacts/seo-verify-weekly.txt
+
+      - name: Check SMTP settings
+        id: smtp
+        run: |
+          if [ -n "${{ secrets.SEO_SMTP_HOST }}" ] && [ -n "${{ secrets.SEO_SMTP_PORT }}" ] && [ -n "${{ secrets.SEO_SMTP_USER }}" ] && [ -n "${{ secrets.SEO_SMTP_PASS }}" ] && [ -n "${{ secrets.SEO_SMTP_FROM }}" ]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Send SEO weekly report by email
+        if: steps.smtp.outputs.configured == 'true'
+        uses: dawidd6/action-send-mail@v6
+        with:
+          server_address: ${{ secrets.SEO_SMTP_HOST }}
+          server_port: ${{ secrets.SEO_SMTP_PORT }}
+          username: ${{ secrets.SEO_SMTP_USER }}
+          password: ${{ secrets.SEO_SMTP_PASS }}
+          to: admin@sent-tech.ca
+          from: ${{ secrets.SEO_SMTP_FROM }}
+          secure: true
+          subject: '[SEO] Weekly verification report - sent-tech.ca'
+          body: |
+            Rapport SEO hebdomadaire.
+
+            Workflow: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            Fichier: .artifacts/seo-verify-weekly.txt
+            
+            En cas d'alertes, voir les lignes 'FAIL'.
+          attachments: .artifacts/seo-verify-weekly.txt
+
+      - name: No SMTP configuration
+        if: steps.smtp.outputs.configured != 'true'
+        run: |
+          echo "SMTP credentials are not configured. Email report is skipped."
+          echo "Set SEO_SMTP_HOST, SEO_SMTP_PORT, SEO_SMTP_USER, SEO_SMTP_PASS, SEO_SMTP_FROM in repository secrets."
