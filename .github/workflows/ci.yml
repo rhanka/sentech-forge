@@ -103,11 +103,29 @@ jobs:
           mkdir -p .artifacts
           npm run seo:verify 2>&1 | tee .artifacts/seo-verify-postdeploy.txt
 
+      - name: Run SEO indexing audit (GSC / Bing)
+        env:
+          GSC_SERVICE_ACCOUNT_KEY: ${{ secrets.GSC_SERVICE_ACCOUNT_KEY }}
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+          GSC_SITE_URL: https://www.sent-tech.ca/
+          BING_REPORT_URL: ${{ secrets.BING_REPORT_URL }}
+          BING_REPORT_API_KEY: ${{ secrets.BING_REPORT_API_KEY }}
+          BING_REPORT_HEADER_NAME: ${{ secrets.BING_REPORT_HEADER_NAME }}
+          BING_REPORT_HEADER_VALUE: ${{ secrets.BING_REPORT_HEADER_VALUE }}
+        run: |
+          npm run seo:indexing 2>&1 | tee .artifacts/seo-indexing-audit-postdeploy.txt
+
       - name: Upload SEO verification report
         uses: actions/upload-artifact@v4
         with:
           name: seo-verify-postdeploy
           path: .artifacts/seo-verify-postdeploy.txt
+
+      - name: Upload SEO indexing audit report
+        uses: actions/upload-artifact@v4
+        with:
+          name: seo-indexing-audit-postdeploy
+          path: .artifacts/seo-indexing-audit-postdeploy.txt
 
   seo-verify-weekly:
     name: SEO verify weekly
@@ -128,11 +146,29 @@ jobs:
           mkdir -p .artifacts
           npm run seo:verify 2>&1 | tee .artifacts/seo-verify-weekly.txt
 
+      - name: Run SEO indexing audit (GSC / Bing)
+        env:
+          GSC_SERVICE_ACCOUNT_KEY: ${{ secrets.GSC_SERVICE_ACCOUNT_KEY }}
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+          GSC_SITE_URL: https://www.sent-tech.ca/
+          BING_REPORT_URL: ${{ secrets.BING_REPORT_URL }}
+          BING_REPORT_API_KEY: ${{ secrets.BING_REPORT_API_KEY }}
+          BING_REPORT_HEADER_NAME: ${{ secrets.BING_REPORT_HEADER_NAME }}
+          BING_REPORT_HEADER_VALUE: ${{ secrets.BING_REPORT_HEADER_VALUE }}
+        run: |
+          npm run seo:indexing 2>&1 | tee .artifacts/seo-indexing-audit-weekly.txt
+
       - name: Upload SEO verification report
         uses: actions/upload-artifact@v4
         with:
           name: seo-verify-weekly
           path: .artifacts/seo-verify-weekly.txt
+
+      - name: Upload SEO indexing audit report
+        uses: actions/upload-artifact@v4
+        with:
+          name: seo-indexing-audit-weekly
+          path: .artifacts/seo-indexing-audit-weekly.txt
 
       - name: Check SMTP settings
         id: smtp
@@ -162,7 +198,7 @@ jobs:
             Fichier: .artifacts/seo-verify-weekly.txt
             
             En cas d'alertes, voir les lignes 'FAIL'.
-          attachments: .artifacts/seo-verify-weekly.txt
+          attachments: .artifacts/seo-verify-weekly.txt,.artifacts/seo-indexing-audit-weekly.txt
 
       - name: No SMTP configuration
         if: steps.smtp.outputs.configured != 'true'

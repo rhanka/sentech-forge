@@ -105,3 +105,23 @@ Ajouter les secrets GitHub suivants pour activer l’envoi:
 - `SEO_SMTP_FROM`
 
 Si une des valeurs manque, l’envoi est skipé proprement et le rapport reste disponible dans les artifacts du workflow.
+
+## 7) Contrôle indexation (GSC / Bing) automatisable hebdomadaire
+
+- Exécuter: `npm run seo:indexing`
+- Sorties:
+  - `.artifacts/seo-indexing-audit.txt`
+  - `.artifacts/seo-indexing-audit.json`
+- Le check charge `sitemap.xml` depuis le site public, puis lance un audit GSC via service account si configuré.
+
+Secrets GitHub requis pour GSC:
+- `GSC_SERVICE_ACCOUNT_KEY` ou `GSC_SERVICE_ACCOUNT_JSON`
+- `GSC_SITE_URL` (optionnel, par défaut `https://www.sent-tech.ca/`)
+
+Secrets optionnels pour Bing (si un endpoint Bing propre est disponible):
+- `BING_REPORT_URL`
+- `BING_REPORT_API_KEY`
+- `BING_REPORT_HEADER_NAME`
+- `BING_REPORT_HEADER_VALUE`
+
+Si Bing n’est pas configuré, le rapport indique `Bing: skipped` et le job continue.
