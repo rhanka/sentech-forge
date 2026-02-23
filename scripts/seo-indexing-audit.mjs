@@ -147,7 +147,7 @@ async function getGoogleAccessToken() {
 async function submitGscSitemap(token) {
   const endpoint = `https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent(GSC_PROPERTY_URL)}/sitemaps/${encodeURIComponent(SITEMAP_URL)}`;
   const response = await fetchJson(endpoint, {
-    method: 'POST',
+    method: 'PUT',
     headers: {
       Authorization: `Bearer ${token}`,
     },
