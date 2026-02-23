@@ -35,23 +35,35 @@ function ensureLeadingSlash(value: string): string {
   return value;
 }
 
+function ensureTrailingSlash(path: string): string {
+  if (!path || path === '/') {
+    return '/';
+  }
+
+  const normalized = ensureLeadingSlash(path).replace(/\/+$/g, '');
+  return `${normalized}/`;
+}
+
 function toAbsoluteUrl(path: string): string {
-  return `${SITE_ORIGIN}${ensureLeadingSlash(path).replace(/\/+$/g, '')}` +
-    (path === '/' || path === '/en/' ? '/' : '');
+  return `${SITE_ORIGIN}${ensureTrailingSlash(path)}`;
 }
 
 function toCanonicalPath(path: string, locale: AppLanguage): string {
   const normalized = ensureLeadingSlash(path).replace(/\/+$/g, '');
 
   if (locale === 'en' && !normalized.startsWith('/en')) {
-    return normalized === '/' ? '/en/' : `/en${normalized}`;
+    if (normalized === '' || normalized === '/') {
+      return '/en/';
+    }
+
+    return ensureTrailingSlash(`/en${normalized}`);
   }
 
   if (locale === 'fr' && (normalized === '/en' || normalized.startsWith('/en/'))) {
-    return normalized.replace(/^\/en(?=\/|$)/, '') || '/';
+    return ensureTrailingSlash(normalized.replace(/^\/en(?=\/|$)/, '') || '/');
   }
 
-  return normalized || '/';
+  return ensureTrailingSlash(normalized || '/');
 }
 
 export function getCanonicalUrl(path: string, locale: AppLanguage): string {
@@ -59,7 +71,7 @@ export function getCanonicalUrl(path: string, locale: AppLanguage): string {
 }
 
 export function getLocaleAlternateUrls(path: string, locale: AppLanguage): Record<string, string> {
-  const canonicalPath = ensureLeadingSlash(path).replace(/\/+$/g, '');
+  const canonicalPath = ensureTrailingSlash(ensureLeadingSlash(path));
   const frenchPath = locale === 'fr' ? canonicalPath : canonicalPath.replace(/^\/en(?=\/|$)/, '');
 
   const englishPath =
@@ -67,7 +79,7 @@ export function getLocaleAlternateUrls(path: string, locale: AppLanguage): Recor
       ? canonicalPath
       : canonicalPath === '/'
         ? '/en/'
-        : `/en${canonicalPath}`;
+        : ensureTrailingSlash(`/en${canonicalPath}`);
 
   const canonicalizedFrenchPath = frenchPath === '' ? '/' : frenchPath;
   const canonicalizedEnglishPath = englishPath === '' ? '/en/' : englishPath;

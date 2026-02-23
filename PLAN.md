@@ -9,24 +9,27 @@
 - [x] Valider le domaine canonique: `https://www.sent-tech.ca`
 - [x] Valider la convention langue: `/` = FR, `/en/` = EN
 - [x] Valider la convention blog: `/blog/:slug` (FR) et `/en/blog/:slug` (EN)
-- [ ] Valider la normalisation trailing slash (avec ou sans slash final)
+- [x] Valider la normalisation trailing slash (avec slash final canonical)
 
 ## Etape 1 - Redirections domaine (infra)
-- [ ] Configurer une redirection 301 `https://sent-tech.ca/*` -> `https://www.sent-tech.ca/$1`
-- [ ] Conserver le path et la query string sur la redirection
+- [x] Configurer une redirection 301 `https://sent-tech.ca/*` -> `https://www.sent-tech.ca/$1`
+- [x] Conserver le path et la query string sur la redirection
 - [x] Ajouter une redirection JS de secours vers `www` dans `index.html`
-- [ ] Verifier les redirections via `curl -I` sur `/`, `/blog/...`, `/?lang=en`
+- [x] La redirection 301 réelle est opérationnelle via Cloudflare (path/query préservés)
+- [x] Verifier les redirections via `curl -I` sur `/`, `/blog/...`, `/?lang=en`
+
+   - Référence opérationnelle: `docs/cf-www-redirect.md`
 
 ## Etape 2 - Base URL et deep links
 - [x] Corriger la config Vite pour des assets resolus correctement sur routes profondes
-- [ ] Verifier que les assets chargent sur `/blog/...`
-- [ ] Confirmer qu’aucun asset n’est resolu en chemin relatif cassant
+- [x] Verifier que les assets chargent sur `/blog/...`
+- [x] Confirmer qu’aucun asset n’est resolu en chemin relatif cassant
 
 ## Etape 3 - Rendre les URLs blog indexables en HTTP 200
 - [x] Supprimer la dependance SEO au fallback 404 SPA pour les pages blog
 - [x] Générer des pages statiques accessibles en 200 pour chaque slug FR/EN
-- [ ] Verifier `curl -I https://www.sent-tech.ca/blog/<slug>` = 200
-- [ ] Verifier `curl -I https://www.sent-tech.ca/en/blog/<slug>` = 200
+- [x] Verifier `curl -I https://www.sent-tech.ca/blog/<slug>/` = 200
+- [x] Verifier `curl -I https://www.sent-tech.ca/en/blog/<slug>/` = 200
 
 ## Etape 4 - Strategie langue URL-based
 - [x] Implémenter la langue par chemin (`/` et `/en/`) plutôt que par localStorage uniquement
@@ -44,12 +47,12 @@
 - [x] Générer automatiquement un sitemap avec toutes les URLs canoniques FR/EN
 - [x] Renseigner `lastmod` de manière fiable (date article ou date de build)
 - [x] Mettre `robots.txt` avec `Sitemap: https://www.sent-tech.ca/sitemap.xml`
-- [ ] Exclure les URLs non canoniques du sitemap
+- [x] Exclure les URLs non canoniques du sitemap
 
 ## Etape 7 - Validation finale
 - [ ] Verifier status codes: canonical en 200, non-canonique en 301
-- [ ] Verifier absence de 404 sur les routes SEO critiques
-- [ ] Verifier canonical/hreflang/sitemap coherents entre eux
+- [x] Verifier absence de 404 sur les routes SEO critiques
+- [x] Verifier canonical/hreflang/sitemap coherents entre eux
 - [ ] Soumettre sitemap dans Google Search Console + Bing Webmaster Tools
 - [ ] Contrôler les rapports d’indexation (soft 404, pages avec redirection, duplicates)
 

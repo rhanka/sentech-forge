@@ -105,8 +105,8 @@ async function collectEntries() {
   const entries = [
     { path: '/', lastmod: fallbackBuildDate, changefreq: 'weekly', priority: '1.0' },
     { path: '/en/', lastmod: fallbackBuildDate, changefreq: 'weekly', priority: '1.0' },
-    { path: '/blog', lastmod: fallbackBuildDate, changefreq: 'monthly', priority: '0.9' },
-    { path: '/en/blog', lastmod: fallbackBuildDate, changefreq: 'monthly', priority: '0.9' },
+    { path: '/blog/', lastmod: fallbackBuildDate, changefreq: 'monthly', priority: '0.9' },
+    { path: '/en/blog/', lastmod: fallbackBuildDate, changefreq: 'monthly', priority: '0.9' },
   ];
 
   for (const item of sourceLocalePaths) {
@@ -121,7 +121,7 @@ async function collectEntries() {
       const raw = await fs.readFile(filePath, 'utf8');
       const { metadata } = parseFrontmatter(raw);
 
-      const route = `${item.routePrefix}/${slug}`;
+      const route = `${item.routePrefix}/${slug}/`;
       entries.push({
         path: route,
         lastmod: getDateValue(metadata.date),
