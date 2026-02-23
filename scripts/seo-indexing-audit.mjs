@@ -5,6 +5,7 @@ import { createSign } from 'node:crypto';
 const SEO_BASE_URL = (process.env.SEO_BASE_URL || 'https://www.sent-tech.ca').replace(/\/$/, '');
 const SITEMAP_URL = `${SEO_BASE_URL}/sitemap.xml`;
 const GSC_PROPERTY_URL = (process.env.GSC_SITE_URL || `${SEO_BASE_URL}/`).trim();
+const GSC_SCOPE = (process.env.GSC_SCOPE || 'https://www.googleapis.com/auth/webmasters https://www.googleapis.com/auth/webmasters.readonly').trim();
 const REPORT_DIR = '.artifacts';
 const REPORT_FILE_TXT = path.join(REPORT_DIR, 'seo-indexing-audit.txt');
 const REPORT_FILE_JSON = path.join(REPORT_DIR, 'seo-indexing-audit.json');
@@ -110,7 +111,7 @@ async function getGoogleAccessToken() {
   const issuedAt = Math.floor(Date.now() / 1000);
   const payload = {
     iss: account.client_email,
-    scope: 'https://www.googleapis.com/auth/webmasters.readonly',
+    scope: GSC_SCOPE,
     aud: 'https://oauth2.googleapis.com/token',
     iat: issuedAt,
     exp: issuedAt + 3600,
@@ -141,6 +142,33 @@ async function getGoogleAccessToken() {
   }
 
   return response.data.access_token;
+}
+
+async function submitGscSitemap(token) {
+  const endpoint = `https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent(GSC_PROPERTY_URL)}/sitemaps/${encodeURIComponent(SITEMAP_URL)}`;
+  const response = await fetchJson(endpoint, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }, 3);
+
+  if (!response.ok && response.status !== 409) {
+    const message = response.data?.error?.message || response.text || `HTTP ${response.status}`;
+    return {
+      result: 'FAIL',
+      ok: false,
+      statusCode: response.status,
+      reason: `SITEMAP_SUBMIT_ERROR:${message}`,
+    };
+  }
+
+  return {
+    result: 'PASS',
+    ok: true,
+    statusCode: response.status,
+    reason: response.status === 409 ? 'SITEMAP_ALREADY_SUBMITTED' : 'SITEMAP_SUBMIT_OK',
+  };
 }
 
 async function inspectGscUrl(token, url) {
@@ -232,6 +260,9 @@ async function runGscAudit() {
 
   const urls = await readSitemapUrls();
   const items = [];
+  const sitemapSubmission = await submitGscSitemap(token);
+
+  console.log(`${sitemapSubmission.result} - GSC sitemap submit ${SITEMAP_URL}`);
 
   for (const url of urls) {
     const result = await inspectGscUrl(token, url);
@@ -246,6 +277,7 @@ async function runGscAudit() {
   const warnings = items.filter((item) => item.status === 'WARN');
   return {
     skipped: false,
+    sitemapSubmission,
     items,
     failures,
     warnings,
@@ -301,6 +333,11 @@ async function writeReports(payload) {
     plain.push(`GSC: skipped (${payload.gsc.message})`);
   } else if (payload.gsc) {
     plain.push(`GSC: ${payload.gsc.items.length} URLs checked`);
+    if (payload.gsc.sitemapSubmission) {
+      plain.push(
+        `GSC sitemap submit: ${payload.gsc.sitemapSubmission.result} (${payload.gsc.sitemapSubmission.reason})`
+      );
+    }
     if (payload.gsc.failures && payload.gsc.failures.length) {
       plain.push(`GSC: ${payload.gsc.failures.length} FAIL (blocking)`);
     }
@@ -337,6 +374,10 @@ async function main() {
   let failed = 0;
 
   if (!gsc.skipped && gsc.failures && gsc.failures.length) {
+    failed += 1;
+  }
+
+  if (!gsc.skipped && gsc.sitemapSubmission && gsc.sitemapSubmission.ok === false) {
     failed += 1;
   }
 

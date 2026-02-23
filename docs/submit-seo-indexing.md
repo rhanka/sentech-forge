@@ -104,7 +104,7 @@ Si une des valeurs manque, l’envoi est skipé proprement et le rapport reste d
 - Sorties:
   - `.artifacts/seo-indexing-audit.txt`
   - `.artifacts/seo-indexing-audit.json`
-- Le check charge `sitemap.xml` depuis le site public, puis lance un audit GSC via service account si configuré.
+- Le check charge `sitemap.xml` depuis le site public, soumet ce sitemap à GSC (`https://www.sent-tech.ca/sitemap.xml`) puis lance un audit GSC via service account si configuré.
 - États GSC:
   - `FAIL` : erreur bloquante (ex. indexStatus != PASS et != UNKNOWN, robots bloqué, mismatch canonique)
   - `WARN` : état `indexStatus:UNKNOWN`, signalé mais ne bloque plus la CI pour permettre la montée en indexation.
