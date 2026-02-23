@@ -162,7 +162,20 @@ async function inspectGscUrl(token, url) {
 
   if (!response.ok) {
     const message = response.data?.error?.message || `HTTP ${response.status}`;
-    return { url, ok: false, reason: `gsc_error:${message}`, raw: response.data };
+    return {
+      url,
+      status: 'FAIL',
+      ok: false,
+      indexStatus: 'UNKNOWN',
+      coverageState: 'UNKNOWN',
+      robotsTxtState: 'UNKNOWN',
+      userCanonical: '',
+      googleCanonical: '',
+      warnings: [],
+      issues: [`gsc_error:${message}`],
+      reason: `gsc_error:${message}`,
+      raw: response.data,
+    };
   }
 
   const result = response.data?.inspectionResult?.indexStatusResult || {};
@@ -174,7 +187,12 @@ async function inspectGscUrl(token, url) {
   const googleCanonical = result.googleCanonical || '';
 
   const issues = [];
-  if (indexStatus !== 'PASS') {
+  const warnings = [];
+  if (indexStatus === 'PASS') {
+    // no issue
+  } else if (indexStatus === 'UNKNOWN') {
+    warnings.push(`indexStatus:${indexStatus}`);
+  } else {
     issues.push(`indexStatus:${indexStatus}`);
   }
 
@@ -186,6 +204,8 @@ async function inspectGscUrl(token, url) {
     issues.push(`canonical_mismatch user=${userCanonical} google=${googleCanonical}`);
   }
 
+  const status = issues.length > 0 ? 'FAIL' : warnings.length > 0 ? 'WARN' : 'PASS';
+
   return {
     url,
     indexStatus,
@@ -193,8 +213,10 @@ async function inspectGscUrl(token, url) {
     robotsTxtState,
     userCanonical,
     googleCanonical,
-    issues,
-    ok: issues.length === 0,
+    status,
+    ok: status === 'PASS',
+    warnings,
+    issues: [...issues, ...warnings],
   };
 }
 
@@ -214,17 +236,19 @@ async function runGscAudit() {
   for (const url of urls) {
     const result = await inspectGscUrl(token, url);
     items.push(result);
-    const status = result.ok ? 'PASS' : 'FAIL';
+    const status = result.status;
     const issues = result.issues && result.issues.length ? ` | ${result.issues.join(' | ')}` : '';
     console.log(`${status} - GSC ${url} [index=${result.indexStatus || 'n/a'} coverage=${result.coverageState || 'n/a'}]${issues}`);
     await new Promise((resolve) => setTimeout(resolve, 250));
   }
 
-  const failures = items.filter((item) => item.ok === false);
+  const failures = items.filter((item) => item.status === 'FAIL');
+  const warnings = items.filter((item) => item.status === 'WARN');
   return {
     skipped: false,
     items,
     failures,
+    warnings,
   };
 }
 
@@ -277,8 +301,14 @@ async function writeReports(payload) {
     plain.push(`GSC: skipped (${payload.gsc.message})`);
   } else if (payload.gsc) {
     plain.push(`GSC: ${payload.gsc.items.length} URLs checked`);
+    if (payload.gsc.failures && payload.gsc.failures.length) {
+      plain.push(`GSC: ${payload.gsc.failures.length} FAIL (blocking)`);
+    }
+    if (payload.gsc.warnings && payload.gsc.warnings.length) {
+      plain.push(`GSC: ${payload.gsc.warnings.length} WARN (non-blocking)`);
+    }
     for (const item of payload.gsc.items) {
-      const status = item.ok ? 'PASS' : 'FAIL';
+      const status = item.status;
       const issues = item.issues && item.issues.length ? ` | ${item.issues.join(' | ')}` : '';
       plain.push(`${status} ${item.url} [index=${item.indexStatus}, coverage=${item.coverageState}]${issues}`);
     }

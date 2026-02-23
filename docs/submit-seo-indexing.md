@@ -105,6 +105,9 @@ Si une des valeurs manque, l’envoi est skipé proprement et le rapport reste d
   - `.artifacts/seo-indexing-audit.txt`
   - `.artifacts/seo-indexing-audit.json`
 - Le check charge `sitemap.xml` depuis le site public, puis lance un audit GSC via service account si configuré.
+- États GSC:
+  - `FAIL` : erreur bloquante (ex. indexStatus != PASS et != UNKNOWN, robots bloqué, mismatch canonique)
+  - `WARN` : état `indexStatus:UNKNOWN`, signalé mais ne bloque plus la CI pour permettre la montée en indexation.
 
 Secrets GitHub requis pour GSC:
 - `GSC_SERVICE_ACCOUNT_KEY` ou `GSC_SERVICE_ACCOUNT_JSON`
