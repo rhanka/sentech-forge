@@ -43,7 +43,18 @@ Objectif: finaliser l’étape 7 après la correction technique.
   - `curl -I https://sent-tech.ca/blog/ai-dev-autonomy/?utm=1`
 - Vérifier les nouvelles anomalies dans **Coverage** (GSC) / **Diagnostics** (Bing)
 
-## 4) Contrôle technique recommandé pour les 404 canoniques
+## 4) Execution en une commande locale
+
+- `npm run seo:verify`
+
+Le script `scripts/seo-verify.mjs` vérifie:
+- `200` pour les routes canoniques
+- `301` pour les redirections non-canoniques (avec conservation du path + query)
+- cohérence du `sitemap.xml` (200 + `hreflang` FR/EN + `x-default`)
+
+Conserver la sortie du rapport et la comparer a chaque livraison.
+
+## 5) Contrôle technique recommandé pour les 404 canoniques
 
 1. Extraire la liste actuelle du sitemap.
 2. Vérifier que les URLs canoniques répondent en 200.

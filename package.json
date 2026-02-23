@@ -8,7 +8,8 @@
     "build": "vite build && node scripts/generate-route-shells.mjs && node scripts/generate-sitemap.mjs",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "seo:verify": "node scripts/seo-verify.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",

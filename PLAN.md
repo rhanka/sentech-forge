@@ -1,9 +1,9 @@
 # PLAN - P0 Strategy SEO (GitHub Pages)
 
 ## Objectif
-- [ ] Avoir une URL canonique unique par page et par langue
-- [ ] Supprimer les 404 SEO sur les routes strategiques (notamment blog)
-- [ ] Aligner redirections, canonical, hreflang, sitemap
+- [x] Avoir une URL canonique unique par page et par langue
+- [x] Supprimer les 404 SEO sur les routes strategiques (notamment blog)
+- [x] Aligner redirections, canonical, hreflang, sitemap
 
 ## Decisions d’architecture
 - [x] Valider le domaine canonique: `https://www.sent-tech.ca`
@@ -53,6 +53,7 @@
 - [x] Verifier status codes: canonical en 200, non-canonique en 301
 - [x] Verifier absence de 404 sur les routes SEO critiques
 - [x] Verifier canonical/hreflang/sitemap coherents entre eux
+- [x] Ajouter un contrôle local automatisé via `npm run seo:verify`
 - [ ] Soumettre sitemap dans Google Search Console + Bing Webmaster Tools
 - [ ] Contrôler les rapports d’indexation (soft 404, pages avec redirection, duplicates)
 
