@@ -11,7 +11,7 @@ const sourceLocalePaths = [
 ];
 
 function toRoutePath(slug) {
-  return `/blog/${slug}`;
+  return `/blog/${slug}/`;
 }
 
 function normalizeRoute(route) {
@@ -44,7 +44,7 @@ async function writeRouteShell(route, templateContent) {
 async function main() {
   const template = await fs.readFile(templatePath, 'utf8');
 
-  const routes = new Set(['/','/blog','/en/blog']);
+  const routes = new Set(['/','/blog/','/en/blog/']);
   routes.add('/en/');
 
   for (const { dir, locale } of sourceLocalePaths) {

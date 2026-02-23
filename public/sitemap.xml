@@ -11,58 +11,58 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sent-tech.ca/" />
   </url>
   <url>
-    <loc>https://www.sent-tech.ca/blog</loc>
+    <loc>https://www.sent-tech.ca/blog/</loc>
     <lastmod>2026-02-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.sent-tech.ca/blog" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.sent-tech.ca/en/blog" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sent-tech.ca/blog" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.sent-tech.ca/blog/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sent-tech.ca/en/blog/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sent-tech.ca/blog/" />
   </url>
   <url>
-    <loc>https://www.sent-tech.ca/blog/ai-assisted-software-engineering</loc>
+    <loc>https://www.sent-tech.ca/blog/ai-assisted-software-engineering/</loc>
     <lastmod>2026-02-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.sent-tech.ca/blog/ai-assisted-software-engineering" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.sent-tech.ca/en/blog/ai-assisted-software-engineering" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sent-tech.ca/blog/ai-assisted-software-engineering" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.sent-tech.ca/blog/ai-assisted-software-engineering/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sent-tech.ca/en/blog/ai-assisted-software-engineering/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sent-tech.ca/blog/ai-assisted-software-engineering/" />
   </url>
   <url>
-    <loc>https://www.sent-tech.ca/blog/ai-dev-autonomy</loc>
+    <loc>https://www.sent-tech.ca/blog/ai-dev-autonomy/</loc>
     <lastmod>2026-02-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.sent-tech.ca/blog/ai-dev-autonomy" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.sent-tech.ca/en/blog/ai-dev-autonomy" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sent-tech.ca/blog/ai-dev-autonomy" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.sent-tech.ca/blog/ai-dev-autonomy/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sent-tech.ca/en/blog/ai-dev-autonomy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sent-tech.ca/blog/ai-dev-autonomy/" />
   </url>
   <url>
-    <loc>https://www.sent-tech.ca/blog/coding-assistant-alternatives</loc>
+    <loc>https://www.sent-tech.ca/blog/coding-assistant-alternatives/</loc>
     <lastmod>2026-02-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.sent-tech.ca/blog/coding-assistant-alternatives" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.sent-tech.ca/en/blog/coding-assistant-alternatives" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sent-tech.ca/blog/coding-assistant-alternatives" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.sent-tech.ca/blog/coding-assistant-alternatives/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sent-tech.ca/en/blog/coding-assistant-alternatives/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sent-tech.ca/blog/coding-assistant-alternatives/" />
   </url>
   <url>
-    <loc>https://www.sent-tech.ca/blog/recent-progress-in-model-capabilities</loc>
+    <loc>https://www.sent-tech.ca/blog/recent-progress-in-model-capabilities/</loc>
     <lastmod>2026-02-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.sent-tech.ca/blog/recent-progress-in-model-capabilities" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.sent-tech.ca/en/blog/recent-progress-in-model-capabilities" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sent-tech.ca/blog/recent-progress-in-model-capabilities" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.sent-tech.ca/blog/recent-progress-in-model-capabilities/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sent-tech.ca/en/blog/recent-progress-in-model-capabilities/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sent-tech.ca/blog/recent-progress-in-model-capabilities/" />
   </url>
   <url>
-    <loc>https://www.sent-tech.ca/blog/who-i-am</loc>
+    <loc>https://www.sent-tech.ca/blog/who-i-am/</loc>
     <lastmod>2026-02-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.sent-tech.ca/blog/who-i-am" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.sent-tech.ca/en/blog/who-i-am" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sent-tech.ca/blog/who-i-am" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.sent-tech.ca/blog/who-i-am/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sent-tech.ca/en/blog/who-i-am/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sent-tech.ca/blog/who-i-am/" />
   </url>
   <url>
     <loc>https://www.sent-tech.ca/en/</loc>
@@ -74,57 +74,57 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sent-tech.ca/" />
   </url>
   <url>
-    <loc>https://www.sent-tech.ca/en/blog</loc>
+    <loc>https://www.sent-tech.ca/en/blog/</loc>
     <lastmod>2026-02-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.sent-tech.ca/blog" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.sent-tech.ca/en/blog" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sent-tech.ca/blog" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.sent-tech.ca/blog/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sent-tech.ca/en/blog/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sent-tech.ca/blog/" />
   </url>
   <url>
-    <loc>https://www.sent-tech.ca/en/blog/ai-assisted-software-engineering</loc>
+    <loc>https://www.sent-tech.ca/en/blog/ai-assisted-software-engineering/</loc>
     <lastmod>2026-02-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.sent-tech.ca/blog/ai-assisted-software-engineering" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.sent-tech.ca/en/blog/ai-assisted-software-engineering" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sent-tech.ca/blog/ai-assisted-software-engineering" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.sent-tech.ca/blog/ai-assisted-software-engineering/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sent-tech.ca/en/blog/ai-assisted-software-engineering/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sent-tech.ca/blog/ai-assisted-software-engineering/" />
   </url>
   <url>
-    <loc>https://www.sent-tech.ca/en/blog/ai-dev-autonomy</loc>
+    <loc>https://www.sent-tech.ca/en/blog/ai-dev-autonomy/</loc>
     <lastmod>2026-02-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.sent-tech.ca/blog/ai-dev-autonomy" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.sent-tech.ca/en/blog/ai-dev-autonomy" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sent-tech.ca/blog/ai-dev-autonomy" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.sent-tech.ca/blog/ai-dev-autonomy/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sent-tech.ca/en/blog/ai-dev-autonomy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sent-tech.ca/blog/ai-dev-autonomy/" />
   </url>
   <url>
-    <loc>https://www.sent-tech.ca/en/blog/coding-assistant-alternatives</loc>
+    <loc>https://www.sent-tech.ca/en/blog/coding-assistant-alternatives/</loc>
     <lastmod>2026-02-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.sent-tech.ca/blog/coding-assistant-alternatives" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.sent-tech.ca/en/blog/coding-assistant-alternatives" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sent-tech.ca/blog/coding-assistant-alternatives" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.sent-tech.ca/blog/coding-assistant-alternatives/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sent-tech.ca/en/blog/coding-assistant-alternatives/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sent-tech.ca/blog/coding-assistant-alternatives/" />
   </url>
   <url>
-    <loc>https://www.sent-tech.ca/en/blog/recent-progress-in-model-capabilities</loc>
+    <loc>https://www.sent-tech.ca/en/blog/recent-progress-in-model-capabilities/</loc>
     <lastmod>2026-02-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.sent-tech.ca/blog/recent-progress-in-model-capabilities" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.sent-tech.ca/en/blog/recent-progress-in-model-capabilities" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sent-tech.ca/blog/recent-progress-in-model-capabilities" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.sent-tech.ca/blog/recent-progress-in-model-capabilities/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sent-tech.ca/en/blog/recent-progress-in-model-capabilities/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sent-tech.ca/blog/recent-progress-in-model-capabilities/" />
   </url>
   <url>
-    <loc>https://www.sent-tech.ca/en/blog/who-i-am</loc>
+    <loc>https://www.sent-tech.ca/en/blog/who-i-am/</loc>
     <lastmod>2026-02-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.sent-tech.ca/blog/who-i-am" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.sent-tech.ca/en/blog/who-i-am" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sent-tech.ca/blog/who-i-am" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.sent-tech.ca/blog/who-i-am/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.sent-tech.ca/en/blog/who-i-am/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sent-tech.ca/blog/who-i-am/" />
   </url>
 </urlset>

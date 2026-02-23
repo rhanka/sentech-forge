@@ -56,7 +56,7 @@ Le repo contient deja les assets SEO principaux:
 - `public/robots.txt`
 - `public/sitemap.xml`
 
-Le domaine de reference est `https://sent-tech.ca`.
+Le domaine de référence canonique est `https://www.sent-tech.ca`.
 
 ## SEO
 
