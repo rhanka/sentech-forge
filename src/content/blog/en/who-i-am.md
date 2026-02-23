@@ -6,7 +6,7 @@ date: 2026-02-21
 readTime: 4 min read
 ---
 
-# Who I am
+# My journey
 
 I am not a "developer" in the narrow sense. I am first an engineer, and my path started in AI.
 
@@ -21,9 +21,11 @@ My anchor remains software engineering and technology consulting. My conviction 
 Fabien Antoine
 
 References:
-- [Sirocco](https://www.afcp-parole.org/doc/Archives_JEP/2002_XXIVe_JEP_Nancy/JEP2002/papiers/131.pdf)
-- [Transcriber](https://trans.sourceforge.net/)
-- [Histovec](https://histovec.interieur.gouv.fr/histovec/home) - [GitHub](https://github.com/histovec/histovec-beta)
-- [matchID](https://deces.matchid.io/) - [GitHub](https://github.com/matchID-project)
-- [Judilibre](https://www.courdecassation.fr/acces-rapide-judilibre) - [GitHub](https://github.com/Cour-de-cassation/judilibre-search)
-- [Top-ai-ideas](https://top-ai-ideas.sent-tech.ca) (ongoing experimentation project) - [GitHub](https://github.com/rhanka/top-ai-ideas-fullstack)
+- [2002 - Sirocco](https://www.afcp-parole.org/doc/Archives_JEP/2002_XXIVe_JEP_Nancy/JEP2002/papiers/131.pdf)
+- [2008 - Transcriber](https://trans.sourceforge.net/)
+- [2018 - Histovec](https://histovec.interieur.gouv.fr/histovec/home) - [GitHub](https://github.com/histovec/histovec-beta)
+- [2020 - matchID](https://deces.matchid.io/) - [GitHub](https://github.com/matchID-project)
+- [2021 - Judilibre](https://www.courdecassation.fr/acces-rapide-judilibre) - [GitHub](https://github.com/Cour-de-cassation/judilibre-search) - [Acteurs Publics video](https://acteurspublics.fr/webtv/emissions/journees-acteurs-publics-solutions/anne-florence-canton-avec-lopen-data-nous-sommes-dans-une-volonte-de-transparence-de-la-justice/)
+- [2024 - SMEs & AI - Radio-Canada](https://ici.radio-canada.ca/nouvelle/2155337/intelligence-artificielle-entreprises-conferences-saguenay)
+- [2025 - Top-ai-ideas](https://top-ai-ideas.sent-tech.ca) (ongoing experimentation project) - [GitHub](https://github.com/rhanka/top-ai-ideas-fullstack)
+- [2026 - Why everyone is rushing (Podcast - IA pas que la data)](https://www.youtube.com/watch?v=zLescESJamw)
