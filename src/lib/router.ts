@@ -32,7 +32,7 @@ if (typeof window !== 'undefined') {
 export function navigate(to: string, replace = false) {
   if (typeof window === 'undefined') return;
 
-  const url = new URL(to, window.location.origin);
+  const url = new URL(to, window.location.href);
   const target = `${url.pathname}${url.search}${url.hash}`;
 
   if (replace) {

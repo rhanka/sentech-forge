@@ -2,6 +2,7 @@
   import { onDestroy } from 'svelte';
   import Icon from '@/components/Icon.svelte';
   import { language, t } from '@/i18n/config';
+  import { navigate } from '@/lib/router';
   import { loadBusinessCases, type BusinessCase, type Locale } from '@/lib/content';
 
   export let isOpen = false;
@@ -56,10 +57,7 @@
 
   function scrollToServices() {
     onClose?.();
-    setTimeout(() => {
-      const servicesSection = document.getElementById('services');
-      servicesSection?.scrollIntoView({ behavior: 'smooth' });
-    }, 100);
+    navigate('#services');
   }
 
   function scrollToContact() {

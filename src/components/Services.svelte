@@ -1,6 +1,7 @@
 <script lang="ts">
   import Icon from '@/components/Icon.svelte';
   import { language, t } from '@/i18n/config';
+  import { navigate } from '@/lib/router';
   import { loadServiceContent, type Locale, type ServiceItem } from '@/lib/content';
 
   export let onStrategyClick: (() => void) | undefined = undefined;
@@ -43,10 +44,8 @@
         onOptimizationClick?.();
       }
 
-      window.setTimeout(() => {
-        const section = document.getElementById(service.scrollTo as string);
-        section?.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
+      const hash = service.scrollTo.startsWith('#') ? service.scrollTo : `#${service.scrollTo}`;
+      navigate(hash);
     }
   }
 </script>

@@ -17,6 +17,7 @@
 
   $: currentLanguage = ($language === 'en' ? 'en' : 'fr') as Locale;
   $: loadKey = `${currentLanguage}:${slug ?? ''}`;
+  $: blogHomePath = currentLanguage === 'en' ? '/en/#blog' : '/#blog';
 
   $: if (loadKey !== loadedKey) {
     loadedKey = loadKey;
@@ -105,7 +106,7 @@
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-4xl mx-auto text-primary-foreground">
           <Link
-            href="/#blog"
+            href={blogHomePath}
             className="inline-flex items-center gap-2 text-primary-foreground/85 hover:text-primary-foreground transition-colors mb-8"
           >
             <Icon name="arrow-left" className="w-4 h-4" />
