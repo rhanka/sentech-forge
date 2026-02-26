@@ -19,10 +19,32 @@
   let isOptimizationOpen = false;
   let rafId: number | undefined;
 
+  const serviceDetailHashes: Record<string, 'strategy' | 'governance' | 'development' | 'optimization'> = {
+    'strategy-details': 'strategy',
+    'governance-details': 'governance',
+    'development-details': 'development',
+    'optimization-details': 'optimization',
+    development: 'development',
+  };
+
   $: hash = $location.hash;
 
   $: if (hash) {
     const id = hash.replace('#', '');
+    
+    const serviceKey = serviceDetailHashes[id];
+    if (serviceKey) {
+      isStrategyOpen = serviceKey === 'strategy';
+      isGovernanceOpen = serviceKey === 'governance';
+      isDevelopmentOpen = serviceKey === 'development';
+      isOptimizationOpen = serviceKey === 'optimization';
+    } else {
+      isStrategyOpen = false;
+      isGovernanceOpen = false;
+      isDevelopmentOpen = false;
+      isOptimizationOpen = false;
+    }
+
     cancelAnimationFrame(rafId);
     rafId = requestAnimationFrame(() => {
       const element = document.getElementById(id);

@@ -3,12 +3,16 @@
   import Icon from '@/components/Icon.svelte';
   import { language } from '@/i18n/config';
   import { loadHeroContent, type Locale } from '@/lib/content';
+  import { location, navigate } from '@/lib/router';
   import type { MarkdownContent, ParsedMarkdownSection } from '@/lib/markdownLoader';
 
   let main: MarkdownContent | null = null;
   let quicklinks: ParsedMarkdownSection[] = [];
   let loading = true;
   let loadedLanguage: Locale | null = null;
+
+  $: currentPathname = $location.pathname || '/';
+  $: currentSearch = $location.search || '';
 
   $: currentLanguage = ($language === 'en' ? 'en' : 'fr') as Locale;
 
@@ -33,8 +37,7 @@
   }
 
   function scrollToSection(targetId: string) {
-    const section = document.getElementById(targetId);
-    section?.scrollIntoView({ behavior: 'smooth' });
+    navigate(`${currentPathname}${currentSearch}#${targetId}`);
   }
 
   function getIconName(rawIcon: string | undefined): string {

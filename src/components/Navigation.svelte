@@ -33,27 +33,26 @@
     };
   });
 
-  function scrollToSection(id: string) {
-    if (currentPathname === '/') {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-        isMobileMenuOpen = false;
-        return;
-      }
-    }
+  function isEnglishRoute(pathname: string): boolean {
+    return pathname === '/en' || pathname.startsWith('/en/');
+  }
 
-    navigate(`/#${id}`);
+  function getHomePath(pathname: string): string {
+    return isEnglishRoute(pathname) ? '/en/' : '/';
+  }
+
+  function scrollToSection(id: string) {
+    navigate(`${getHomePath(currentPathname)}#${id}`);
     isMobileMenuOpen = false;
   }
 
   function handleLogoClick() {
-    if (currentPathname === '/') {
+    if (currentPathname === '/' || currentPathname === '/en' || currentPathname === '/en/') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
 
-    navigate('/');
+    navigate(getHomePath(currentPathname));
   }
 </script>
 
