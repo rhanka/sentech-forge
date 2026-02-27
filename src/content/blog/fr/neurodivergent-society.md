@@ -6,7 +6,7 @@ date: 2026-02-27
 readTime: 10 min de lecture
 ---
 
-# CLIs de code (et peut être le Chat), témoin éphémère d'une neurodivergence sociale du numérique et de l'IA
+# CLIs de code et Chat : trace éphémère d’une neurodivergence sociale numérique
 
 ## Note préliminaires
 

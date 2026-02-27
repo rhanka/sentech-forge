@@ -6,7 +6,7 @@ date: 2026-02-27
 readTime: 10 min read
 ---
 
-# Code CLIs (and maybe Chat), an ephemeral marker of a social neurodivergence in digital and AI
+# Code CLIs and Chat: an ephemeral trace of digital social neurodivergence
 
 ## Preliminary notes
 
