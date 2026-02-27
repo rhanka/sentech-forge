@@ -3,7 +3,7 @@
   import Index from '@/pages/Index.svelte';
   import NotFound from '@/pages/NotFound.svelte';
   import BlogPost from '@/pages/BlogPost.svelte';
-  import { syncLanguageFromPath } from '@/i18n/config';
+  import { normalizeLanguage, syncLanguageFromPath, type AppLanguage } from '@/i18n/config';
   import { applySeo } from '@/lib/seo';
   import { navigate } from '@/lib/router';
   
@@ -54,10 +54,20 @@
     if (typeof window === 'undefined') return;
 
     const params = new URLSearchParams(search);
-    const requestedLang = params.get('lang');
-    if (requestedLang !== 'en' && requestedLang !== 'fr') return;
+    let requestedLang: AppLanguage | null = null;
+    const queryKeysToDelete: string[] = [];
 
-    params.delete('lang');
+    for (const [key, value] of params.entries()) {
+      const normalizedKey = key.trim().toLowerCase();
+      if (normalizedKey !== 'lang' && normalizedKey !== 'locale') continue;
+
+      queryKeysToDelete.push(key);
+      requestedLang = requestedLang || normalizeLanguage(value);
+    }
+
+    if (!requestedLang) return;
+
+    queryKeysToDelete.forEach((key) => params.delete(key));
     const nextSearch = params.toString();
     const query = nextSearch ? `?${nextSearch}` : '';
     const nextPath = convertPathToLanguage(pathname, requestedLang);
