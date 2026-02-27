@@ -5,33 +5,8 @@ import en from './locales/en.json';
 
 export type AppLanguage = 'fr' | 'en';
 
-export function normalizeLanguage(value: string | null): AppLanguage | null {
-  if (!value) return null;
-
-  const normalized = value.trim().toLowerCase();
-  if (!normalized) return null;
-
-  if (normalized === 'fr' || normalized.startsWith('fr-') || normalized.startsWith('fr_')) {
-    return 'fr';
-  }
-
-  if (normalized === 'en' || normalized.startsWith('en-') || normalized.startsWith('en_')) {
-    return 'en';
-  }
-
-  return null;
-}
-
-function getLanguageFromQueryParams(params: URLSearchParams): AppLanguage | null {
-  for (const [key, value] of params.entries()) {
-    const normalizedKey = key.trim().toLowerCase();
-    if (normalizedKey !== 'lang' && normalizedKey !== 'locale') continue;
-
-    const normalizedValue = normalizeLanguage(value);
-    if (normalizedValue) return normalizedValue;
-  }
-
-  return null;
+function normalizeLanguage(value: string | null): AppLanguage | null {
+  return value === 'fr' || value === 'en' ? value : null;
 }
 
 function detectLanguageFromPath(pathname: string): AppLanguage | null {
@@ -49,8 +24,9 @@ function detectLanguageFromPath(pathname: string): AppLanguage | null {
 const getSavedLanguage = (): AppLanguage => {
   if (typeof window === 'undefined') return 'fr';
 
-  const queryLanguage = getLanguageFromQueryParams(new URLSearchParams(window.location.search));
-  if (queryLanguage) return queryLanguage;
+  const queryLanguage = new URLSearchParams(window.location.search).get('lang');
+  const queryNormalized = normalizeLanguage(queryLanguage);
+  if (queryNormalized) return queryNormalized;
 
   const pathLanguage = detectLanguageFromPath(window.location.pathname);
   if (pathLanguage) return pathLanguage;
