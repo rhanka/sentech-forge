@@ -46,6 +46,7 @@ export interface BlogPostItem {
   id: string;
   icon?: string;
   order: number;
+  listed?: boolean;
   date?: string;
   readTime?: string;
   tags?: string[];
@@ -180,7 +181,8 @@ export async function loadEngagementContent(locale: Locale) {
 }
 
 export async function loadBlogContent(locale: Locale) {
-  return loadDynamicContent<BlogPostItem>('blog', locale);
+  const posts = await loadDynamicContent<BlogPostItem>('blog', locale);
+  return posts.filter((post) => post.listed !== false);
 }
 
 export async function loadHeroContent(locale: Locale): Promise<{ main: MarkdownContent; quicklinks: ParsedMarkdownSection[] }> {
