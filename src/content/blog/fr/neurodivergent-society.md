@@ -14,7 +14,9 @@ Je ne suis ni spécialiste de l'autisme ni un critique de la neurodiversité, bi
 
 Par ailleurs, je me permets de citer dans cet article plusieurs noms, sans volonté d'offence et avec au contraire un profond respect.
 
-## Intelligence IA: une question de vocabulaire
+Enfin, cet article n'as pas été écrit par l'IA (seulement traduit pour sa version anglaise, et des fix de typos)
+
+## Intelligence Artificielle, une question de vocabulaire
 
 
 Lors d'une discussion récente avec [Pierre Vannier](https://www.pierrevannier.com/) (Flint), dont j'apprécie particulièrement la vision et les valeurs, il me posait la question: est-ce que le terme intelligence pour l'IA, qui date de 1956 (John McCarthy), est bien choisi ? Une question à laquelle je n'apporte pas de réponse, tant le terme intelligence est lui-même, pour l'humain, relativement bien défini, mais que j'utiliserai ici comme capacité de nos neurones à apporter une valeur à d'autres, englobant l'intelligence émotionnelle et les autres.
@@ -53,11 +55,15 @@ Bref, nous y voilà: la CLI. Mais... pourquoi tant de haine ? Ou tant d'amour ? 
 
 L'IA est neurodivergente, et renforce nos neurodivergences, de là à contaminer tout un secteur ([SaaSpocalypse](https://thenewstack.io/dawn-of-a-saaspocalypse/)), en accélérant le codage de façon inutilement biaisée (doublée d'un biais capitalistique), mais tellement grisante (la [dopamine](https://www.sciencesetavenir.fr/sante/cerveau-et-psy/quel-est-le-role-de-la-dopamine-surnommee-molecule-du-plaisir-dans-l-apprentissage_189558), un autre biais).
 
-## Autres biais et suite
-
 Note: est-ce qu'il y a d'autres biais socio-cognitifs avec les réseaux sociaux, et l'IA joue-t-elle là-dedans ? Bien sûr, et d'ailleurs l'IA pré-GPT le faisait déjà, et aujourd'hui c'est une autre dimension: [AI Slop](https://www.theverge.com/ai-artificial-intelligence/882956/ai-deepfake-detection-labels-c2pa-instagram-youtube).
 
-Alors, combien de temps va durer la tendance CLI ? 1 an ? 2 ans ? Quelle sera la prochaine UI pour faire du software engineering ? Quelle sera la prochaine UI pour que l'humain interagisse avec ses données ? Mon hypothèse est que nous passerons d'un software engineering "XaC" (everything as code) à "XaD" (everything as data - toute connaissance, tout code est de la data), et c'est en pensant ainsi l'informatique, avec l'IA et la data, et probablement en décapitalisant l'IA et en régulant massivement la robotique à venir, que nous apporterons de vraies valeurs saines à l'humanité.
+## Et après
+
+Alors, combien de temps va durer la tendance CLI ? 1 an ? 2 ans ? Quelle sera la prochaine UI pour faire du software engineering ? Quelle sera la prochaine UI pour que l'humain interagisse avec ses données ? La CLI est paradoxalement l'outil de productivité du software engineer de 2026 mais son outillage s'éloigne des [tendances de l'UX](https://uxdesign.cc/10-ux-design-shifts-you-cant-ignore-in-2026-8f0da1c6741d)
+
+Mon hypothèse est que nous passerons d'un software engineering "XaC" (everything as code) à "XaD" (everything as data - toute connaissance, tout code est de la data), et c'est en pensant ainsi l'ingénierie logicielle, avec l'IA et la data, qu'on trouvera un minimum de pérennité et de valeur numérique.
+
+Ma pensée est également probablement qu'il faut décapitaliser l'IA et en réguler massivement la robotique à venir, que nous apporterons de vraies valeurs saines à l'humanité. Je ne sais pas ce que seront [OpenAI et Anthropic](https://www.linkedin.com/pulse/how-openai-anthropic-really-make-money-thomas-wittlinger-hfbye/) fin 2026, mais l'accumulation de leur dette face à d'autres joueurs avec des modèles et éthiques alternatives (en Chine, mais aussi en Europe) pourraient avoir un impact majeur sur leurs prévision et leur valeur cette année.
 
 À ma petite échelle, je travaille sur un outillage, pour avoir une méthode et des librairies pour mieux utiliser l'IA, pour le code et pour l'utilisateur. Aujourd'hui mon code est là [top-ai-ideas](https://github.com/rhanka/top-ai-ideas-fullstack/), mais il va bientôt se transformer en une bibliothèque, en logiciel libre, pour faciliter la collaboration humaine avec l'IA, software engineering compris, car il semble devenir naturel que le logiciel, déprécié de sa valeur, soit cultivé de façon libre.
 

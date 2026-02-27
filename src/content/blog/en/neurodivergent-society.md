@@ -14,7 +14,9 @@ I am neither an autism specialist nor a critic of neurodiversity, quite the oppo
 
 Also, I allow myself to cite several people in this article, with no intent to offend and, on the contrary, with deep respect.
 
-## AI intelligence: a wording question
+Finally, this article was not written by AI (only translated for its English version, plus typo fixes).
+
+## Artificial Intelligence: a vocabulary question
 
 In a recent discussion with [Pierre Vannier](https://www.pierrevannier.com/) (Flint), whose vision and values I really appreciate, he asked me: is the term intelligence for AI, dating back to 1956 (John McCarthy), well chosen? I do not provide a final answer, since the term intelligence itself is already relatively well defined for humans, but I will use it here as our neurons' capacity to bring value to others, including emotional intelligence and the rest.
 
@@ -48,16 +50,20 @@ Because AI is still learning... [SWE Bench](https://arxiv.org/abs/2310.06770), w
 
 ## Why CLI is so attractive
 
-So here we are: CLI. But... why so much hate? Or so much love? As an AI science guy, I very quickly loved Linux and used terminals; for a long time I enjoyed one-liners (practical micro-tools in `grep` `sed` `awk` `perl` with regexes unreadable to others, and that we no longer need as much with AI), for data processing including natural language. I understand shortcuts, slash commands that remind me of [IRC](https://fr.wikipedia.org/wiki/Internet_Relay_Chat)... Do I have a cultural and cognitive bias? Certainly! Is "chat" mode imposed by LLM dialogue, which is not very good at other things, an AI cognitive bias? Certainly! Is CLI mode for subagentic coding a socio-cognitive bias? Probably! Doesn't this AI bias also lean on a somewhat "autistic" bias (I will use the term only once) that is not 100% virtuous?
+So here we are: CLI. But... why so much hate? Or so much love? As an AI science guy, I very quickly loved Linux and used terminals; for a long time I enjoyed one-liners (practical micro-tools in `grep` `sed` `awk` `perl` with regexes unreadable to others and no longer really needed with AI), for data processing including natural language. I understand shortcuts, slash commands that remind me of [IRC](https://fr.wikipedia.org/wiki/Internet_Relay_Chat)... Do I have a cultural and cognitive bias? Certainly! Is "chat" mode imposed by LLM dialogue, which is not very good at other things, an AI cognitive bias? Certainly! Is CLI mode for subagentic coding a socio-cognitive bias? Probably! Doesn't this AI bias also lean on a somewhat "autistic" bias (I will use the term only once) that is not 100% virtuous?
 
 AI is neurodivergent, and reinforces our own neurodivergences, to the point of contaminating a whole sector ([SaaSpocalypse](https://thenewstack.io/dawn-of-a-saaspocalypse/)), by accelerating coding in a needlessly biased way (plus a capital-allocation bias), but also in a very thrilling way (the [dopamine](https://www.sciencesetavenir.fr/sante/cerveau-et-psy/quel-est-le-role-de-la-dopamine-surnommee-molecule-du-plaisir-dans-l-apprentissage_189558) effect, another bias).
 
-## Other biases and what comes next
-
 Note: are there other socio-cognitive biases with social networks, and does AI play into that? Of course, and pre-GPT AI was already doing it, and today it's another dimension: [AI Slop](https://www.theverge.com/ai-artificial-intelligence/882956/ai-deepfake-detection-labels-c2pa-instagram-youtube).
 
-So, how long will the CLI trend last? 1 year? 2 years? What will be the next UI for software engineering? What will be the next UI for humans to interact with their data? My hypothesis is that we will move from "XaC" software engineering (everything as code) to "XaD" (everything as data - all knowledge, all code, is data), and that by thinking computing this way, with AI and data, and probably by decapitalizing AI and heavily regulating the coming robotics wave, we will bring truly healthy value to humanity.
+## And after
 
-At my small scale, I am working on tooling to have better methods and libraries to use AI, for code and for users. Today my code is here: [top-ai-ideas](https://github.com/rhanka/top-ai-ideas-fullstack/), but it will soon turn into an open-source library to make human collaboration with AI easier, software engineering included, because it seems natural that software, as its value is being depreciated, should be cultivated in a free/open way.
+So, how long will the CLI trend last? 1 year? 2 years? What will be the next UI for software engineering? What will be the next UI for humans to interact with their data? CLI is paradoxically the productivity tool of the 2026 software engineer, but its tooling is moving away from [UX trends](https://uxdesign.cc/10-ux-design-shifts-you-cant-ignore-in-2026-8f0da1c6741d).
+
+My hypothesis is that we will move from "XaC" software engineering (everything as code) to "XaD" (everything as data - all knowledge, all code, is data), and that by thinking software engineering this way, with AI and data, we can find at least a minimum of durability and digital value.
+
+I also tend to think we should decapitalize AI and heavily regulate the coming robotics wave if we want to bring genuinely healthy value to humanity. I do not know what [OpenAI and Anthropic](https://www.linkedin.com/pulse/how-openai-anthropic-really-make-money-thomas-wittlinger-hfbye/) will look like by the end of 2026, but their debt accumulation versus other players with alternative models and ethics (in China, but also in Europe) could have a major impact on their forecasts and valuation this year.
+
+At my own scale, I am working on tooling to have better methods and libraries to use AI, for code and for users. Today my code is here: [top-ai-ideas](https://github.com/rhanka/top-ai-ideas-fullstack/), but it will soon turn into an open-source library to make human collaboration with AI easier, software engineering included, because it seems natural that software, as its value is being depreciated, should be cultivated in a free/open way.
 
 Fabien Antoine
