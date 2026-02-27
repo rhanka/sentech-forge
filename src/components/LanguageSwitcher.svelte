@@ -9,6 +9,10 @@
 
   $: currentLanguage = $language;
 
+  function isEnglishPath(pathname: string): boolean {
+    return pathname === '/en' || pathname.startsWith('/en/');
+  }
+
   function toEnRoute(pathname: string): string {
     if (pathname === '/' || pathname === '') return '/en/';
     if (pathname === '/en' || pathname.startsWith('/en/')) return pathname;
@@ -25,11 +29,7 @@
   }
 
   function getTargetPath(): string {
-    if (currentLanguage === 'fr') {
-      return toEnRoute(currentPath);
-    }
-
-    return toFrRoute(currentPath);
+    return isEnglishPath(currentPath) ? toFrRoute(currentPath) : toEnRoute(currentPath);
   }
 
   function toggleLanguageRoute() {

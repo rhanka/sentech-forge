@@ -82,9 +82,8 @@ export async function syncLanguageFromPath(pathname?: string): Promise<void> {
   if (typeof window === 'undefined') return;
 
   const targetPath = pathname || window.location.pathname;
-  const detectedLanguage = detectLanguageFromPath(targetPath);
-
-  if (!detectedLanguage) return;
+  // French is the default route when no `/en` prefix is present.
+  const detectedLanguage: AppLanguage = detectLanguageFromPath(targetPath) || 'fr';
 
   if (i18n.language !== detectedLanguage) {
     await setLanguage(detectedLanguage);
