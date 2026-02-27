@@ -6,7 +6,20 @@ import en from './locales/en.json';
 export type AppLanguage = 'fr' | 'en';
 
 function normalizeLanguage(value: string | null): AppLanguage | null {
-  return value === 'fr' || value === 'en' ? value : null;
+  if (!value) return null;
+
+  const normalized = value.trim().toLowerCase();
+  if (!normalized) return null;
+
+  if (normalized === 'fr' || normalized.startsWith('fr-') || normalized.startsWith('fr_')) {
+    return 'fr';
+  }
+
+  if (normalized === 'en' || normalized.startsWith('en-') || normalized.startsWith('en_')) {
+    return 'en';
+  }
+
+  return null;
 }
 
 function detectLanguageFromPath(pathname: string): AppLanguage | null {
@@ -21,12 +34,16 @@ function detectLanguageFromPath(pathname: string): AppLanguage | null {
   return null;
 }
 
+function detectLanguageFromQuery(search: string): AppLanguage | null {
+  const params = new URLSearchParams(search);
+  return normalizeLanguage(params.get('lang')) || normalizeLanguage(params.get('locale'));
+}
+
 const getSavedLanguage = (): AppLanguage => {
   if (typeof window === 'undefined') return 'fr';
 
-  const queryLanguage = new URLSearchParams(window.location.search).get('lang');
-  const queryNormalized = normalizeLanguage(queryLanguage);
-  if (queryNormalized) return queryNormalized;
+  const queryLanguage = detectLanguageFromQuery(window.location.search);
+  if (queryLanguage) return queryLanguage;
 
   const pathLanguage = detectLanguageFromPath(window.location.pathname);
   if (pathLanguage) return pathLanguage;
@@ -56,7 +73,7 @@ if (typeof document !== 'undefined') {
 }
 
 i18n.on('languageChanged', (nextLanguage) => {
-  const validLanguage = nextLanguage === 'en' ? 'en' : 'fr';
+  const validLanguage = normalizeLanguage(nextLanguage) || 'fr';
   language.set(validLanguage);
   if (typeof window !== 'undefined') {
     localStorage.setItem('language', validLanguage);
@@ -82,8 +99,8 @@ export async function syncLanguageFromPath(pathname?: string): Promise<void> {
   if (typeof window === 'undefined') return;
 
   const targetPath = pathname || window.location.pathname;
-  // French is the default route when no `/en` prefix is present.
-  const detectedLanguage: AppLanguage = detectLanguageFromPath(targetPath) || 'fr';
+  const queryLanguage = detectLanguageFromQuery(window.location.search);
+  const detectedLanguage: AppLanguage = queryLanguage || detectLanguageFromPath(targetPath) || 'fr';
 
   if (i18n.language !== detectedLanguage) {
     await setLanguage(detectedLanguage);
@@ -95,7 +112,8 @@ export async function syncLanguageFromPath(pathname?: string): Promise<void> {
 }
 
 export async function toggleLanguage() {
-  const nextLanguage: AppLanguage = i18n.language === 'fr' ? 'en' : 'fr';
+  const currentLanguage = normalizeLanguage(i18n.language) || 'fr';
+  const nextLanguage: AppLanguage = currentLanguage === 'fr' ? 'en' : 'fr';
   await setLanguage(nextLanguage);
 }
 
