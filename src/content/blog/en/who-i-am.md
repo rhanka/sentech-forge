@@ -2,6 +2,7 @@
 id: who-i-am
 icon: UserRound
 order: 99
+listed: false
 date: 2026-02-21
 readTime: 4 min read
 ---
