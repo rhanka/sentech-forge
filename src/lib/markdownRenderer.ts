@@ -1,6 +1,7 @@
 const SPECIAL_LINE = /^(##|###)\s|^-\s|^\d+\.\s|^\||^```|^!\[/;
 const INLINE_TOKEN =
   /(!\[[^\]]*\]\([^)]+\)|\*\*[^*]+\*\*|`[^`]+`|\[[^\]]+\]\([^)]+\)|https?:\/\/[^\s)]+)/g;
+const ESCAPED_PUNCTUATION = /\\([\\`*_{}\[\]()#+.!\-|>~])/g;
 
 function escapeHtml(value: string): string {
   return value
@@ -13,6 +14,10 @@ function escapeHtml(value: string): string {
 
 function escapeAttribute(value: string): string {
   return escapeHtml(value).replace(/`/g, '&#96;');
+}
+
+function unescapeMarkdownPunctuation(value: string): string {
+  return value.replace(ESCAPED_PUNCTUATION, '$1');
 }
 
 function splitTableRow(line: string): string[] {
@@ -58,7 +63,7 @@ function parseInline(text: string): string {
         return `<a href="${escapeAttribute(href)}"${target} class="text-accent hover:text-accent/80 underline underline-offset-2">${escapeHtml(label)}</a>`;
       }
 
-      return escapeHtml(token);
+      return escapeHtml(unescapeMarkdownPunctuation(token));
     })
     .join('');
 }
