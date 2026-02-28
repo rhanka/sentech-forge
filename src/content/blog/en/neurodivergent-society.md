@@ -18,7 +18,9 @@ Finally, this article was not written by AI (only translated for its English ver
 
 ## Artificial Intelligence: a vocabulary question
 
-In a recent discussion with [Pierre Vannier](https://www.pierrevannier.com/) (Flint), whose vision and values I really appreciate, he asked me: is the term intelligence for AI, dating back to 1956 (John McCarthy), well chosen? I do not provide a final answer, since the term intelligence itself is already relatively well defined for humans, but I will use it here as our neurons' capacity to bring value to others, including emotional intelligence and the rest.
+In a recent discussion with [Pierre Vannier](https://www.pierrevannier.com/) (Flint), whose vision and values I really appreciate, he asked me: is the term intelligence for AI, dating back to 1956 (John McCarthy), well chosen? I do not provide a final answer, since the term intelligence itself is already relatively well defined for humans, but I will use it here as our neurons' capacity to bring value to others\*, including emotional intelligence and the rest.
+
+\* Note: one could point out self-directed ends, including survival, but I am not going into that territory (neither for AI nor for humans!).
 
 ## What brought me to AI
 

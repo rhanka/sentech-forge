@@ -19,7 +19,9 @@ Enfin, cet article n'as pas été écrit par l'IA (seulement traduit pour sa ver
 ## Intelligence Artificielle, une question de vocabulaire
 
 
-Lors d'une discussion récente avec [Pierre Vannier](https://www.pierrevannier.com/) (Flint), dont j'apprécie particulièrement la vision et les valeurs, il me posait la question: est-ce que le terme intelligence pour l'IA, qui date de 1956 (John McCarthy), est bien choisi ? Une question à laquelle je n'apporte pas de réponse, tant le terme intelligence est lui-même, pour l'humain, relativement bien défini, mais que j'utiliserai ici comme capacité de nos neurones à apporter une valeur à d'autres, englobant l'intelligence émotionnelle et les autres.
+Lors d'une discussion récente avec [Pierre Vannier](https://www.pierrevannier.com/) (Flint), dont j'apprécie particulièrement la vision et les valeurs, il me posait la question: est-ce que le terme intelligence pour l'IA, qui date de 1956 (John McCarthy), est bien choisi ? Une question à laquelle je n'apporte pas de réponse, tant le terme intelligence est lui-même, pour l'humain, relativement bien défini, mais que j'utiliserai ici comme capacité de notre capacité d'apprentissage (neurones en grande partie) à apporter une valeur à d'autres\*, englobant l'intelligence émotionnelle et les autres.
+
+\* Note: on me rappellera les finalités à soi même, dont la survie, mais je n'entre pas sur ce terrain (ni pour l'IA - ni pour l'humain!)
 
 ## Ce qui m'a amené à l'IA
 
