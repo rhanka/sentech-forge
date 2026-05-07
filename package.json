@@ -14,6 +14,9 @@
     "seo:indexing": "node scripts/seo-indexing-audit.mjs"
   },
   "dependencies": {
+    "@sent-tech/components-svelte": "file:../sent-tech-design-system/packages/components-svelte",
+    "@sent-tech/themes": "file:../sent-tech-design-system/packages/themes",
+    "@sent-tech/tokens": "file:../sent-tech-design-system/packages/tokens",
     "clsx": "^2.1.1",
     "i18next": "^25.8.13",
     "lucide-svelte": "^0.575.0",
