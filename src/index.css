@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./lib/styles/sent-tech-forge-theme.css";
 @config "../tailwind.config.ts";
 
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
@@ -61,6 +62,30 @@ All colors MUST be HSL.
     --sidebar-border: 220 13% 91%;
 
     --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  [data-st-theme="forge"] {
+    --background: from var(--st-semantic-surface-default) h s l;
+    --foreground: from var(--st-semantic-text-primary) h s l;
+
+    --card: from var(--st-component-card-background) h s l;
+    --card-foreground: from var(--st-semantic-text-primary) h s l;
+    --popover: from var(--st-component-overlay-surface) h s l;
+    --popover-foreground: from var(--st-semantic-text-primary) h s l;
+
+    --primary: from var(--st-semantic-action-primary) h s l;
+    --primary-foreground: from var(--st-semantic-action-primaryText) h s l;
+    --secondary: from var(--st-semantic-surface-subtle) h s l;
+    --secondary-foreground: from var(--st-semantic-action-secondaryText) h s l;
+    --muted: from var(--st-semantic-surface-subtle) h s l;
+    --muted-foreground: from var(--st-semantic-text-muted) h s l;
+    --accent: from var(--st-component-button-primaryBackground) h s l;
+    --accent-foreground: from var(--st-component-button-primaryText) h s l;
+
+    --border: from var(--st-semantic-border-subtle) h s l;
+    --input: from var(--st-component-input-border) h s l;
+    --ring: from var(--st-semantic-border-interactive) h s l;
+    --radius: var(--st-component-card-radius);
   }
 
   .dark {

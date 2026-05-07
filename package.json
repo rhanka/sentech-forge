@@ -9,6 +9,7 @@
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
+    "theme:verify": "node scripts/verify-sent-tech-theme.mjs",
     "seo:verify": "node scripts/seo-verify.mjs",
     "seo:indexing": "node scripts/seo-indexing-audit.mjs"
   },
