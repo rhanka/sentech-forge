@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { Button } from '@sent-tech/components-svelte';
   import { onDestroy } from 'svelte';
   import Icon from '@/components/Icon.svelte';
   import { language, t } from '@/i18n/config';
@@ -82,14 +83,10 @@
           <h2 class="text-3xl font-bold mb-2">{t(`${serviceType}.title`)}</h2>
           <p class="text-muted-foreground max-w-3xl">{t(`${serviceType}.subtitle`)}</p>
         </div>
-        <button
-          type="button"
-          on:click={scrollToServices}
-          class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 border border-input bg-background hover:bg-accent hover:text-accent-foreground gap-2 ml-4"
-        >
+        <Button type="button" variant="secondary" class="ml-4" onclick={scrollToServices}>
           <Icon name="arrow-left" className="w-4 h-4" />
           {t('common.backToServices')}
-        </button>
+        </Button>
       </div>
 
       {#if loading}
@@ -149,13 +146,9 @@
         <div class="max-w-2xl mx-auto text-center">
           <h3 class="text-2xl font-bold mb-4">{t(`${serviceType}.mandateFormat.title`)}</h3>
           <p class="text-muted-foreground mb-6">{t(`${serviceType}.mandateFormat.description`)}</p>
-          <button
-            type="button"
-            on:click={scrollToContact}
-            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 rounded-md px-8 bg-primary text-primary-foreground hover:bg-primary/90 shadow-md hover:shadow-lg transition-all"
-          >
+          <Button type="button" size="lg" onclick={scrollToContact}>
             {t(`${serviceType}.mandateFormat.cta`)}
-          </button>
+          </Button>
         </div>
       </div>
     </div>
