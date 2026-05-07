@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { Card } from '@sent-tech/components-svelte';
   import Icon from '@/components/Icon.svelte';
   import { language } from '@/i18n/config';
   import { loadContactContent, type Locale } from '@/lib/content';
@@ -29,6 +30,16 @@
   $: mainSection = sections.find((section) => section.id === 'contact');
   $: cardSections = sections.filter((section) => ['email', 'phone'].includes(section.id));
   $: socialSections = sections.filter((section) => ['send', 'linkedin', 'github'].includes(section.id));
+
+  const contactCardStyle = [
+    '--st-component-card-background: hsl(var(--primary-foreground) / 0.1)',
+    '--st-component-card-border: hsl(var(--primary-foreground) / 0.2)',
+    '--st-component-card-shadow: var(--shadow-subtle)',
+    '--st-semantic-text-primary: hsl(var(--primary-foreground))',
+    '-webkit-backdrop-filter: blur(8px)',
+    'backdrop-filter: blur(8px)',
+    'padding: 0',
+  ].join('; ');
 </script>
 
 {#if loading}
@@ -46,7 +57,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
           {#each [...cardSections].sort((a, b) => a.metadata.order - b.metadata.order) as card}
-            <div class="rounded-lg border bg-card text-card-foreground shadow-sm bg-primary-foreground/10 border-primary-foreground/20 backdrop-blur">
+            <Card style={contactCardStyle}>
               <div class="p-6">
                 <div class="flex items-center gap-4">
                   <div class="w-12 h-12 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
@@ -69,7 +80,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </Card>
           {/each}
         </div>
 
