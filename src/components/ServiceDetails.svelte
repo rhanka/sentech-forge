@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Button } from '@sent-tech/components-svelte';
+  import { Button, Card, EmptyState, Link as SentLink, LoadingState } from '@sent-tech/components-svelte';
   import { onDestroy } from 'svelte';
   import Icon from '@/components/Icon.svelte';
   import { language, t } from '@/i18n/config';
@@ -18,6 +18,11 @@
 
   $: currentLanguage = ($language === 'en' ? 'en' : 'fr') as Locale;
   $: loadKey = `${currentLanguage}:${category}`;
+  $: emptyTitle = currentLanguage === 'en' ? 'No experience available' : 'Aucune expérience disponible';
+  $: emptyMessage =
+    currentLanguage === 'en'
+      ? 'This category will be enriched with new use cases.'
+      : "Cette catégorie sera enrichie avec de nouveaux cas d'usage.";
 
   $: if (loadKey !== loadedKey) {
     loadedKey = loadKey;
@@ -90,17 +95,15 @@
       </div>
 
       {#if loading}
-        <div class="text-center py-12">
-          <p class="text-muted-foreground">{t('common.loading')}</p>
+        <div class="flex justify-center py-12">
+          <LoadingState label={t('common.loading')} />
         </div>
       {:else if items.length === 0}
-        <div class="text-center py-12">
-          <p class="text-muted-foreground">Aucune expérience disponible</p>
-        </div>
+        <EmptyState title={emptyTitle} message={emptyMessage} />
       {:else}
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {#each items as item}
-            <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-lg transition-shadow animate-fade-in">
+            <Card interactive class="p-6 animate-fade-in">
               <div class="flex items-start gap-4 mb-4">
                 <div class="p-3 rounded-lg bg-primary/10 text-primary">
                   <Icon name={item.icon} className="w-6 h-6" />
@@ -117,11 +120,11 @@
                   {#each Array.isArray(item.url) ? item.url : [item.url] as link}
                     {@const host = parseHost(link)}
                     {#if host}
-                      <a
+                      <SentLink
                         href={link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-xs text-primary hover:underline inline-flex items-center gap-1"
+                        external
+                        variant="standalone"
+                        class="text-xs text-primary inline-flex items-center gap-1"
                       >
                         {host}
                         <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -132,17 +135,17 @@
                             d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
                           />
                         </svg>
-                      </a>
+                      </SentLink>
                     {/if}
                   {/each}
                 </div>
               {/if}
-            </div>
+            </Card>
           {/each}
         </div>
       {/if}
 
-      <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-8 bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
+      <Card class="p-8 bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
         <div class="max-w-2xl mx-auto text-center">
           <h3 class="text-2xl font-bold mb-4">{t(`${serviceType}.mandateFormat.title`)}</h3>
           <p class="text-muted-foreground mb-6">{t(`${serviceType}.mandateFormat.description`)}</p>
@@ -150,7 +153,7 @@
             {t(`${serviceType}.mandateFormat.cta`)}
           </Button>
         </div>
-      </div>
+      </Card>
     </div>
   </section>
 {/if}

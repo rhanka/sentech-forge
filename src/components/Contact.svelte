@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Card } from '@sent-tech/components-svelte';
+  import { Card, Link as SentLink } from '@sent-tech/components-svelte';
   import Icon from '@/components/Icon.svelte';
   import { language } from '@/i18n/config';
   import { loadContactContent, type Locale } from '@/lib/content';
@@ -66,9 +66,13 @@
                   <div class="text-left">
                     <p class="text-sm text-primary-foreground/80 mb-1">{card.metadata.label}</p>
                     {#if card.id === 'email'}
-                      <a href={String(card.metadata.link)} class="text-lg font-semibold text-primary-foreground hover:text-accent transition-colors">
+                      <SentLink
+                        href={String(card.metadata.link)}
+                        variant="standalone"
+                        class="text-lg font-semibold text-primary-foreground hover:text-accent transition-colors"
+                      >
                         {card.metadata.value}
-                      </a>
+                      </SentLink>
                     {:else}
                       <div class="text-lg font-semibold text-primary-foreground">
                         <div>{card.metadata.value}</div>
@@ -93,15 +97,17 @@
 
         <div class="flex gap-4 justify-center flex-wrap">
           {#each [...socialSections].sort((a, b) => a.metadata.order - b.metadata.order) as social}
-            <a
+            <SentLink
               href={String(social.metadata.link)}
+              external={social.id !== 'send'}
               target={social.id !== 'send' ? '_blank' : undefined}
               rel={social.id !== 'send' ? 'noopener noreferrer' : undefined}
-              class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 rounded-md px-8 border border-input bg-background hover:bg-accent hover:text-accent-foreground bg-primary-foreground/10 border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/20 hover:border-primary-foreground/60"
+              variant="standalone"
+              class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium no-underline ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 px-8 border border-input bg-background hover:bg-accent hover:text-accent-foreground bg-primary-foreground/10 border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/20 hover:border-primary-foreground/60"
             >
               <Icon name={String(social.metadata.icon)} className="mr-2 w-5 h-5" />
               {social.metadata.label}
-            </a>
+            </SentLink>
           {/each}
         </div>
       </div>
