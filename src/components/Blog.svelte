@@ -1,8 +1,9 @@
 <script lang="ts">
+  import { Badge, Card, EmptyState, Link as SentLink, LoadingState } from '@sent-tech/components-svelte';
   import Icon from '@/components/Icon.svelte';
-  import Link from '@/components/Link.svelte';
   import { language, t } from '@/i18n/config';
   import { loadBlogContent, type BlogPostItem, type Locale } from '@/lib/content';
+  import { navigate } from '@/lib/router';
 
   let posts: BlogPostItem[] = [];
   let loading = true;
@@ -52,6 +53,16 @@
     if (post.draft) return true;
     return Array.isArray(post.tags) && post.tags.some((tag) => tag.toLowerCase() === 'draft');
   }
+
+  const hasModifier = (event: MouseEvent) =>
+    event.metaKey || event.altKey || event.ctrlKey || event.shiftKey;
+
+  function handleInternalLinkClick(event: MouseEvent, href: string) {
+    if (event.defaultPrevented || event.button !== 0 || hasModifier(event)) return;
+
+    event.preventDefault();
+    navigate(href);
+  }
 </script>
 
 <section class="py-24 bg-secondary/30">
@@ -62,13 +73,11 @@
     </div>
 
     {#if loading}
-      <div class="text-center py-12">
-        <p class="text-muted-foreground">{t('common.loading', 'Chargement...')}</p>
+      <div class="flex justify-center py-12">
+        <LoadingState label={t('common.loading', 'Chargement...')} />
       </div>
     {:else if posts.length === 0}
-      <div class="max-w-2xl mx-auto text-center p-8 rounded-xl border border-dashed border-border bg-card">
-        <p class="text-muted-foreground">{t('blog.empty')}</p>
-      </div>
+      <EmptyState class="max-w-2xl mx-auto" title={t('blog.empty')} />
     {:else}
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
         {#each posts as post}
@@ -77,7 +86,7 @@
           {@const publicationDate = post.date ? formatDate(post.date, currentLanguage) : t('blog.soon')}
           {@const isDraft = isDraftPost(post)}
 
-          <div class="rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-large transition-all duration-300 hover:-translate-y-1 border-border">
+          <Card interactive class="p-0 overflow-hidden">
             <div class="flex flex-col space-y-1.5 p-6">
               <div class="w-12 h-12 rounded-lg bg-gradient-accent flex items-center justify-center mb-4">
                 <Icon name={post.icon || 'newspaper'} className="w-6 h-6 text-accent-foreground" />
@@ -94,9 +103,7 @@
                   </span>
                 {/if}
                 {#if isDraft}
-                  <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80">
-                    {t('blog.draft', 'Draft')}
-                  </div>
+                  <Badge>{t('blog.draft', 'Draft')}</Badge>
                 {/if}
               </div>
               <h3 class="text-2xl font-semibold tracking-tight">{post.title}</h3>
@@ -105,26 +112,28 @@
 
             <div class="p-6 pt-0">
               {#if isExternal}
-                <a
+                <SentLink
                   href={postUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  external
+                  variant="standalone"
                   class="inline-flex items-center gap-1.5 text-accent hover:text-accent/80 transition-colors font-medium"
                 >
                   {t('blog.readArticle')}
                   <Icon name="arrow-up-right" className="w-4 h-4" />
-                </a>
+                </SentLink>
               {:else}
-                <Link
+                <SentLink
                   href={postUrl}
-                  className="inline-flex items-center gap-1.5 text-accent hover:text-accent/80 transition-colors font-medium"
+                  variant="standalone"
+                  class="inline-flex items-center gap-1.5 text-accent hover:text-accent/80 transition-colors font-medium"
+                  onclick={(event) => handleInternalLinkClick(event, postUrl)}
                 >
                   {t('blog.readArticle')}
                   <Icon name="arrow-up-right" className="w-4 h-4" />
-                </Link>
+                </SentLink>
               {/if}
             </div>
-          </div>
+          </Card>
         {/each}
       </div>
     {/if}
