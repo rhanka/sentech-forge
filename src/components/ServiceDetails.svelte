@@ -1,6 +1,5 @@
 <script lang="ts">
   import { Button, Card, EmptyState, Link as SentLink, LoadingState } from '@sent-tech/components-svelte';
-  import { onDestroy } from 'svelte';
   import Icon from '@/components/Icon.svelte';
   import { language, t } from '@/i18n/config';
   import { navigate } from '@/lib/router';
@@ -14,7 +13,6 @@
   let items: BusinessCase[] = [];
   let loading = true;
   let loadedKey = '';
-  let scrollTimer: ReturnType<typeof setTimeout> | undefined;
 
   $: currentLanguage = ($language === 'en' ? 'en' : 'fr') as Locale;
   $: loadKey = `${currentLanguage}:${category}`;
@@ -28,26 +26,6 @@
     loadedKey = loadKey;
     void load(currentLanguage, category);
   }
-
-  $: if (isOpen && !loading) {
-    clearTimeout(scrollTimer);
-    scrollTimer = setTimeout(() => {
-      const section = document.getElementById(`${serviceType}-details`);
-      if (section) {
-        const offset = 80;
-        const elementPosition = section.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - offset;
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth',
-        });
-      }
-    }, 300);
-  }
-
-  onDestroy(() => {
-    clearTimeout(scrollTimer);
-  });
 
   async function load(locale: Locale, selectedCategory: typeof category) {
     loading = true;

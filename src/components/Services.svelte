@@ -1,9 +1,11 @@
 <script lang="ts">
   import Icon from '@/components/Icon.svelte';
+  import { tick } from 'svelte';
   import { language, t } from '@/i18n/config';
   import { navigate } from '@/lib/router';
   import { loadServiceContent, type Locale, type ServiceItem } from '@/lib/content';
 
+  export let onReady: (() => void) | undefined = undefined;
   export let onStrategyClick: (() => void) | undefined = undefined;
   export let onGovernanceClick: (() => void) | undefined = undefined;
   export let onDevelopmentClick: (() => void) | undefined = undefined;
@@ -29,6 +31,8 @@
       services = [];
     } finally {
       loading = false;
+      await tick();
+      onReady?.();
     }
   }
 
