@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { Menu, X } from 'lucide-svelte';
+  import { Button } from '@sent-tech/components-svelte';
   import { t, language } from '@/i18n/config';
   import { location, navigate } from '@/lib/router';
   import LanguageSwitcher from './LanguageSwitcher.svelte';
@@ -74,38 +75,46 @@
 
       <div class="hidden md:flex items-center gap-8">
         {#each navLinks as link}
-          <button
+          <Button
             type="button"
-            on:click={() => scrollToSection(link.id)}
-            class={`text-sm font-medium transition-colors hover:text-accent ${
-              isScrolled ? 'text-foreground' : 'text-primary-foreground'
-            }`}
+            size="sm"
+            variant="ghost"
+            onclick={() => scrollToSection(link.id)}
+            class={`h-auto px-0 font-medium transition-colors ${isScrolled ? 'text-foreground' : 'text-primary-foreground'} hover:text-accent`}
           >
             {link.label}
-          </button>
+          </Button>
         {/each}
         <LanguageSwitcher {isScrolled} />
       </div>
 
-      <button type="button" class="md:hidden" on:click={() => (isMobileMenuOpen = !isMobileMenuOpen)}>
+      <Button
+        type="button"
+        variant="ghost"
+        size="md"
+        onclick={() => (isMobileMenuOpen = !isMobileMenuOpen)}
+        class={`md:hidden !px-1 !py-1 ${isScrolled ? 'text-foreground' : 'text-primary-foreground'}`}
+      >
         {#if isMobileMenuOpen}
           <X class={`w-6 h-6 ${isScrolled ? 'text-foreground' : 'text-primary-foreground'}`} />
         {:else}
           <Menu class={`w-6 h-6 ${isScrolled ? 'text-foreground' : 'text-primary-foreground'}`} />
         {/if}
-      </button>
+      </Button>
     </div>
 
     {#if isMobileMenuOpen}
       <div class="md:hidden pb-6 bg-background/95 backdrop-blur-md">
         {#each navLinks as link}
-          <button
+          <Button
             type="button"
-            on:click={() => scrollToSection(link.id)}
-            class="block w-full text-left py-3 px-4 text-foreground hover:bg-accent/10 transition-colors"
+            size="md"
+            variant="ghost"
+            onclick={() => scrollToSection(link.id)}
+            class="block w-full justify-start rounded-none text-left py-3 px-4 text-foreground hover:bg-accent/10 transition-colors"
           >
             {link.label}
-          </button>
+          </Button>
         {/each}
         <div class="px-4 pt-3">
           <LanguageSwitcher isScrolled={true} />

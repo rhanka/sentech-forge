@@ -1,5 +1,6 @@
 <script lang="ts">
   import heroImage from '@/assets/hero-tech.jpg';
+  import { Card, LoadingState } from '@sent-tech/components-svelte';
   import Icon from '@/components/Icon.svelte';
   import { language } from '@/i18n/config';
   import { loadHeroContent, type Locale } from '@/lib/content';
@@ -68,7 +69,9 @@
 
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     {#if loading || !main}
-      <div class="text-center text-primary-foreground">Loading...</div>
+      <div class="text-center text-primary-foreground flex justify-center">
+        <LoadingState label="Chargement..." />
+      </div>
     {:else}
       <div class="max-w-4xl mx-auto text-center text-primary-foreground mb-12">
         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in">{main.metadata.title}</h1>
@@ -79,12 +82,13 @@
 
       <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 animate-fade-in" style="animation-delay: 0.4s">
         {#each quicklinks as link}
-          <div
+          <Card
+            interactive
             role="button"
             tabindex="0"
-            class="rounded-lg border bg-card text-card-foreground shadow-sm cursor-pointer hover:shadow-large transition-all duration-300 hover:-translate-y-1 border-border/50 bg-card/95 backdrop-blur text-left"
-            on:click={() => scrollToSection(String(link.metadata.targetId))}
-            on:keydown={(event) => {
+            class="!p-0 border bg-card text-card-foreground shadow-sm hover:shadow-large transition-all duration-300 hover:-translate-y-1 border-border/50 bg-card/95 backdrop-blur text-left"
+            onclick={() => scrollToSection(String(link.metadata.targetId))}
+            onkeydown={(event) => {
               if (event.key === 'Enter' || event.key === ' ') {
                 event.preventDefault();
                 scrollToSection(String(link.metadata.targetId));
@@ -107,7 +111,7 @@
                 {/each}
               </ul>
             </div>
-          </div>
+          </Card>
         {/each}
       </div>
     {/if}
