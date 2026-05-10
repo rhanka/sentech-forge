@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { Card, LoadingState } from '@sent-tech/components-svelte';
   import Icon from '@/components/Icon.svelte';
   import { language, t } from '@/i18n/config';
   import { loadEngagementContent, type EngagementItem, type Locale } from '@/lib/content';
@@ -35,13 +36,13 @@
     </div>
 
     {#if loading}
-      <div class="text-center py-12">
-        <p class="text-muted-foreground">{t('common.loading', 'Chargement...')}</p>
+      <div class="flex justify-center py-12">
+        <LoadingState label={t('common.loading', 'Chargement...')} />
       </div>
     {:else}
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {#each engagements as engagement}
-          <div class="rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-large transition-all duration-300 hover:-translate-y-1 border-border">
+          <Card class="!p-0 transition-all duration-300 hover:!-translate-y-1 hover:!shadow-large">
             <div class="flex flex-col space-y-1.5 p-6 text-center">
               <div class="w-16 h-16 rounded-full bg-gradient-primary flex items-center justify-center mx-auto mb-4">
                 <Icon name={engagement.icon} className="w-8 h-8 text-primary-foreground" />
@@ -61,7 +62,7 @@
                 {/each}
               </ul>
             </div>
-          </div>
+          </Card>
         {/each}
       </div>
     {/if}

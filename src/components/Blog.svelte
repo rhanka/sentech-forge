@@ -86,7 +86,7 @@
           {@const publicationDate = post.date ? formatDate(post.date, currentLanguage) : t('blog.soon')}
           {@const isDraft = isDraftPost(post)}
 
-          <Card interactive class="p-0 overflow-hidden">
+          <Card class="!p-0 overflow-hidden transition-all duration-300 hover:!-translate-y-1 hover:!shadow-large">
             <div class="flex flex-col space-y-1.5 p-6">
               <div class="w-12 h-12 rounded-lg bg-gradient-accent flex items-center justify-center mb-4">
                 <Icon name={post.icon || 'newspaper'} className="w-6 h-6 text-accent-foreground" />
