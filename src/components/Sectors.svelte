@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { Card, LoadingState } from '@sent-tech/components-svelte';
   import Icon from '@/components/Icon.svelte';
   import { language, t } from '@/i18n/config';
   import { loadSectorContent, type Locale, type SectorItem } from '@/lib/content';
@@ -35,21 +36,19 @@
     </div>
 
     {#if loading}
-      <div class="text-center py-12">
-        <p class="text-muted-foreground">{t('common.loading', 'Chargement...')}</p>
+      <div class="flex justify-center py-12">
+        <LoadingState label={t('common.loading', 'Chargement...')} />
       </div>
     {:else}
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
         {#each sectors as sector}
-          <div
-            class="text-center p-6 rounded-lg bg-card border border-border hover:shadow-medium transition-all duration-300"
-          >
+          <Card class="text-center !p-6 transition-all duration-300 hover:!shadow-medium">
             <div class="w-16 h-16 rounded-full bg-gradient-primary flex items-center justify-center mx-auto mb-4">
               <Icon name={sector.icon} className="w-8 h-8 text-primary-foreground" />
             </div>
             <h3 class="text-xl font-semibold mb-2">{sector.title}</h3>
             <p class="text-muted-foreground">{sector.description}</p>
-          </div>
+          </Card>
         {/each}
       </div>
     {/if}

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { Card, LoadingState } from '@sent-tech/components-svelte';
   import Icon from '@/components/Icon.svelte';
   import { language, t } from '@/i18n/config';
   import { loadValueContent, type Locale, type ValueItem } from '@/lib/content';
@@ -35,13 +36,13 @@
     </div>
 
     {#if loading}
-      <div class="text-center py-12">
-        <p class="text-muted-foreground">{t('common.loading', 'Chargement...')}</p>
+      <div class="flex justify-center py-12">
+        <LoadingState label={t('common.loading', 'Chargement...')} />
       </div>
     {:else}
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {#each values as value}
-          <div class="p-6 rounded-lg bg-card border border-border hover:border-accent transition-all duration-300 group">
+          <Card class="!p-6 transition-all duration-300 hover:!border-accent group">
             <div
               class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors"
             >
@@ -49,7 +50,7 @@
             </div>
             <h3 class="text-lg font-semibold mb-2">{value.title}</h3>
             <p class="text-muted-foreground text-sm leading-relaxed">{value.description}</p>
-          </div>
+          </Card>
         {/each}
       </div>
     {/if}
