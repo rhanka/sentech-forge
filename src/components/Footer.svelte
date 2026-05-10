@@ -5,19 +5,19 @@
   $: $language;
 </script>
 
-<footer class="text-primary-foreground">
+<footer class="bg-primary text-primary-foreground py-8">
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
     <Card
       class="!rounded-none !p-0 !border-none !shadow-none"
       style="
-        --st-component-card-background: hsl(var(--primary));
+        --st-component-card-background: transparent;
         --st-component-card-border: transparent;
         --st-component-card-shadow: none;
         --st-component-card-radius: 0;
         --st-semantic-text-primary: hsl(var(--primary-foreground));
       "
     >
-      <div class="py-8">
+      <div>
         <div class="flex flex-col md:flex-row justify-between items-center gap-4">
           <div class="text-center md:text-left">
             <p class="text-2xl font-bold mb-2">

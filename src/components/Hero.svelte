@@ -70,7 +70,13 @@
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     {#if loading || !main}
       <div class="text-center text-primary-foreground flex justify-center">
-        <LoadingState label="Chargement..." />
+        <LoadingState
+          label={currentLanguage === 'en' ? 'Loading...' : 'Chargement...'}
+          style="
+            --st-component-loadingState-text: hsl(var(--primary-foreground));
+            --st-component-loadingState-indicator: hsl(var(--accent));
+          "
+        />
       </div>
     {:else}
       <div class="max-w-4xl mx-auto text-center text-primary-foreground mb-12">
@@ -86,7 +92,13 @@
             interactive
             role="button"
             tabindex="0"
+            data-qa="hero-quicklink"
+            aria-label={getCardTitle(link.content)}
             class="!p-0 border bg-card text-card-foreground shadow-sm hover:shadow-large transition-all duration-300 hover:-translate-y-1 border-border/50 bg-card/95 backdrop-blur text-left"
+            style="
+              --st-component-card-background: hsl(var(--card) / 0.95);
+              --st-component-card-border: hsl(var(--border) / 0.5);
+            "
             onclick={() => scrollToSection(String(link.metadata.targetId))}
             onkeydown={(event) => {
               if (event.key === 'Enter' || event.key === ' ') {
