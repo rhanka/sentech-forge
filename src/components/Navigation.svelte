@@ -11,6 +11,7 @@
   let currentPathname = '/';
 
   $: currentPathname = $location.pathname;
+  $: navButtonTone = isScrolled ? 'hsl(var(--foreground))' : 'hsl(var(--primary-foreground))';
   $: $language;
   $: navLinks = [
     { label: t('nav.services'), id: 'services' },
@@ -80,7 +81,8 @@
             size="sm"
             variant="ghost"
             onclick={() => scrollToSection(link.id)}
-            class={`h-auto px-0 font-medium transition-colors ${isScrolled ? 'text-foreground' : 'text-primary-foreground'} hover:text-accent`}
+            style={`--st-semantic-text-link: ${navButtonTone};`}
+            class={`!min-h-0 !h-auto !px-0 !py-0 font-medium transition-colors ${isScrolled ? 'text-foreground' : 'text-primary-foreground'} hover:text-accent`}
           >
             {link.label}
           </Button>
@@ -93,6 +95,7 @@
         variant="ghost"
         size="md"
         onclick={() => (isMobileMenuOpen = !isMobileMenuOpen)}
+        style={`--st-semantic-text-link: ${navButtonTone};`}
         class={`md:hidden !px-1 !py-1 ${isScrolled ? 'text-foreground' : 'text-primary-foreground'}`}
       >
         {#if isMobileMenuOpen}
@@ -111,7 +114,8 @@
             size="md"
             variant="ghost"
             onclick={() => scrollToSection(link.id)}
-            class="block w-full justify-start rounded-none text-left py-3 px-4 text-foreground hover:bg-accent/10 transition-colors"
+            style="--st-semantic-text-link: hsl(var(--foreground));"
+            class="block !w-full !justify-start !rounded-none text-left !py-3 !px-4 text-foreground hover:bg-accent/10 transition-colors"
           >
             {link.label}
           </Button>
