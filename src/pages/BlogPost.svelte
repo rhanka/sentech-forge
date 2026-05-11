@@ -1,12 +1,13 @@
 <script lang="ts">
+  import { Badge, EmptyState, Link as SentLink, LoadingState } from '@sent-tech/components-svelte';
   import Footer from '@/components/Footer.svelte';
   import Icon from '@/components/Icon.svelte';
-  import Link from '@/components/Link.svelte';
   import Navigation from '@/components/Navigation.svelte';
   import heroImage from '@/assets/hero-tech.jpg';
   import { language, t } from '@/i18n/config';
   import { loadBlogArticle, type BlogArticle, type Locale } from '@/lib/content';
   import { renderMarkdown } from '@/lib/markdownRenderer';
+  import { navigate } from '@/lib/router';
   import { applySeo, createArticleSummary } from '@/lib/seo';
 
   export let slug: string | null = null;
@@ -90,6 +91,33 @@
     if (value.draft) return true;
     return Array.isArray(value.tags) && value.tags.some((tag) => tag.toLowerCase() === 'draft');
   }
+
+  const hasModifier = (event: MouseEvent) =>
+    event.metaKey || event.altKey || event.ctrlKey || event.shiftKey;
+
+  function handleInternalLinkClick(event: MouseEvent, href: string) {
+    if (event.defaultPrevented || event.button !== 0 || hasModifier(event)) return;
+
+    event.preventDefault();
+    navigate(href);
+  }
+
+  const heroEmptyStateStyle = [
+    '--st-component-emptyState-background: hsl(var(--primary-foreground) / 0.1)',
+    '--st-component-emptyState-border: hsl(var(--primary-foreground) / 0.25)',
+    '--st-component-emptyState-titleText: hsl(var(--primary-foreground))',
+    '--st-component-emptyState-messageText: hsl(var(--primary-foreground) / 0.85)',
+    '-webkit-backdrop-filter: blur(8px)',
+    'backdrop-filter: blur(8px)',
+  ].join('; ');
+
+  const heroLoadingStyle = [
+    '--st-component-loadingState-text: hsl(var(--primary-foreground) / 0.85)',
+    '--st-component-loadingState-track: hsl(var(--primary-foreground) / 0.2)',
+    '--st-component-loadingState-indicator: hsl(var(--primary-foreground))',
+  ].join('; ');
+
+  const heroBackLinkStyle = 'text-decoration: none;';
 </script>
 
 <div class="min-h-screen">
@@ -105,23 +133,26 @@
 
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-4xl mx-auto text-primary-foreground">
-          <Link
+          <SentLink
             href={blogHomePath}
-            className="inline-flex items-center gap-2 text-primary-foreground/85 hover:text-primary-foreground transition-colors mb-8"
+            variant="standalone"
+            class="inline-flex items-center gap-2 text-primary-foreground/85 hover:text-primary-foreground transition-colors mb-8"
+            style={heroBackLinkStyle}
+            onclick={(event) => handleInternalLinkClick(event, blogHomePath)}
           >
             <Icon name="arrow-left" className="w-4 h-4" />
             {t('blog.backToBlog', 'Back to blog')}
-          </Link>
+          </SentLink>
 
           {#if loading}
-            <p class="text-primary-foreground/85">{t('common.loading', 'Loading...')}</p>
+            <LoadingState label={t('common.loading', 'Loading...')} style={heroLoadingStyle} />
           {:else if !article}
-            <div class="rounded-xl border border-primary-foreground/25 bg-primary-foreground/10 backdrop-blur p-8">
-              <h1 class="text-2xl font-semibold mb-2">{t('blog.notFoundTitle', 'Article not found')}</h1>
-              <p class="text-primary-foreground/85">
-                {t('blog.notFoundBody', 'This article does not exist or is not available in this language.')}
-              </p>
-            </div>
+            <EmptyState
+              class="max-w-2xl"
+              style={heroEmptyStateStyle}
+              title={t('blog.notFoundTitle', 'Article not found')}
+              message={t('blog.notFoundBody', 'This article does not exist or is not available in this language.')}
+            />
           {:else}
             <h1 class="text-4xl sm:text-5xl font-bold mb-6">{article.title}</h1>
             <div class="flex items-center flex-wrap gap-4 text-sm text-primary-foreground/85">
@@ -138,9 +169,7 @@
                 </span>
               {/if}
               {#if isDraftArticle(article)}
-                <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors bg-primary-foreground/20 text-primary-foreground border border-primary-foreground/35">
-                  {t('blog.draft', 'Draft')}
-                </div>
+                <Badge>{t('blog.draft', 'Draft')}</Badge>
               {/if}
             </div>
           {/if}
