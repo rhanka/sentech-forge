@@ -103,12 +103,17 @@
   }
 
   const heroEmptyStateStyle = [
-    '--st-component-emptyState-background: hsl(var(--primary-foreground) / 0.1)',
-    '--st-component-emptyState-border: hsl(var(--primary-foreground) / 0.25)',
+    '--st-component-emptyState-background: hsl(var(--primary-foreground) / 0.18)',
+    '--st-component-emptyState-border: hsl(var(--primary-foreground) / 0.35)',
     '--st-component-emptyState-titleText: hsl(var(--primary-foreground))',
     '--st-component-emptyState-messageText: hsl(var(--primary-foreground) / 0.85)',
     '-webkit-backdrop-filter: blur(8px)',
     'backdrop-filter: blur(8px)',
+  ].join('; ');
+
+  const heroActionButtonStyle = [
+    '--st-component-button-primaryBackground: hsl(var(--primary-foreground))',
+    '--st-component-button-primaryText: hsl(var(--primary))',
   ].join('; ');
 
   const heroLoadingStyle = [
@@ -157,6 +162,7 @@
                 <Button
                   type="button"
                   variant="primary"
+                  style={heroActionButtonStyle}
                   onclick={(event) => handleInternalLinkClick(event, blogHomePath)}
                 >
                   {t('blog.backToBlog', 'Back to blog')}

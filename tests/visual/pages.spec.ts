@@ -27,9 +27,7 @@ test.describe('visual pages', () => {
       await stabilizeVisualEnvironment(page);
       await page.locator('footer').waitFor({ state: 'visible' });
       await expect(page.getByText(/Chargement|Loading/)).toHaveCount(0);
-      await expect(page).toHaveScreenshot(`${pageCase.name}.png`, {
-        fullPage: true,
-      });
+      await expect(page).toHaveScreenshot(`${pageCase.name}.png`);
     });
   }
 });
@@ -66,3 +64,19 @@ test('blog not found offers a centered return action', async ({ page }) => {
 
   expect(Math.abs((box.x + box.width / 2) - viewport.width / 2)).toBeLessThan(8);
 });
+
+for (const pageCase of [
+  { path: '/missing-page', action: /Retour à l'accueil/ },
+  { path: '/blog/inexistant', action: /Retour au blog/ },
+] as const) {
+  test(`not-found action has inverse hero contrast on ${pageCase.path}`, async ({ page }) => {
+    await page.goto(pageCase.path);
+    await page.waitForLoadState('networkidle');
+
+    const action = page.getByRole('button', { name: pageCase.action });
+    await expect(action).toBeVisible();
+
+    const backgroundColor = await action.evaluate((element) => getComputedStyle(element).backgroundColor);
+    expect(backgroundColor).toMatch(/^(rgb\(255, 255, 255\)|color\(srgb 1 1 1\))$/);
+  });
+}
