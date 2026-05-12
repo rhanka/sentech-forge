@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test, type Page } from '@playwright/test';
 
 const pages = [
   { path: '/', name: 'homepage-fr' },
@@ -8,11 +8,23 @@ const pages = [
   { path: '/blog/inexistant', name: 'blog-not-found-fr' },
 ] as const;
 
+async function stabilizeVisualEnvironment(page: Page) {
+  await page.addStyleTag({
+    content: `
+      html,
+      body {
+        font-family: "Noto Sans", Arial, sans-serif !important;
+      }
+    `,
+  });
+}
+
 test.describe('visual pages', () => {
   for (const pageCase of pages) {
     test(pageCase.name, async ({ page }) => {
       await page.goto(pageCase.path);
       await page.waitForLoadState('networkidle');
+      await stabilizeVisualEnvironment(page);
       await page.locator('footer').waitFor({ state: 'visible' });
       await expect(page.getByText(/Chargement|Loading/)).toHaveCount(0);
       await expect(page).toHaveScreenshot(`${pageCase.name}.png`, {
