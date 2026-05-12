@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Badge, EmptyState, Link as SentLink, LoadingState } from '@sent-tech/components-svelte';
+  import { Badge, Button, EmptyState, Link as SentLink, LoadingState } from '@sent-tech/components-svelte';
   import Footer from '@/components/Footer.svelte';
   import Icon from '@/components/Icon.svelte';
   import Navigation from '@/components/Navigation.svelte';
@@ -148,11 +148,21 @@
             <LoadingState label={t('common.loading', 'Loading...')} style={heroLoadingStyle} />
           {:else if !article}
             <EmptyState
-              class="max-w-2xl"
+              class="max-w-2xl mx-auto"
               style={heroEmptyStateStyle}
               title={t('blog.notFoundTitle', 'Article not found')}
               message={t('blog.notFoundBody', 'This article does not exist or is not available in this language.')}
-            />
+            >
+              {#snippet action()}
+                <Button
+                  type="button"
+                  variant="primary"
+                  onclick={(event) => handleInternalLinkClick(event, blogHomePath)}
+                >
+                  {t('blog.backToBlog', 'Back to blog')}
+                </Button>
+              {/snippet}
+            </EmptyState>
           {:else}
             <h1 class="text-4xl sm:text-5xl font-bold mb-6">{article.title}</h1>
             <div class="flex items-center flex-wrap gap-4 text-sm text-primary-foreground/85">

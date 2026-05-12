@@ -80,13 +80,13 @@
       </div>
     {:else}
       <div class="max-w-4xl mx-auto text-center text-primary-foreground mb-12">
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in">{main.metadata.title}</h1>
-        <p class="text-lg sm:text-xl mb-8 text-primary-foreground/90 animate-fade-in" style="animation-delay: 0.2s">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">{main.metadata.title}</h1>
+        <p class="text-lg sm:text-xl mb-8 text-primary-foreground/90">
           {main.metadata.subtitle}
         </p>
       </div>
 
-      <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 animate-fade-in" style="animation-delay: 0.4s">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
         {#each quicklinks as link}
           <Card
             interactive
@@ -129,7 +129,7 @@
     {/if}
   </div>
 
-  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-primary-foreground/60 animate-bounce">
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-primary-foreground/60">
     <div class="w-6 h-10 border-2 border-primary-foreground/40 rounded-full flex items-start justify-center p-2">
       <div class="w-1 h-3 bg-primary-foreground/40 rounded-full"></div>
     </div>
