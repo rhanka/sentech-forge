@@ -1,26 +1,61 @@
 <script lang="ts">
-  import Link from '@/components/Link.svelte';
-  import { location } from '@/lib/router';
+  import { Button, EmptyState } from '@sent-tech/components-svelte';
+  import Footer from '@/components/Footer.svelte';
+  import Navigation from '@/components/Navigation.svelte';
+  import heroImage from '@/assets/hero-tech.jpg';
+  import { location, navigate } from '@/lib/router';
   import { applySeo } from '@/lib/seo';
-  import { language } from '@/i18n/config';
+  import { language, t } from '@/i18n/config';
+
+  const heroEmptyStateStyle = [
+    '--st-component-emptyState-background: hsl(var(--primary-foreground) / 0.18)',
+    '--st-component-emptyState-border: hsl(var(--primary-foreground) / 0.35)',
+    '--st-component-emptyState-titleText: hsl(var(--primary-foreground))',
+    '--st-component-emptyState-messageText: hsl(var(--primary-foreground) / 0.85)',
+    '-webkit-backdrop-filter: blur(8px)',
+    'backdrop-filter: blur(8px)',
+  ].join('; ');
+
+  const heroActionButtonStyle = [
+    '--st-component-button-primaryBackground: hsl(var(--primary-foreground))',
+    '--st-component-button-primaryText: hsl(var(--primary))',
+  ].join('; ');
+
+  const hasModifier = (event: MouseEvent) =>
+    event.metaKey || event.altKey || event.ctrlKey || event.shiftKey;
+
+  function handleInternalLinkClick(event: MouseEvent, href: string) {
+    if (event.defaultPrevented || event.button !== 0 || hasModifier(event)) return;
+
+    event.preventDefault();
+    navigate(href);
+  }
 
   $: pathname = $location.pathname;
   $: if (pathname) {
     console.error('404 Error: User attempted to access non-existent route:', pathname);
   }
 
-  $: {
-    const locale = $language === 'en' ? 'en' : 'fr';
-    const title = locale === 'en' ? 'SENT-tech | Page not found' : 'SENT-tech | Page introuvable';
-    const description =
-      locale === 'en'
-        ? 'The requested page does not exist. Visit the home page or use the language switcher.'
-        : "Cette page n'existe pas. Retournez à l'accueil ou utilisez le sélecteur de langue.";
+  $: locale = $language === 'en' ? 'en' : 'fr';
+  $: title = t('notFound.title', locale === 'en' ? 'Page not found' : 'Page introuvable');
+  $: message = t(
+    'notFound.message',
+    locale === 'en'
+      ? "The page you're looking for does not exist. Return to the homepage or switch language."
+      : "La page que vous recherchez n'existe pas. Retournez à l'accueil ou changez de langue."
+  );
+  $: homeLabel = t('notFound.home', locale === 'en' ? 'Back to home' : "Retour à l'accueil");
+  $: homePath = locale === 'en' ? '/en/' : '/';
+  $: description =
+    locale === 'en'
+      ? 'The requested page does not exist. Visit the home page or use the language switcher.'
+      : "Cette page n'existe pas. Retournez à l'accueil ou utilisez le sélecteur de langue.";
 
+  $: {
     applySeo({
       path: '/404',
       locale,
-      title,
+      title: `SENT-tech | ${title}`,
       description,
       noIndex: true,
       type: 'website',
@@ -28,10 +63,37 @@
   }
 </script>
 
-<div class="flex min-h-screen items-center justify-center bg-gray-100">
-  <div class="text-center">
-    <h1 class="mb-4 text-4xl font-bold">404</h1>
-    <p class="mb-4 text-xl text-gray-600">Oops! Page not found</p>
-    <Link href="/" className="text-blue-500 underline hover:text-blue-700">Return to Home</Link>
-  </div>
+<div class="min-h-screen">
+  <Navigation />
+  <main>
+    <section class="relative min-h-[72vh] overflow-hidden pt-28 pb-16 flex items-center">
+      <div
+        class="absolute inset-0 z-0"
+        style={`background-image: url(${heroImage}); background-size: cover; background-position: center;`}
+      >
+        <div class="absolute inset-0 bg-gradient-hero opacity-90"></div>
+      </div>
+
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <EmptyState
+          class="w-full max-w-2xl mx-auto"
+          style={heroEmptyStateStyle}
+          title={title}
+          message={message}
+        >
+          {#snippet action()}
+            <Button
+              type="button"
+              variant="primary"
+              style={heroActionButtonStyle}
+              onclick={(event) => handleInternalLinkClick(event, homePath)}
+            >
+              {homeLabel}
+            </Button>
+          {/snippet}
+        </EmptyState>
+      </div>
+    </section>
+  </main>
+  <Footer />
 </div>
