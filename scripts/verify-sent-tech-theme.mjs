@@ -1,5 +1,6 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const checks = [];
 
@@ -26,7 +27,8 @@ async function fileExists(filePath) {
 
 const root = process.cwd();
 const themePath = path.join(root, 'src', 'lib', 'styles', 'sent-tech-forge-theme.css');
-const upstreamThemePath = path.resolve(root, '..', 'sent-tech-design-system', 'packages', 'themes', 'css', 'forge.css');
+const upstreamThemePath = fileURLToPath(import.meta.resolve('@sent-tech/themes/css/forge.css'));
+const upstreamThemeDisplay = '@sent-tech/themes/css/forge.css';
 const globalCssPath = path.join(root, 'src', 'index.css');
 const indexHtmlPath = path.join(root, 'index.html');
 
@@ -45,9 +47,15 @@ addCheck(
 
 if (themeCss && upstreamThemeCss) {
   addCheck(
-    'local theme CSS matches generated design-system theme',
+    'local theme CSS matches published design-system theme',
     themeCss === upstreamThemeCss,
-    '../sent-tech-design-system/packages/themes/css/forge.css'
+    upstreamThemeDisplay
+  );
+} else if (!upstreamThemeCss) {
+  addCheck(
+    'published design-system theme readable',
+    false,
+    `${upstreamThemeDisplay} (resolved to ${upstreamThemePath}) — install @sent-tech/themes`
   );
 }
 
