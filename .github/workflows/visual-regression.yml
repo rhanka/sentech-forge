@@ -22,12 +22,6 @@ jobs:
           node-version: 20
           cache: npm
 
-      - name: Build local Sent Tech design system dependency
-        run: |
-          git clone --depth 1 https://github.com/rhanka/sent-tech-design-system.git ../sent-tech-design-system
-          npm --prefix ../sent-tech-design-system ci
-          npm --prefix ../sent-tech-design-system run build
-
       - name: Install dependencies
         run: npm ci
 
