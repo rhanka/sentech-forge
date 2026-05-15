@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Card, Link as SentLink } from '@sent-tech/components-svelte';
+  import { Card, Link as SentLink } from '@sentropic/design-system-svelte';
   import Icon from '@/components/Icon.svelte';
   import { language } from '@/i18n/config';
   import { loadContactContent, type Locale } from '@/lib/content';
