@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Badge, Button, EmptyState, Link as SentLink, LoadingState } from '@sent-tech/components-svelte';
+  import { Badge, Button, EmptyState, Link as SentLink, LoadingState } from '@sentropic/design-system-svelte';
   import Footer from '@/components/Footer.svelte';
   import Icon from '@/components/Icon.svelte';
   import Navigation from '@/components/Navigation.svelte';

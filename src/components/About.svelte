@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Button, Card, LoadingState } from '@sent-tech/components-svelte';
+  import { Button, Card, LoadingState } from '@sentropic/design-system-svelte';
   import Icon from '@/components/Icon.svelte';
   import { language, t } from '@/i18n/config';
   import { loadAboutContent, type Locale } from '@/lib/content';

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { Globe } from 'lucide-svelte';
-  import { Menu } from '@sent-tech/components-svelte';
+  import { Menu } from '@sentropic/design-system-svelte';
   import { language } from '@/i18n/config';
   import { location, navigate } from '@/lib/router';
   
