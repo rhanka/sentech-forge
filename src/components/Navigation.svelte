@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { Menu, X } from 'lucide-svelte';
-  import { Button } from '@sent-tech/components-svelte';
+  import { Button } from '@sentropic/design-system-svelte';
   import { t, language } from '@/i18n/config';
   import { location, navigate } from '@/lib/router';
   import LanguageSwitcher from './LanguageSwitcher.svelte';

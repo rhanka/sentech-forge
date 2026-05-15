@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Card } from '@sent-tech/components-svelte';
+  import { Card } from '@sentropic/design-system-svelte';
   import { language, t } from '@/i18n/config';
 
   $: $language;

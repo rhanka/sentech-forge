@@ -27,8 +27,8 @@ async function fileExists(filePath) {
 
 const root = process.cwd();
 const themePath = path.join(root, 'src', 'lib', 'styles', 'sent-tech-forge-theme.css');
-const upstreamThemePath = fileURLToPath(import.meta.resolve('@sent-tech/themes/css/forge.css'));
-const upstreamThemeDisplay = '@sent-tech/themes/css/forge.css';
+const upstreamThemePath = fileURLToPath(import.meta.resolve('@sentropic/design-system-themes/css/forge.css'));
+const upstreamThemeDisplay = '@sentropic/design-system-themes/css/forge.css';
 const globalCssPath = path.join(root, 'src', 'index.css');
 const indexHtmlPath = path.join(root, 'index.html');
 
@@ -55,7 +55,7 @@ if (themeCss && upstreamThemeCss) {
   addCheck(
     'published design-system theme readable',
     false,
-    `${upstreamThemeDisplay} (resolved to ${upstreamThemePath}) — install @sent-tech/themes`
+    `${upstreamThemeDisplay} (resolved to ${upstreamThemePath}) — install @sentropic/design-system-themes`
   );
 }
 
