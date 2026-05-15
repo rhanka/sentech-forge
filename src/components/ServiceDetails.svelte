@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Button, Card, EmptyState, Link as SentLink, LoadingState } from '@sent-tech/components-svelte';
+  import { Button, Card, EmptyState, Link as SentLink, LoadingState } from '@sentropic/design-system-svelte';
   import Icon from '@/components/Icon.svelte';
   import { language, t } from '@/i18n/config';
   import { navigate } from '@/lib/router';

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Button, EmptyState } from '@sent-tech/components-svelte';
+  import { Button, EmptyState } from '@sentropic/design-system-svelte';
   import Footer from '@/components/Footer.svelte';
   import Navigation from '@/components/Navigation.svelte';
   import heroImage from '@/assets/hero-tech.jpg';

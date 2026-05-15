@@ -16,9 +16,9 @@
     "test:visual:update": "playwright test --update-snapshots"
   },
   "dependencies": {
-    "@sent-tech/components-svelte": "^0.2.0",
-    "@sent-tech/themes": "^0.2.0",
-    "@sent-tech/tokens": "^0.2.0",
+    "@sentropic/design-system-svelte": "^0.3.0",
+    "@sentropic/design-system-themes": "^0.3.0",
+    "@sentropic/design-system-tokens": "^0.3.0",
     "clsx": "^2.1.1",
     "i18next": "^25.8.13",
     "lucide-svelte": "^0.575.0",
