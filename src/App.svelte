@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { AppShell } from '@sentropic/design-system-svelte';
   import { location } from '@/lib/router';
   import Index from '@/pages/Index.svelte';
   import NotFound from '@/pages/NotFound.svelte';
@@ -119,10 +120,33 @@
   }
 </script>
 
-{#if pathname === '/' || pathname === '/blog'}
-  <Index />
-{:else if slug}
-  <BlogPost {slug} />
-{:else}
-  <NotFound />
-{/if}
+<div data-st-theme="forge" class="sent-tech-site">
+  <AppShell variant="workspace" class="sent-tech-site__shell">
+    {#snippet main()}
+      {#if pathname === '/' || pathname === '/blog'}
+        <Index />
+      {:else if slug}
+        <BlogPost {slug} />
+      {:else}
+        <NotFound />
+      {/if}
+    {/snippet}
+  </AppShell>
+</div>
+
+<style>
+  .sent-tech-site {
+    min-block-size: 100vh;
+  }
+
+  :global(.sent-tech-site__shell) {
+    --st-component-navShell-width: 0rem;
+    --st-component-contextPanel-width: 0rem;
+    min-block-size: 100vh;
+  }
+
+  :global(.sent-tech-site__shell .st-appShell__main) {
+    min-inline-size: 0;
+    overflow: visible;
+  }
+</style>

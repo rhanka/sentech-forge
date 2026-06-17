@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { Menu, X } from 'lucide-svelte';
-  import { Button } from '@sentropic/design-system-svelte';
+  import { Button, NavDrawer } from '@sentropic/design-system-svelte';
   import { t, language } from '@/i18n/config';
   import { location, navigate } from '@/lib/router';
   import LanguageSwitcher from './LanguageSwitcher.svelte';
@@ -97,6 +97,8 @@
         onclick={() => (isMobileMenuOpen = !isMobileMenuOpen)}
         style={`--st-semantic-text-link: ${navButtonTone};`}
         class={`md:hidden !px-1 !py-1 ${isScrolled ? 'text-foreground' : 'text-primary-foreground'}`}
+        aria-expanded={isMobileMenuOpen}
+        aria-controls="sent-tech-mobile-menu"
       >
         {#if isMobileMenuOpen}
           <X class={`w-6 h-6 ${isScrolled ? 'text-foreground' : 'text-primary-foreground'}`} />
@@ -105,25 +107,31 @@
         {/if}
       </Button>
     </div>
-
-    {#if isMobileMenuOpen}
-      <div class="md:hidden pb-6 bg-background/95 backdrop-blur-md">
-        {#each navLinks as link}
-          <Button
-            type="button"
-            size="md"
-            variant="ghost"
-            onclick={() => scrollToSection(link.id)}
-            style="--st-semantic-text-link: hsl(var(--foreground));"
-            class="block !w-full !justify-start !rounded-none text-left !py-3 !px-4 text-foreground hover:bg-accent/10 transition-colors"
-          >
-            {link.label}
-          </Button>
-        {/each}
-        <div class="px-4 pt-3">
-          <LanguageSwitcher isScrolled={true} />
-        </div>
-      </div>
-    {/if}
   </div>
+
+  <NavDrawer
+    title="Menu"
+    label="SENT-tech mobile navigation"
+    side="right"
+    open={isMobileMenuOpen}
+    class="sent-tech-mobile-menu"
+  >
+    <div id="sent-tech-mobile-menu" class="flex flex-col bg-background/95 backdrop-blur-md py-3">
+      {#each navLinks as link}
+        <Button
+          type="button"
+          size="md"
+          variant="ghost"
+          onclick={() => scrollToSection(link.id)}
+          style="--st-semantic-text-link: hsl(var(--foreground));"
+          class="block !w-full !justify-start !rounded-none text-left !py-3 !px-4 text-foreground hover:bg-accent/10 transition-colors"
+        >
+          {link.label}
+        </Button>
+      {/each}
+      <div class="px-4 pt-3">
+        <LanguageSwitcher isScrolled={true} />
+      </div>
+    </div>
+  </NavDrawer>
 </nav>
