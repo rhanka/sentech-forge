@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc"><title id="title">H2a — organiser le travail humain–agent</title><desc id="desc">Vue fonctionnelle : coordonner le travail, vérifier les résultats et rendre les décisions discutables.. Les flèches représentent un parcours de travail, pas une intégration automatique de toutes les briques.
+Sources : documentations locales H2a, Harness et Focus · Schéma éditorial, septembre 2026.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#50758c"/></marker></defs>
+<rect width="1200" height="760" rx="20" fill="#f3f7fa"/>
+<text x="48" y="62" font-family="sans-serif" font-size="30" font-weight="700" fill="#12344b">H2a — organiser le travail humain–agent</text>
+<text x="48" y="98" font-family="sans-serif" font-size="17" fill="#476477">Vue fonctionnelle : coordonner le travail, vérifier les résultats et rendre les décisions discutables.</text>
+<path d="M368,210 L455,210" fill="none" stroke="#50758c" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M785,210 L875,210" fill="none" stroke="#50758c" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M1010,275 L1010,395" fill="none" stroke="#50758c" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M825,475 L685,475" fill="none" stroke="#50758c" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="765.0" y="466.0" font-family="sans-serif" font-size="13" fill="#476477">preuves</text>
+<path d="M208,395 L208,275" fill="none" stroke="#50758c" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="218.0" y="326.0" font-family="sans-serif" font-size="13" fill="#476477">arbitrage</text>
+<rect x="48" y="145" width="320" height="130" rx="12" fill="#e0eff7" stroke="#c7d7e0"/>
+<text x="68" y="179" font-family="sans-serif" font-size="20" font-weight="700" fill="#12344b">Humain responsable</text>
+<text x="68" y="210" font-family="sans-serif" font-size="16" fill="#34566b">Intention et critères</text>
+<text x="68" y="235" font-family="sans-serif" font-size="16" fill="#34566b">Mandat, limites et arbitrages</text>
+<rect x="455" y="145" width="330" height="130" rx="12" fill="#ffffff" stroke="#c7d7e0"/>
+<text x="475" y="179" font-family="sans-serif" font-size="20" font-weight="700" fill="#12344b">H2a · coordination</text>
+<text x="475" y="210" font-family="sans-serif" font-size="16" fill="#34566b">Rôles, échanges et négociation</text>
+<text x="475" y="235" font-family="sans-serif" font-size="16" fill="#34566b">Escalades et traces</text>
+<rect x="875" y="145" width="277" height="130" rx="12" fill="#ffffff" stroke="#c7d7e0"/>
+<text x="895" y="179" font-family="sans-serif" font-size="20" font-weight="700" fill="#12344b">Agents</text>
+<text x="895" y="210" font-family="sans-serif" font-size="16" fill="#34566b">Travail dans le mandat</text>
+<text x="895" y="235" font-family="sans-serif" font-size="16" fill="#34566b">Résultats et questions</text>
+<rect x="825" y="395" width="327" height="160" rx="12" fill="#ffffff" stroke="#c7d7e0"/>
+<text x="845" y="429" font-family="sans-serif" font-size="20" font-weight="700" fill="#12344b">Harness · vérification</text>
+<text x="845" y="460" font-family="sans-serif" font-size="16" fill="#34566b">Périmètre, tests et revue</text>
+<text x="845" y="485" font-family="sans-serif" font-size="16" fill="#34566b">Preuves de qualité</text>
+<text x="845" y="510" font-family="sans-serif" font-size="16" fill="#34566b">Vérifications de réalisation</text>
+<rect x="48" y="395" width="637" height="185" rx="12" fill="#e0eff7" stroke="#c7d7e0"/>
+<text x="68" y="429" font-family="sans-serif" font-size="20" font-weight="700" fill="#12344b">Dossier de décision · Focus</text>
+<text x="68" y="460" font-family="sans-serif" font-size="16" fill="#34566b">Faits, options, compromis et inconnues</text>
+<text x="68" y="485" font-family="sans-serif" font-size="16" fill="#34566b">Une surface de lecture et de discussion pour l’humain</text>
+<text x="68" y="510" font-family="sans-serif" font-size="16" fill="#34566b">La décision reste dans le périmètre de son responsable</text>
+<text x="68" y="535" font-family="sans-serif" font-size="16" fill="#34566b">Focus exige les intégrations de son application hôte.</text>
+<text x="48" y="700" font-family="sans-serif" font-size="14" fill="#476477">Les flèches représentent un parcours de travail, pas une intégration automatique de toutes les briques.</text>
+<text x="48" y="724" font-family="sans-serif" font-size="14" fill="#476477">Sources : documentations locales H2a, Harness et Focus · Schéma éditorial, septembre 2026.</text>
+</svg>
