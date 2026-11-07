@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="920" viewBox="0 0 1200 920" role="img" aria-labelledby="title desc"><title id="title">Sentropic : produit, framework agentique et modèles</title><desc id="desc">Vue fonctionnelle : le produit d’idéation mobilise orchestration conversationnelle et workflows. Le LLM mesh gère l’accès aux modèles. Gateway et cluster mesh portent des responsabilités distinctes. Flow reste en cours d’extraction.</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10Z" fill="#50758c"/></marker></defs><rect width="1200" height="920" rx="20" fill="#f3f7fa"/>
+<text x="48" y="56" font-family="sans-serif" font-size="30" font-weight="700" fill="#12344b">Sentropic — de l’idéation à l’exécution</text>
+<text x="48" y="93" font-family="sans-serif" font-size="17" font-weight="400" fill="#34566b">Vue fonctionnelle des responsabilités · composants documentés dans le dépôt</text>
+<rect x="48" y="125" width="1104" height="126" rx="14" fill="#e0eff7" stroke="#c7d7e0"/>
+<text x="70" y="159" font-family="sans-serif" font-size="21" font-weight="700" fill="#12344b">Produit d’idéation et de qualification des cas d’usage IA</text>
+<text x="70" y="192" font-family="sans-serif" font-size="17" font-weight="400" fill="#34566b">Contexte d’organisation → génération → fiches structurées → évaluation et synthèse</text>
+<text x="70" y="219" font-family="sans-serif" font-size="17" font-weight="400" fill="#34566b">Une aide pour préparer les choix d’investissement et la feuille de route.</text>
+<path d="M322 251 L322 316" stroke="#50758c" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M878 251 L878 316" stroke="#50758c" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="48" y="320" width="535" height="194" rx="14" fill="#fff" stroke="#c7d7e0"/>
+<text x="70" y="354" font-family="sans-serif" font-size="21" font-weight="700" fill="#12344b">Framework agentique · chat-core</text>
+<text x="70" y="387" font-family="sans-serif" font-size="17" font-weight="400" fill="#34566b">Sessions, messages et contexte</text>
+<text x="70" y="414" font-family="sans-serif" font-size="17" font-weight="400" fill="#34566b">Outils, flux et événements</text>
+<text x="70" y="441" font-family="sans-serif" font-size="17" font-weight="400" fill="#34566b">Interfaces de persistance et checkpoints</text>
+<rect x="617" y="320" width="535" height="194" rx="14" fill="#fff" stroke="#c7d7e0"/>
+<text x="639" y="354" font-family="sans-serif" font-size="21" font-weight="700" fill="#12344b">Framework agentique · flow</text>
+<text x="639" y="387" font-family="sans-serif" font-size="17" font-weight="400" fill="#34566b">Tâches, transitions et état d’exécution</text>
+<text x="639" y="414" font-family="sans-serif" font-size="17" font-weight="400" fill="#34566b">Files de travail, templates et gates</text>
+<text x="639" y="441" font-family="sans-serif" font-size="17" font-weight="400" fill="#34566b">Extraction en cours · package non publié</text>
+<path d="M600 535 L600 572" stroke="#50758c" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="48" y="580" width="1104" height="127" rx="14" fill="#e4f3ec" stroke="#c7d7e0"/>
+<text x="70" y="614" font-family="sans-serif" font-size="21" font-weight="700" fill="#12344b">LLM mesh · accès et routage des modèles</text>
+<text x="70" y="647" font-family="sans-serif" font-size="17" font-weight="400" fill="#34566b">Capacités, éligibilité, santé, affinité et politiques de routage</text>
+<text x="70" y="674" font-family="sans-serif" font-size="17" font-weight="400" fill="#34566b">Exécution multi-fournisseurs et événements normalisés</text>
+<text x="48" y="750" font-family="sans-serif" font-size="19" font-weight="700" fill="#12344b">Responsabilités complémentaires</text>
+<rect x="48" y="772" width="535" height="103" rx="14" fill="#fff" stroke="#c7d7e0"/>
+<text x="70" y="806" font-family="sans-serif" font-size="21" font-weight="700" fill="#12344b">LLM gateway</text>
+<text x="70" y="839" font-family="sans-serif" font-size="17" font-weight="400" fill="#34566b">Frontière d’accès et mesure de consommation</text>
+<rect x="617" y="772" width="535" height="103" rx="14" fill="#fff" stroke="#c7d7e0"/>
+<text x="639" y="806" font-family="sans-serif" font-size="21" font-weight="700" fill="#12344b">Cluster mesh</text>
+<text x="639" y="839" font-family="sans-serif" font-size="17" font-weight="400" fill="#34566b">Serveur et postes · fédération non livrée</text>
+<text x="48" y="904" font-family="sans-serif" font-size="13" font-weight="400" fill="#34566b">Schéma éditorial, pas une topologie réseau. La gateway n’est pas un passage imposé à chaque appel interne.</text>
+</svg>
